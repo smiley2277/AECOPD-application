@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="W6e-MN-7jd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="DhZ-12-inl">
+            <objects>
+                <navigationController id="W6e-MN-7jd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dyI-JZ-pc6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uca-mR-0wL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Osf-Ud-F74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1486" y="72"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Admin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="電子郵件地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uzk-ox-LZC">
+                                <rect key="frame" x="66" y="128" width="282" height="35"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F13-Lg-XkF">
+                                <rect key="frame" x="66" y="195" width="282" height="34"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYT-B9-xVm">
+                                <rect key="frame" x="66" y="277" width="282" height="40"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
+                                <state key="normal" title="登入"/>
+                                <connections>
+                                    <action selector="onTouchLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5X9-NS-rqK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFT-rJ-LOT">
+                                <rect key="frame" x="66" y="233" width="282" height="0.0"/>
+                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="15"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LYT-B9-xVm" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1k3-WK-LYR"/>
+                            <constraint firstItem="LYT-B9-xVm" firstAttribute="width" secondItem="F13-Lg-XkF" secondAttribute="width" id="1qN-4G-Mew"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Uzk-ox-LZC" secondAttribute="trailing" constant="66" id="6us-gK-WTY"/>
+                            <constraint firstItem="vFT-rJ-LOT" firstAttribute="top" secondItem="F13-Lg-XkF" secondAttribute="bottom" constant="4" id="H2L-wj-DeS"/>
+                            <constraint firstItem="Uzk-ox-LZC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Nhq-AR-5zk"/>
+                            <constraint firstItem="F13-Lg-XkF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="WGc-3n-eAs"/>
+                            <constraint firstItem="Uzk-ox-LZC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="btF-VE-zPU"/>
+                            <constraint firstItem="vFT-rJ-LOT" firstAttribute="leading" secondItem="F13-Lg-XkF" secondAttribute="leading" id="czv-Uo-MyQ"/>
+                            <constraint firstItem="LYT-B9-xVm" firstAttribute="top" secondItem="F13-Lg-XkF" secondAttribute="bottom" constant="48" id="d6U-6M-oQs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="F13-Lg-XkF" secondAttribute="trailing" constant="66" id="foP-n7-hR0"/>
+                            <constraint firstItem="vFT-rJ-LOT" firstAttribute="trailing" secondItem="F13-Lg-XkF" secondAttribute="trailing" id="gk3-aT-SfS"/>
+                            <constraint firstItem="F13-Lg-XkF" firstAttribute="top" secondItem="Uzk-ox-LZC" secondAttribute="bottom" constant="32" id="veo-XA-LC2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="y0v-0Z-Bkc"/>
+                    <connections>
+                        <outlet property="errorHint" destination="vFT-rJ-LOT" id="90C-aR-drk"/>
+                        <outlet property="login" destination="LYT-B9-xVm" id="nAt-4P-WUI"/>
+                        <outlet property="password" destination="F13-Lg-XkF" id="qPL-HL-kOt"/>
+                        <outlet property="userID" destination="Uzk-ox-LZC" id="Y5Q-Cf-l0S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-713" y="72"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
