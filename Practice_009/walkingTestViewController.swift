@@ -21,7 +21,7 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var restOfTime: UILabel!
     var durationFill: Int = 0
     var speedFill: Float = 0.0
-    var trainingSpeed:Float = 385 //外部：m/sec｜內部：BPM 每分鐘幾下
+    var trainingSpeed:Float = 385 //外部：km/hr｜內部：BPM 每分鐘幾下
     var trainingDuration:Int = 1200 //外部：min｜內部：sec
     var stepSize: Double = 0
     var stepSizeLife: Double = 0
@@ -93,7 +93,7 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
 //    }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
-        let transSpeed = speed * 6000 / Float(size)
+        let transSpeed = speed * 100 / (Float(size)/6)
         return transSpeed
     }
     func fetchStepSize(){

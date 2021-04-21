@@ -59,7 +59,6 @@
 		466BE58F2615A63B0042BE38 /* borgScalePostTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */; };
 		466C70CB2609D4D3003710F3 /* borgScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */; };
 		466C70D02609E8D5003710F3 /* smartSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C70CF2609E8D5003710F3 /* smartSubViewController.swift */; };
-		46716CB825FF4D1600FDB785 /* smartCoachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46716CB725FF4D1600FDB785 /* smartCoachViewController.swift */; };
 		46716CBD25FF63CE00FDB785 /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 46716CBC25FF63CE00FDB785 /* America.gpx */; };
 		468B1EEA26033B0C00C52990 /* walkingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EE926033B0C00C52990 /* walkingTestViewController.swift */; };
 		468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */; };
@@ -84,7 +83,6 @@
 		46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */; };
 		46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */; };
 		755602206C8599C81157D952 /* Pods_Practice_009.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */; };
-		E74D3A3C262ED64D00021686 /* oh-finally-355.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E74D3A3B262ED64D00021686 /* oh-finally-355.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,7 +158,6 @@
 		466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = borgScalePostTestViewController.swift; sourceTree = "<group>"; };
 		466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = borgScaleViewController.swift; sourceTree = "<group>"; };
 		466C70CF2609E8D5003710F3 /* smartSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartSubViewController.swift; sourceTree = "<group>"; };
-		46716CB725FF4D1600FDB785 /* smartCoachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachViewController.swift; sourceTree = "<group>"; };
 		46716CBC25FF63CE00FDB785 /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
 		468B1EE926033B0C00C52990 /* walkingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walkingTestViewController.swift; sourceTree = "<group>"; };
 		468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePredictViewController.swift; sourceTree = "<group>"; };
@@ -191,7 +188,6 @@
 		46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offlinePredictViewController.swift; sourceTree = "<group>"; };
 		46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifestyleViewController.swift; sourceTree = "<group>"; };
 		5C11ACBDDD69553C6FF829CE /* Pods-Practice_009.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_009.release.xcconfig"; path = "Target Support Files/Pods-Practice_009/Pods-Practice_009.release.xcconfig"; sourceTree = "<group>"; };
-		E74D3A3B262ED64D00021686 /* oh-finally-355.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "oh-finally-355.mp3"; path = "../../../Downloads/oh-finally-355.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,7 +400,6 @@
 				46CCAEE625EE8C6E009D001C /* eq5dViewController.swift */,
 				46CCAEE125EE7D8D009D001C /* mMRCViewController.swift */,
 				4649C7F9262583760047299C /* variableSettingViewController.swift */,
-				46716CB725FF4D1600FDB785 /* smartCoachViewController.swift */,
 				466C70CF2609E8D5003710F3 /* smartSubViewController.swift */,
 				46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */,
 				468B1EE926033B0C00C52990 /* walkingTestViewController.swift */,
@@ -413,7 +408,6 @@
 				466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */,
 				46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */,
 				468B1EFD2604911100C52990 /* knob-458.mp3 */,
-				E74D3A3B262ED64D00021686 /* oh-finally-355.mp3 */,
 				468B1EF326048C9800C52990 /* play-button.png */,
 				468B1EF826048EC900C52990 /* stop-button.png */,
 				462C1C3B2611C4FA0045DB40 /* refresh.png */,
@@ -570,7 +564,6 @@
 				468B1EF426048C9800C52990 /* play-button.png in Resources */,
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
-				E74D3A3C262ED64D00021686 /* oh-finally-355.mp3 in Resources */,
 				462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */,
 				46026145261706C600EE6236 /* site_opendata.csv in Resources */,
 			);
@@ -678,7 +671,6 @@
 				466C70D02609E8D5003710F3 /* smartSubViewController.swift in Sources */,
 				466BE58F2615A63B0042BE38 /* borgScalePostTestViewController.swift in Sources */,
 				462D2614262D6E1F00A589E0 /* UserDefaultUtil.swift in Sources */,
-				46716CB825FF4D1600FDB785 /* smartCoachViewController.swift in Sources */,
 				462D25D5262D6BBC00A589E0 /* PatientListProtocol.swift in Sources */,
 				46CB99B025E793C000490562 /* AppDelegate.swift in Sources */,
 				46CB99E525E794E200490562 /* COPDRfc.mlmodel in Sources */,
