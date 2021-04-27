@@ -90,11 +90,12 @@ class APIManager: NSObject {
                             do{
                                 json = try (JSONSerialization.jsonObject(with: data, options: []) as? [String: String] ?? [:])
                             }catch{
-                                json["AlertMsg"] = ""
+                                json["message"] = ""
                             }
                         }
                         
-                        let alertMsg = json["AlertMsg"] ?? ""
+                        //MARK: 如果沒有收到，會自動填補「發生錯誤」
+                        let alertMsg = json["message"] ?? "發生錯誤"
                         
                         self.printErrorResponse(requestUrl, response, error, alertMsg: alertMsg, method)
                         
@@ -137,6 +138,9 @@ class APIManager: NSObject {
         case .post:
             return JSONEncoding.default
             
+        case .put:
+            return JSONEncoding.default
+            
         default:
             return URLEncoding.default
         }
@@ -170,10 +174,11 @@ extension APIManager {
         return manager(method: .post, appendUrl: appendUrl, url: APIUrl.authApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     
-    func getLoginResultWithRefreshToken() -> Single<[String:Any]> {
+    func getLoginResultWithRefreshToken(_ refreshToken: String) -> Single<[String:Any]> {
         //MARK: 應確
-        let params = ["grant_type": "refresh_token",
-                      "refresh_token": "Bearer \(UserDefaultUtil.shared.adminRefreshToken ?? "")"]
+        var params = ["grant_type": "refresh_token",
+                      "refresh_token": "\(refreshToken)"]
+        
         return manager(method: .post, appendUrl: "", url: APIUrl.tokenApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     
@@ -264,3 +269,4 @@ extension APIManager {
         return NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
     }
 }
+

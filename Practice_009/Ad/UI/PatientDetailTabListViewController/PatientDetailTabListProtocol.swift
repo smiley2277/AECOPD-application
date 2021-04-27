@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PatientDetailTabListViewProtocol: NSObjectProtocol {
+protocol PatientDetailTabListViewProtocol: BaseViewControllerProtocol {
     func onBindPatientSurvey(patientSurvey: PatientSurvey)
     func onBindPatientCoach(patientCoach: PatientCoach)
     func onBindPatientBorg(patientBorg: PatientBorg)

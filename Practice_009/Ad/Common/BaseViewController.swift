@@ -408,9 +408,29 @@ extension BaseViewController {
     }
 }
 
-class CustomSearchBar: UISearchBar {
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: UILayoutFittingExpandedSize.width, height: 56.0)
+extension BaseViewController: BaseViewControllerProtocol {
+    @objc func onApiError(error: APIError) {
+        //MARK: 導回登入頁
+        if error.type == .apiUnauthorizedException {
+            LoginRepository.shared.setLocalAdminLoginResult(nil)
+            let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            let navigationController = UINavigationController.init(rootViewController: viewController)
+            self.view.window?.rootViewController = navigationController
+            if self.view.window == nil {
+                SceneDelegate.shared?.window?.rootViewController = navigationController
+            }
+
+        //MARK: alert錯誤訊息
+        } else {
+            let controller = UIAlertController(title: "", message: error.alertMsg , preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
     }
 }
 
+protocol BaseViewControllerProtocol: NSObjectProtocol {
+    func onApiError(error: APIError)
+}

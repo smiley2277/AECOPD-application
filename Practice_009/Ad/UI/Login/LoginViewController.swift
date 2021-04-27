@@ -1,6 +1,10 @@
 import UIKit
 import RxSwift
 
+protocol LoginViewControllerProtocol: NSObjectProtocol {
+    func onSignUpSuccess(loginResult: LoginResult)
+}
+
 class LoginViewController: BaseViewController {
     @IBOutlet weak var userID: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -11,13 +15,12 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(NSHomeDirectory())
         presenter = LoginPresenter(delegate: self)
         
         login.layer.cornerRadius = 4
         login.backgroundColor = UIColor.systemIndigo
         login.tintColor = UIColor.white
-
+        
         userID.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         password.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         
@@ -25,14 +28,8 @@ class LoginViewController: BaseViewController {
         
         self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .nothing)
         self.setNavType(navBarType: .hidden)
-//
-//        if UserDefaultUtil.shared.adminAuthorization != "" && UserDefaultUtil.shared.adminAuthorization != nil {
-//            let storyboard = UIStoryboard(name: "PatientDetailTabList", bundle: Bundle.main)
-//            let vc = storyboard.instantiateViewController(withIdentifier: "PatientDetailTabListViewController") as! PatientDetailTabListViewController
-//            //TODO
-//            vc.setUserId(userId: "test_id3")
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+
+        presenter?.getLocalAuthorization()
     }
     
     @IBAction func onTouchLogin(_ sender: Any) {
@@ -49,7 +46,6 @@ class LoginViewController: BaseViewController {
     
     private func enableLoginErrorHint(_ isEnable: Bool) {
         errorHint.text = isEnable ? "請檢查帳號、密碼，然後再試一次" : ""
-        //TODO r500
     }
     
     private func clearTextField() {
@@ -60,15 +56,38 @@ class LoginViewController: BaseViewController {
 
 extension LoginViewController: LoginViewProtocol {
     func onBindLoginResult(loginResult: LoginResult) {
-        let storyboard = UIStoryboard(name: "PatientList", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "PatientListViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
-        //TODO 記在手機，持續登入
+        let userID = loginResult.data!.userId
+        let roles = loginResult.data!.roles!
+        onBindLocalAuthoriztion(localAuthoirizationData: (userID: userID, roles: roles))
     }
     
-    func onBindLoginErrorResult(){
-        enableLoginErrorHint(true)
+    func onBindLocalAuthoriztion(localAuthoirizationData data: (userID: String?, roles: LoginResult.Data.AdminOrUser)) {
+        if data.roles == .admin {
+            //MARK: 導頁到管理者頁面
+            let storyboard = UIStoryboard(name: "PatientList", bundle: Bundle.main)
+            let vc = storyboard.instantiateViewController(withIdentifier: "PatientListViewController")
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            if data.userID == "" || data.userID == nil {
+                //TODO 導頁Auth
+            } else {
+                //TODO 導頁User
+            }
+        }
     }
+    
+    override func onApiError(error: APIError) {
+        if error.type == .apiUnauthorizedException {
+            LoginRepository.shared.setLocalAdminLoginResult(nil)
+            enableLoginErrorHint(true)
+        } else {
+            let controller = UIAlertController(title: "", message: error.alertMsg , preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+            controller.addAction(okAction)
+            present(controller, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension LoginViewController {

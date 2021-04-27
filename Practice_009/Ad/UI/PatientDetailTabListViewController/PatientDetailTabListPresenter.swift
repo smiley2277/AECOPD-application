@@ -13,8 +13,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.postPatientCoach(userId: userId, timestamp: timeStamp, speed: speed, time: time).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPostPatientCoachResponse(postPatientCoachResponse: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
     
@@ -22,8 +21,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.getPatientCoach(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientCoach(patientCoach: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 
@@ -31,8 +29,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.getPatientSuvery(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientSurvey(patientSurvey: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
     
@@ -40,8 +37,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.getPatientBorg(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientBorg(patientBorg: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 

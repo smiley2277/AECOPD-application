@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PatientListViewProtocol: NSObjectProtocol {
+protocol PatientListViewProtocol: BaseViewControllerProtocol {
     func onBindPatientList()
 }
 
