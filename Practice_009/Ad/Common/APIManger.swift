@@ -229,7 +229,7 @@ extension APIManager {
                       "prebeat": prebeat,
                       "preborg": preborg,
                       "step": step] as [String : Any]
-        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) , parameters: params, appendHeaders: nil, userId: userId)
+        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) , parameters: params, appendHeaders: nil, userId: userId)
     }
     
     func postQues(userId: String, cat1: Int, cat2: Int, cat3: Int, cat4: Int, cat5: Int, cat6: Int, cat7: Int, cat8: Int, catsum: Int, eq1: Int, eq2: Int, eq3: Int, eq4: Int, eq5: Int, mmrc: Int, timestamp: String)-> Single<[String:Any]>{
