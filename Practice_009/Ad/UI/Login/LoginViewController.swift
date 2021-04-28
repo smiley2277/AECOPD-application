@@ -3,6 +3,7 @@ import RxSwift
 
 protocol LoginViewControllerProtocol: NSObjectProtocol {
     func onSignUpSuccess(loginResult: LoginResult)
+    func onGetUserIDSucces(userID: String)
 }
 
 extension LoginViewController {
@@ -22,6 +23,8 @@ class LoginViewController: BaseViewController {
     private var presenter: LoginPresenterProtocol?
     private var isNeedToRedirect = true
     private var isFirstLaunchApp = true
+    private var isJustGetUserID = false
+    private var isJustSignUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,16 @@ class LoginViewController: BaseViewController {
 
         if isNeedToRedirect {
             presenter?.getLocalAuthorization()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isJustSignUp || isJustGetUserID {
+            presenter?.getLocalAuthorization()
+            isJustSignUp = false
+            isJustGetUserID = false
         }
     }
     
@@ -107,5 +120,17 @@ extension LoginViewController {
         enableLoginErrorHint(false)
         let isFilled = !(userID.text == "" || password.text == "")
         enableLoginButton(isFilled)
+    }
+}
+
+extension LoginViewController: LoginViewControllerProtocol {
+    func onSignUpSuccess(loginResult: LoginResult) {
+        LoginRepository.shared.setLocalAdminLoginResult(loginResult)
+        isJustSignUp = true
+    }
+    
+    func onGetUserIDSucces(userID: String) {
+        UserDefaultUtil.shared.adminUserID = userID
+        isJustGetUserID = true
     }
 }
