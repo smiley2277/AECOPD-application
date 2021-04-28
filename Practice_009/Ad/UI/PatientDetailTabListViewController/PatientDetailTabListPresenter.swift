@@ -9,16 +9,17 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         self.delegate = delegate
     }
 
-    func postPatientCoach(userId: String, timeStamp: String, speed: String, time: String){
-        repository.postPatientCoach(userId: userId, timestamp: timeStamp, speed: speed, time: time).subscribe(onSuccess:{ (model) in
+    //TODO
+    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]){
+        repository.postPatientCoach(userId: userId, timestamp: timeStamp, borgUUID: borgUUID, patientCoachList: patientCoachList).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPostPatientCoachResponse(postPatientCoachResponse: model)
         }, onError: {error in
             self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
     
-    func getPatientCoach(userId: String, timestamp: String){
-        repository.getPatientCoach(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
+    func getPatientCoach(userId: String, timestamp: String, borgUUID: String){
+        repository.getPatientCoach(userId: userId, timestamp: timestamp, borgUUID: borgUUID).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientCoach(patientCoach: model)
         }, onError: {error in
             self.delegate?.onApiError(error: error as! APIError)

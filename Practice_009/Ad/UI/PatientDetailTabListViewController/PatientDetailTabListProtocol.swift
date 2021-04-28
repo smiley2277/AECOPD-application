@@ -8,8 +8,8 @@ protocol PatientDetailTabListViewProtocol: BaseViewControllerProtocol {
 }
 
 protocol PatientDetailTabListPresenterProtocol: NSObjectProtocol {
-    func postPatientCoach(userId: String, timeStamp: String, speed: String, time: String)
+    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)])
     func getPatientSurvey(userId: String, timestamp: String)
-    func getPatientCoach(userId: String, timestamp: String)
+    func getPatientCoach(userId: String, timestamp: String, borgUUID: String)
     func getPatientBorg(userId: String, timestamp: String)
 }
