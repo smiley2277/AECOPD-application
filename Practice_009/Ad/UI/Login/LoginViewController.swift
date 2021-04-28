@@ -5,13 +5,23 @@ protocol LoginViewControllerProtocol: NSObjectProtocol {
     func onSignUpSuccess(loginResult: LoginResult)
 }
 
+extension LoginViewController {
+    func setIsNeedToRedirect(_ isNeedToRedirect: Bool, isFirstLaunchApp: Bool) {
+        self.isNeedToRedirect = isNeedToRedirect
+        self.isFirstLaunchApp = isFirstLaunchApp
+    }
+}
+
 class LoginViewController: BaseViewController {
     @IBOutlet weak var userID: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var login: UIButton!
+    @IBOutlet weak var register: UIButton!
     @IBOutlet weak var errorHint: UILabel!
     
     private var presenter: LoginPresenterProtocol?
+    private var isNeedToRedirect = true
+    private var isFirstLaunchApp = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +30,7 @@ class LoginViewController: BaseViewController {
         login.layer.cornerRadius = 4
         login.backgroundColor = UIColor.systemIndigo
         login.tintColor = UIColor.white
-        
+
         userID.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         password.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         
@@ -29,7 +39,9 @@ class LoginViewController: BaseViewController {
         self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .nothing)
         self.setNavType(navBarType: .hidden)
 
-        presenter?.getLocalAuthorization()
+        if isNeedToRedirect {
+            presenter?.getLocalAuthorization()
+        }
     }
     
     @IBAction func onTouchLogin(_ sender: Any) {
@@ -79,7 +91,7 @@ extension LoginViewController: LoginViewProtocol {
     override func onApiError(error: APIError) {
         if error.type == .apiUnauthorizedException {
             LoginRepository.shared.setLocalAdminLoginResult(nil)
-            enableLoginErrorHint(true)
+            enableLoginErrorHint(!isFirstLaunchApp)
         } else {
             let controller = UIAlertController(title: "", message: error.alertMsg , preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)

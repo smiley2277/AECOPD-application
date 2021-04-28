@@ -414,7 +414,8 @@ extension BaseViewController: BaseViewControllerProtocol {
         if error.type == .apiUnauthorizedException {
             LoginRepository.shared.setLocalAdminLoginResult(nil)
             let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            let viewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            viewController.setIsNeedToRedirect(false, isFirstLaunchApp: false)
             let navigationController = UINavigationController.init(rootViewController: viewController)
             self.view.window?.rootViewController = navigationController
             if self.view.window == nil {
