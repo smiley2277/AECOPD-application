@@ -17,7 +17,6 @@ class LoginRepository {
         let authorization = UserDefaultUtil.shared.adminAuthorization
         if authorization == nil {
             //MARK: 手機紀錄中沒有
-            //TODO: 修正在B頁，因沒有被導回登入頁時，會顯示請檢查帳密
             return Single.error(APIError.init(type: .apiUnauthorizedException, localDesc: "Unauthorized", alertMsg: "Unauthorized"))
         }
         
@@ -33,7 +32,6 @@ class LoginRepository {
             let refreshToken = UserDefaultUtil.shared.adminRefreshToken!
             setLocalAdminLoginResult(nil)
             //MARK: 重要
-            //TODO: 修正重要失敗，會顯示請檢查帳密
             let api = APIManager.shared.getLoginResultWithRefreshToken(refreshToken)
             return api
                     .map{ LoginResult(JSON: $0)! }
