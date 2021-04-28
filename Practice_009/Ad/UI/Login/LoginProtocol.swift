@@ -1,10 +1,11 @@
 import UIKit
 
-protocol LoginViewProtocol: NSObjectProtocol {
+protocol LoginViewProtocol: BaseViewControllerProtocol {
     func onBindLoginResult(loginResult: LoginResult)
-    func onBindLoginErrorResult()
+    func onBindLocalAuthoriztion(localAuthoirizationData: (userID: String?, roles: LoginResult.Data.AdminOrUser))
 }
 
 protocol LoginPresenterProtocol: NSObjectProtocol {
     func getLoginResult(email: String, password: String)
+    func getLocalAuthorization()
 }

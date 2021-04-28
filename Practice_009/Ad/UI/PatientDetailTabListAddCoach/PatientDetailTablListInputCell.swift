@@ -89,7 +89,7 @@ class PatientDetailTabListInputCell: UITableViewCell, UITextFieldDelegate {
 
 extension PatientDetailTabListInputCell {
     @objc func textDidChange() {
-        
+        //TODO: 顯示只能數字？
         var speed: Int?
         var time: Int?
         

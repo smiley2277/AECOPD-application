@@ -81,7 +81,7 @@ class APIManager: NSObject {
                             self.printErrorResponse(requestUrl, response, err, alertMsg: "", method)
                             single(.error(err))
                         }
- 
+                        
                     case .failure(let error):
                         
                         var json: [String : String] = [:]
@@ -90,11 +90,12 @@ class APIManager: NSObject {
                             do{
                                 json = try (JSONSerialization.jsonObject(with: data, options: []) as? [String: String] ?? [:])
                             }catch{
-                                json["AlertMsg"] = ""
+                                json["message"] = ""
                             }
                         }
                         
-                        let alertMsg = json["AlertMsg"] ?? ""
+                        //MARK: 如果沒有收到，會自動填補「發生錯誤」
+                        let alertMsg = json["message"] ?? "發生錯誤"
                         
                         self.printErrorResponse(requestUrl, response, error, alertMsg: alertMsg, method)
                         
@@ -122,19 +123,22 @@ class APIManager: NSObject {
         case .tokenApi(type: let type):
             requestUrl = type.url(append: "",userId: userId)
         }
-
+        
         requestUrl =  (requestUrl + encodeUrl ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         return requestUrl
     }
     
-
+    
     
     private func getEncodeWith(method: HTTPMethod) -> ParameterEncoding {
         switch method {
         case .get:
             return URLEncoding.default
-          
+            
         case .post:
+            return JSONEncoding.default
+            
+        case .put:
             return JSONEncoding.default
             
         default:
@@ -143,19 +147,19 @@ class APIManager: NSObject {
     }
     
     private func getHttpHeadersWith(method: HTTPMethod, appendHeaders: [String: String]?) -> HTTPHeaders{
-
+        
         var headers: HTTPHeaders = [
-           "X-API-KEY": "MyToken"
+            "X-API-KEY": "ca346174031c0cd2a6d6ccddc57b12171fe3a79669c25281163b534fca5acc5247975553aaa3443e3398286b2a61ecd779653f90ff2b651388fbe14b8eaf658cbfc9941c324164ffd09780dd50d144d5fc3ab200bd660ce7837ee9b9baefece2ce8b1fd373f3173df1777375d48c3ae9406e17b0baea088e07018a41363579f6"
         ]
         
         if let authorization = UserDefaultUtil.shared.adminAuthorization {
-            headers["Authorization"] = "\(authorization)"
+            headers["Authorization"] = "Bearer \(authorization)"
         }
         
         appendHeaders?.forEach({ header in
             headers[ header.key ] =  header.value
         })
-
+        
         return headers
     }
 }
@@ -170,10 +174,11 @@ extension APIManager {
         return manager(method: .post, appendUrl: appendUrl, url: APIUrl.authApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     
-    func getLoginResultWithRefreshToken() -> Single<[String:Any]> {
+    func getLoginResultWithRefreshToken(_ refreshToken: String) -> Single<[String:Any]> {
         //MARK: 應確
-        let params = ["grant_type": "refresh_token",
-                      "refresh_token": "Bearer \(UserDefaultUtil.shared.adminRefreshToken ?? "")"]
+        var params = ["grant_type": "refresh_token",
+                      "refresh_token": "\(refreshToken)"]
+        
         return manager(method: .post, appendUrl: "", url: APIUrl.tokenApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     
@@ -183,15 +188,28 @@ extension APIManager {
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) ,parameters: nil, appendHeaders: nil)
     }
     
-    func getPatientCoach(userId: String, timestamp: String) -> Single<[String:Any]> {
-        let appendUrl = "?timestamp=\(timestamp)"
+    func getPatientCoach(userId: String, timestamp: String, borgUUID: String) -> Single<[String:Any]> {
+        let appendUrl = "?timestamp=\(timestamp)&borg_uuid=\(borgUUID)"
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) ,parameters: nil, appendHeaders: nil, userId: userId)
     }
     
-    func postPatientCoach(userId: String, timestamp: String, speed: String, time: String) -> Single<[String:Any]> {
+    func postPatientCoach(userId: String, timestamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]) -> Single<[String:Any]> {
+        //TODO 刪掉空的
+        let coachList = patientCoachList.map({ coach -> [String: Any] in
+            var list: [String: Any] = [:]
+            if let speed = coach.speed {
+                list["speed"] = speed
+            }
+            
+            if let time = coach.time {
+                list["time"] = time
+            }
+            return list
+        })
         let params = ["timestamp": timestamp,
-                      "speed": speed,
-                      "time": time]
+                      "borg_uuid": borgUUID,
+                      "coach_list": coachList] as [String : Any]
+        
         return manager(method: .post, appendUrl: "", url: APIUrl.userApi(type: .coach) ,parameters: params, appendHeaders: nil, userId: userId)
     }
     
@@ -218,7 +236,7 @@ extension APIManager {
         headers.forEach({ header in
             print("   \(header)")
         })
-
+        
         print("* 【呼叫】 Request_params : ")
         print(params)
         print(getPrettyParams(params) ?? "")
@@ -264,3 +282,4 @@ extension APIManager {
         return NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)
     }
 }
+

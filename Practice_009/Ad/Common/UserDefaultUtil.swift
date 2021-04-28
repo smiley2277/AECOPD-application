@@ -1,10 +1,12 @@
 import UIKit
 
+//MARK: 用NSHomeDirectory()找在電腦上儲存的位置
 enum UserDefaultKey: String {
     case adminAuthorization = "ADMIN_AUTHORIZATION"
     case adminRefreshToken = "ADMIN_REFRESH_TOKEN"
     case adminUserID = "ADMIN_USER_ID"
     case adminExpireIn = "EXPIRE_IN"
+    case adminRoles = "ROLES"
 }
 
 class UserDefaultUtil: NSObject {
@@ -44,6 +46,15 @@ class UserDefaultUtil: NSObject {
         }
         set(expiredIn){
             update(object: expiredIn, key: .adminExpireIn)
+        }
+    }
+    
+    var adminRoles: String? {
+        get{
+            return getObject(classType: String(), key: .adminRoles)
+        }
+        set(adminRoles){
+            update(object: adminRoles, key: .adminRoles)
         }
     }
 

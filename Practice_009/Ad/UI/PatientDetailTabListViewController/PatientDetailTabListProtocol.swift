@@ -1,6 +1,6 @@
 import UIKit
 
-protocol PatientDetailTabListViewProtocol: NSObjectProtocol {
+protocol PatientDetailTabListViewProtocol: BaseViewControllerProtocol {
     func onBindPatientSurvey(patientSurvey: PatientSurvey)
     func onBindPatientCoach(patientCoach: PatientCoach)
     func onBindPatientBorg(patientBorg: PatientBorg)
@@ -8,8 +8,8 @@ protocol PatientDetailTabListViewProtocol: NSObjectProtocol {
 }
 
 protocol PatientDetailTabListPresenterProtocol: NSObjectProtocol {
-    func postPatientCoach(userId: String, timeStamp: String, speed: String, time: String)
+    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)])
     func getPatientSurvey(userId: String, timestamp: String)
-    func getPatientCoach(userId: String, timestamp: String)
+    func getPatientCoach(userId: String, timestamp: String, borgUUID: String)
     func getPatientBorg(userId: String, timestamp: String)
 }

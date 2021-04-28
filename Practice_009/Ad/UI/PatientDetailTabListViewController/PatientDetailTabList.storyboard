@@ -27,7 +27,7 @@
         <!--Patient Detail Tab List View Controller-->
         <scene sceneID="vzD-Wj-qaL">
             <objects>
-                <viewController restorationIdentifier="PatientDetailTabListViewController" storyboardIdentifier="PatientDetailTabListViewController" id="Jy5-fw-CYY" customClass="PatientDetailTabListViewController" customModule="Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="PatientDetailTabListViewController" storyboardIdentifier="PatientDetailTabListViewController" id="Jy5-fw-CYY" customClass="PatientDetailTabListViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lBK-RX-tkG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,7 @@
         <!--Patient Detail View Controller-->
         <scene sceneID="C5H-kg-LOk">
             <objects>
-                <viewController storyboardIdentifier="PatientDetailRightViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l7O-z1-WOS" customClass="PatientDetailViewController" customModule="Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientDetailRightViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="l7O-z1-WOS" customClass="PatientDetailViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="foa-xv-pQq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -268,7 +268,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="24"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty" id="O4c-on-lOh" customClass="PatientDetailEmptyCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty" id="O4c-on-lOh" customClass="PatientDetailEmptyCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O4c-on-lOh" id="aZj-sL-Vd6">
@@ -328,7 +328,7 @@
                                             <outlet property="borderView" destination="fEx-Xx-pnX" id="obD-dU-ALc"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey" id="nEo-ao-zbQ" customClass="PatientDetailSurveyCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey" id="nEo-ao-zbQ" customClass="PatientDetailSurveyCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="304" width="375" height="464"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nEo-ao-zbQ" id="LaN-1c-mAj">
@@ -729,7 +729,7 @@
                                             <outlet property="timestamp" destination="kui-B2-jrV" id="FSf-Go-tO9"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coach" id="XaD-Us-lv9" customClass="PatientDetailCoachCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coach" id="XaD-Us-lv9" customClass="PatientDetailCoachCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="768" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XaD-Us-lv9" id="jWA-E1-MXH">
@@ -816,7 +816,7 @@
                                             <outlet property="timestamp" destination="hoB-kp-hhH" id="8uc-QL-BCy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Borg" id="ZfP-PO-2JP" customClass="PatientDetailBorgCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Borg" id="ZfP-PO-2JP" customClass="PatientDetailBorgCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="903" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZfP-PO-2JP" id="ntG-Ic-vdT">
@@ -931,7 +931,7 @@
         <!--Patient Detail Tab List Add Coach View Controller-->
         <scene sceneID="VO3-LK-ADO">
             <objects>
-                <viewController storyboardIdentifier="PatientDetailTabListAddCoachViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V56-go-NzS" customClass="PatientDetailTabListAddCoachViewController" customModule="Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientDetailTabListAddCoachViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="V56-go-NzS" customClass="PatientDetailTabListAddCoachViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="El1-Wa-l2N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -951,7 +951,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Input" rowHeight="164" id="fSx-ul-ck4" customClass="PatientDetailTabListInputCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Input" rowHeight="164" id="fSx-ul-ck4" customClass="PatientDetailTabListInputCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="164"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fSx-ul-ck4" id="Z6C-TS-1WF">
@@ -1043,7 +1043,7 @@
                                             <outlet property="title" destination="3sf-w9-qFM" id="ULX-0f-PIB"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SendButton" rowHeight="40" id="0t4-nq-eSf" customClass="PatientDetailTablListSendButtonCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SendButton" rowHeight="40" id="0t4-nq-eSf" customClass="PatientDetailTablListSendButtonCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="192" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0t4-nq-eSf" id="Fqu-EU-An1">
@@ -1092,6 +1092,7 @@
                                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="20"/>
                                                             <state key="normal" title="新增"/>
                                                             <connections>
+                                                                <action selector="onTouchSendButton:" destination="0t4-nq-eSf" eventType="touchUpInside" id="CR8-ws-a6w"/>
                                                                 <action selector="sendButton:" destination="6xs-sE-3ae" eventType="touchUpInside" id="gHA-zG-Hdp"/>
                                                             </connections>
                                                         </button>
@@ -1138,7 +1139,7 @@
         <!--Patient Detail View Controller-->
         <scene sceneID="ZSx-cw-O4a">
             <objects>
-                <viewController storyboardIdentifier="PatientDetailLeftViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hwc-Zu-Hkr" customClass="PatientDetailViewController" customModule="Admin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientDetailLeftViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hwc-Zu-Hkr" customClass="PatientDetailViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MKw-AZ-D3U">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1148,7 +1149,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="24"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty" id="q5e-Qt-4hK" customClass="PatientDetailEmptyCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty" id="q5e-Qt-4hK" customClass="PatientDetailEmptyCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q5e-Qt-4hK" id="GGP-pw-yj3">
@@ -1208,7 +1209,7 @@
                                             <outlet property="borderView" destination="K1i-LK-ps9" id="1dH-Ed-zEz"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey" id="Zpo-k0-Kqz" customClass="PatientDetailSurveyCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey" id="Zpo-k0-Kqz" customClass="PatientDetailSurveyCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="304" width="375" height="464"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zpo-k0-Kqz" id="oBo-9E-3No">
@@ -1609,7 +1610,7 @@
                                             <outlet property="timestamp" destination="V8W-AR-pcX" id="Abf-dl-nxv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coach" id="aKu-VP-ddc" customClass="PatientDetailCoachCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Coach" id="aKu-VP-ddc" customClass="PatientDetailCoachCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="768" width="375" height="135"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aKu-VP-ddc" id="BKl-KS-paY">
@@ -1715,7 +1716,7 @@
                                             <outlet property="timestamp" destination="YgG-lI-GtY" id="dHl-Sv-XaE"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Borg" id="m53-Xc-zQV" customClass="PatientDetailBorgCell" customModule="Admin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Borg" id="m53-Xc-zQV" customClass="PatientDetailBorgCell" customModule="Practice_009" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="903" width="375" height="180.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m53-Xc-zQV" id="kqS-2g-Wd7">

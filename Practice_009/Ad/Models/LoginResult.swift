@@ -4,7 +4,6 @@ class LoginResult: BaseModel {
     var data: Data?
     var status: String?
     
-    
     override func mapping(map: Map) {
         super.mapping(map: map)
         
@@ -16,12 +15,22 @@ class LoginResult: BaseModel {
         var session: Session?
         //MARK: 對醫生，不需要帶到網址上，帶欲查詢的用戶的userID，所以暫時不用記到UserDefault
         var userId: String?
+        var roles: AdminOrUser?
+            
+        enum AdminOrUser: String {
+            case admin = "Admin"
+            case user = "User"
+        }
         
         override func mapping(map: Map) {
             super.mapping(map: map)
             
             session <- map["session"]
             userId <- map["user_id"]
+            
+            var rolesString = ""
+            rolesString <- map["roles"]
+            roles = AdminOrUser.init(rawValue: rolesString)!
         }
         
         class Session: BaseModel {

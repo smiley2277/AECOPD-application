@@ -9,21 +9,20 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         self.delegate = delegate
     }
 
-    func postPatientCoach(userId: String, timeStamp: String, speed: String, time: String){
-        repository.postPatientCoach(userId: userId, timestamp: timeStamp, speed: speed, time: time).subscribe(onSuccess:{ (model) in
+    //TODO
+    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]){
+        repository.postPatientCoach(userId: userId, timestamp: timeStamp, borgUUID: borgUUID, patientCoachList: patientCoachList).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPostPatientCoachResponse(postPatientCoachResponse: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
     
-    func getPatientCoach(userId: String, timestamp: String){
-        repository.getPatientCoach(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
+    func getPatientCoach(userId: String, timestamp: String, borgUUID: String){
+        repository.getPatientCoach(userId: userId, timestamp: timestamp, borgUUID: borgUUID).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientCoach(patientCoach: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 
@@ -31,8 +30,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.getPatientSuvery(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientSurvey(patientSurvey: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
     
@@ -40,8 +38,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         repository.getPatientBorg(userId: userId, timestamp: timestamp).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPatientBorg(patientBorg: model)
         }, onError: {error in
-            //TODO 異常處理
-            print(error)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 
