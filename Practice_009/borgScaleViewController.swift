@@ -15,7 +15,8 @@ class borgScaleViewController: UIViewController {
     let changeColor = UIColor(red: 104/255, green: 200/255, blue: 206, alpha: 1)
     let today = Date()
     let dateFormatter = DateFormatter()
-    
+    var str: String = ""
+    var sent: [String: Int] = [:]
     @IBOutlet weak var zeroButton: UIButton!
     @IBOutlet weak var oneButton: UIButton!
     @IBOutlet weak var twoButton: UIButton!
@@ -192,20 +193,17 @@ class borgScaleViewController: UIViewController {
         //send to ViewController.swift
         let notificationName = Notification.Name("sendbefBorg")
         dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        let str: String = dateFormatter.string(from: today)
-        let sent: [String: Int] = [str : borgAns]
+        str = dateFormatter.string(from: today)
+        sent = [str : borgAns]
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":sent])
-        
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as? smartCoachListViewController
         vc?.stepSize = stepSize
+        vc?.startTime = str
     }
     override func viewDidLoad() {
+        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+        str = dateFormatter.string(from: today)
     }
-    
-    
-    
-    
 }

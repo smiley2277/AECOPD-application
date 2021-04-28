@@ -40,13 +40,21 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
     //animation setting
     let color = UIColor(red: 128/255, green: 100/255, blue: 0, alpha: 1)
     let animation: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+
+    let dateFormatter = DateFormatter()
     var startTime: Date?
     var stopTime: Date?
+    var startString: String = ""
+    var stopString: String = ""
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM; connect.sid=s%3AqMQr9uUfeHIHUyqDbiE4OetAxJiNzQYx.3A8bRMYiheV8JU%2BxhWVIJH3KyysgQM%2FntsC4qvIieXc"
     weak var delegate: lifestyleViewControllerProtocol?
     let serialQueue: DispatchQueue = DispatchQueue(label: "serialQueue")
     //preprocessing & setting
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? borgScalePostTestViewController
+        vc?.stopTime = stopString
     }
     override func viewDidLoad() {
         playButton.imageView?.contentMode = .scaleAspectFit
@@ -59,7 +67,9 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
             action:#selector(variableSpeedViewController.setting))
         // 加到導覽列中
         self.navigationItem.rightBarButtonItem = rightButton
-//        fetchStepSize()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        startTime = dateFormatter.date(from: startString)
+        print("@VSVC startSting", startString)
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchStepSize()
@@ -114,18 +124,18 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
     
     //button function
     @IBAction func finish(_ sender: Any) {
-        realtimeHR(id: "k87j6e7c")
-        realtimeStep(id: "k87j6e7c")
-        if ((timer?.isValid) != nil){
-            stopCountDown()
-            timer = nil
-        }
-        if ((flashTimer?.isValid) != nil){
-            pauseFlashing()
-            flashTimer = nil
-        }
+        stopCountDown()
         let notificationName = Notification.Name("sendTimestampByVariable")
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":[startTime, stopTime]])
+        
+        //send to borgScalePostTestViewController.swift
+        stopString = dateFormatter.string(from: stopTime! as Date)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewCont = storyboard.instantiateViewController(withIdentifier: "borgScalePostTestViewController") as! borgScalePostTestViewController
+        viewCont.stopTime = stopString
+        viewCont.getTime(time: stopString)
+        print("finish, stopString", stopString)
+        
     }
     @IBAction func start(_ sender: Any) {
         print("@VSVC, stepSize", stepSize)
@@ -141,8 +151,6 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
                 durationAry.append(countDownNum)
             }
             var speedAry = aryUnitTransfer(speed: varSpeed, size: stepSize)
-            startTime = Date()
-            print("@VSVC, startTime,", startTime)
             flashingTimer(duration: durationAry, speed: speedAry, sec: countDownNum)
         }
     }
@@ -177,43 +185,8 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
                 durationAry.append(countDownNum)
             }
             var speedAry = aryUnitTransfer(speed: varSpeed, size: stepSize)
-            startTime = Date()
-            print("@VSVC, startTime,", startTime)
             flashingTimer(duration: durationAry, speed: speedAry, sec: countDownNum)
         }
-    }
-    
-    
-    //animation and timers
-    func countDown(duration: [Int]){
-        //summary timer
-        print("@VSVC, countDOWN")
-        var countDownNum: Int = 0
-        var durationAry: [Int] = []
-        for i in Range(0...duration.count-1){
-            countDownNum += duration[i] * 60
-            durationAry.append(countDownNum)
-        }
-        var u = durationAry.count
-        timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
-            restOfTime.text = String(countDownNum/60)
-            let stageSec = durationAry.firstIndex(where: {  $0 == countDownNum })
-            if stageSec != nil{
-                u = stageSec!
-            }
-            let text = String(u+1)
-            stageLabel.text = "階段 " + text
-            print(countDownNum)
-            countDownNum -= 1
-            if countDownNum == 0 {
-                restOfTime.text = String(countDownNum)
-                timer.invalidate()
-                pauseFlashing()
-                let finishAlert = UIAlertController(title: "完成", message: "測驗已完成", preferredStyle: .alert)
-                finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-                self.present(finishAlert, animated: true)
-            }
-        })
     }
     func stopCountDown(){
         if ((timer?.isValid) != nil){
@@ -279,112 +252,5 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
         let url = Bundle.main.url(forResource: "knob-458", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
-    }
-    
-    
-    //time to timestamp
-    func fetchTime()-> [Int]{
-        let startInterval: TimeInterval = startTime!.timeIntervalSince1970
-        let stopInterval: TimeInterval = stopTime!.timeIntervalSince1970
-        let timeStamp = Int(startInterval)
-        let timeStamp2 = Int(stopInterval)
-//        print(startTime, startInterval, stopTime, timeStamp2)
-        return [timeStamp, timeStamp2]
-    }
-    
-    func realtimeHR(id: String){
-        let id:String = "k87j6e7c"
-//        let Timestamp = fetchTime()
-//        let startTimestamp = Timestamp[0]
-//        let stopTimestamp = Timestamp[1]
-        let startTimestamp = 1616571000
-        let stopTimestamp = 1616571600
-        let url:String = "https://ntu-med-god.ml/api/getHeartRateBySpecific?id="+id+"&start="+String(startTimestamp)+"&end="+String(stopTimestamp)
-        let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string:url)!,timeoutInterval: Double.infinity)
-        request.addValue(cookie, forHTTPHeaderField: "Cookie")
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                semaphore.signal()
-                return
-            }
-            heartRateSet = String(data: data, encoding: .utf8)!
-            heartRateAry = processingAPIdata(data: heartRateSet)
-            semaphore.signal()
-        }
-        task.resume()
-        semaphore.wait()
-    }
-    func realtimeStep(id: String){
-        let id:String = "k87j6e7c"
-//        let Timestamp = fetchTime()
-//        let startTimestamp = Timestamp[0]
-//        let stopTimestamp = Timestamp[1]
-        let startTimestamp = 1616569437
-        let stopTimestamp = 1616572620
-        let url:String = "https://ntu-med-god.ml/api/getStepsBySpecific?id="+id+"&start="+String(startTimestamp)+"&end="+String(stopTimestamp)
-        let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string:url)!,timeoutInterval: Double.infinity)
-        request.addValue(cookie, forHTTPHeaderField: "Cookie")
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                semaphore.signal()
-                return
-            }
-            stepSet = String(data: data, encoding: .utf8)!
-            stepAry = processingAPIdataWithStep(data: stepSet)
-            print("@WTVC. stepSet, ", stepSet, stepAry)
-            semaphore.signal()
-        }
-        task.resume()
-        semaphore.wait()
-    }
-    
-    func processingAPIdataWithStep(data: String)-> Int{
-        var proText: String = ""
-        var sum: Int = 0
-        proText = data.replacingOccurrences(of: "[", with: "")
-        proText = proText.replacingOccurrences(of: "]", with: "")
-        proText = proText.replacingOccurrences(of: "{", with: "")
-        proText = proText.replacingOccurrences(of: "}", with: "")
-        let lifeAry = proText.components(separatedBy: ",")
-        for i in Range(0...lifeAry.count-1){
-            if (lifeAry[i].range(of:"sum") != nil){
-                let text = lifeAry[i].split(separator: ":")
-                sum = Int(text[1]) ?? 0
-            }
-        }
-        return sum
-    }
-    func processingAPIdata(data: String)-> [Int]{
-        var proText: String = ""
-        var numAry: [Int] = []
-        proText = data.replacingOccurrences(of: "[", with: "")
-        proText = proText.replacingOccurrences(of: "]", with: "")
-        proText = proText.replacingOccurrences(of: "{", with: "")
-        proText = proText.replacingOccurrences(of: "}", with: "")
-        let lifeAry = proText.components(separatedBy: ",")
-        for i in Range(0...lifeAry.count-1){
-            if (lifeAry[i].range(of:"value") != nil){
-                let text = lifeAry[i].split(separator: ":")
-                numAry.append(Int(text[1])!)
-            }
-        }
-        return numAry
-    }
-    
-    func dataToAry(data:Data) ->[NSArray]?{
-        do{
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            let ary = json as! [NSArray]
-            return ary
-        }catch _ {
-            print("Error")
-            return nil
-        }
     }
 }

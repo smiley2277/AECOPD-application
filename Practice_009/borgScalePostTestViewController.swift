@@ -7,13 +7,14 @@
 
 import Foundation
 import UIKit
-
 class borgScalePostTestViewController: UIViewController {
     var borgAns: Int = 0
+    var stopTime: String = ""
+    var sent: [String: Int] = [:]
     let oriColor = UIColor(red: 181/255, green: 237/255, blue: 235, alpha: 1)
     let changeColor = UIColor(red: 104/255, green: 200/255, blue: 206, alpha: 1)
-    let today = Date()
     let dateFormatter = DateFormatter()
+    
     
     @IBOutlet weak var zeroButton: UIButton!
     @IBOutlet weak var oneButton: UIButton!
@@ -187,18 +188,22 @@ class borgScalePostTestViewController: UIViewController {
         eightButton.backgroundColor = oriColor
         nineButton.backgroundColor = oriColor
     }
+    func getTime(time: String)-> String{
+        self.stopTime = time
+        return time
+    }
     @IBAction func summit(_ sender: Any) {
         //send to ViewController.swift
         let notificationName = Notification.Name("sendaftBorg")
-        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        let str: String = dateFormatter.string(from: today)
-        let sent: [String: Int] = [str : borgAns]
+//        let dateString = dateFormatter.string(from: stopTime)
+        sent[stopTime] = borgAns
+        print("Post sent,",stopTime, sent)
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": sent])
         navigationController?.popToRootViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
+    
     override func viewDidLoad() {
-        
     }
     
 }

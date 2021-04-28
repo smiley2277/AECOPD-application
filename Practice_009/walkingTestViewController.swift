@@ -21,8 +21,8 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var restOfTime: UILabel!
     var durationFill: Int = 0
     var speedFill: Float = 0.0
-    var trainingSpeed:Float = 385 //外部：km/hr｜內部：BPM 每分鐘幾下
-    var trainingDuration:Int = 1200 //外部：min｜內部：sec
+    var trainingSpeed:Float = 0 //外部：km/hr｜內部：BPM 每分鐘幾下
+    var trainingDuration:Int = 0 //外部：min｜內部：sec
     var stepSize: Double = 0
     var stepSizeLife: Double = 0
     var audioPlayer = AVAudioPlayer()
@@ -38,16 +38,23 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
     let animation: CABasicAnimation = CABasicAnimation(keyPath: "opacity")
     var startTime: Date?
     var stopTime: Date?
+    var stopString: String = ""
+    var startString: String = ""
+    let dateFormatter = DateFormatter()
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM; connect.sid=s%3AqMQr9uUfeHIHUyqDbiE4OetAxJiNzQYx.3A8bRMYiheV8JU%2BxhWVIJH3KyysgQM%2FntsC4qvIieXc"
-    weak var delegate: lifestyleViewControllerProtocol?
     //preprocessing & setting
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? borgScalePostTestViewController
+        vc?.stopTime = stopString
+    }
+    
     override func viewDidLoad() {
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit
         //using protocol and delegate to receive
-        //        delegate?.SendStepSize(size: 3)
         // 導覽列右邊按鈕
         let rightButton = UIBarButtonItem(
             title:"設定",
@@ -56,7 +63,9 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
             action:#selector(walkingTestViewController.setting))
         // 加到導覽列中
         self.navigationItem.rightBarButtonItem = rightButton
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        startTime = dateFormatter.date(from: startString)
+        print("viewDidLoad, stopString", startString)
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchStepSize()
@@ -79,18 +88,10 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     //catch by storyboard
-    func setStepSize(size: Double)->Double{
+    func setStepSize(size: Double)-> Double{
         self.stepSizeLife = size
         return size
     }
-//    func setSpeed(speed: Float)->Float{
-//        self.speedFill = speed
-//        return speed
-//    }
-//    func setDuration(duration: Int)->Int{
-//        self.durationFill = duration
-//        return duration
-//    }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
         let transSpeed = speed * 100 / (Float(size)/6)
@@ -109,51 +110,37 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
             trainingDuration = Int((info_D as! NSString).intValue)*60
-            print("@WTVC, info, ", stepSize, trainingSpeed, trainingDuration)
+//            print("@WTVC, info, ", stepSize, trainingSpeed, trainingDuration)
         }else{
             stepSize = stepSizeLife
+            trainingSpeed = (info_S as! NSString).floatValue
+            trainingSpeed = trunc(trainingSpeed * 10) / 10
+            trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
+            trainingDuration = Int((info_D as! NSString).intValue)*60
         }
     }
     //button function
     @IBAction func finish(_ sender: Any) {
-        realtimeHR(id: "k87j6e7c")
-        realtimeStep(id: "k87j6e7c")
-        if ((timer?.isValid) != nil){
-            stopCountDown()
-            timer = nil
-        }
-        if ((flashTimer?.isValid) != nil){
-            pauseFlashing()
-            flashTimer = nil
-        }
+        stopCountDown()
         let notificationName = Notification.Name("sendTimestamp")
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":[startTime, stopTime]])
+        //send to borgScalePostTestViewController.swift
+        stopString = dateFormatter.string(from: stopTime! as Date)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewCont = storyboard.instantiateViewController(withIdentifier: "borgScalePostTestViewController") as! borgScalePostTestViewController
+        viewCont.stopTime = stopString
+        viewCont.getTime(time: stopString)
+        print("finish, stopString", stopString)
     }
     @IBAction func start(_ sender: Any) {
         fetchStepSize()
-        print("@WTVC, stepSize", stepSize)
         if (stepSize <= 0){
             let finishAlert = UIAlertController(title: "提醒", message: "請至『設定』輸入十公尺走了幾步，或先開啟『生理數據』", preferredStyle: .alert)
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
         }else{
-            if (durationFill != 0) || (speedFill != 0.0){
-                if (durationFill > 0 ) && (speedFill > 0.0){
-                    trainingSpeed = speedFill
-                    trainingDuration = durationFill
-                    trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-                    trainingDuration = trainingDuration * 60
-                } else if (durationFill > 0 ) {
-                    trainingDuration = durationFill
-                    trainingDuration = trainingDuration * 60
-                } else if (speedFill > 0.0){
-                    trainingSpeed = speedFill
-                    trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-                }
-            }
             let countDuration = trainingDuration
             countDown(duration: countDuration, speed: trainingSpeed)
-            startTime = Date()
             flashingTimer(duration: countDuration, speed: trainingSpeed)
         }
     }
@@ -164,9 +151,8 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
             self.present(finishAlert, animated: true)
         }else{
             stopCountDown()
-            stopTime = Date()
-            print("@WTVC, stopTime,", stopTime)
             pauseFlashing()
+            stopTime = Date()
             let finishAlert = UIAlertController(title: "暫停", message: "測驗已終止，請重新開始", preferredStyle: .alert)
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
@@ -181,26 +167,16 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         else{
             let countDuration = trainingDuration
             //確認timer 狀態 isValid（若timer啟動,則為true）
-            if ((timer?.isValid) != nil){
-                stopCountDown()
-                timer = nil
-            }
-            if ((flashTimer?.isValid) != nil){
-                pauseFlashing()
-                flashTimer = nil
-            }
+            stopCountDown()
             countDown(duration: countDuration, speed: trainingSpeed)
             flashingTimer(duration: countDuration, speed: trainingSpeed)
         }
     }
-    
-    
-    
     //animation and timers
     func countDown(duration: Int, speed: Float){
         var countDownNum = duration
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
-            restOfTime.text = String(countDownNum/60)
+            restOfTime.text = String(countDownNum/60+1)
             countDownNum -= 1
             if countDownNum == 0 {
                 restOfTime.text = String(countDownNum)
@@ -213,25 +189,21 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         })
     }
     func stopCountDown(){
-        timer!.invalidate()
-        timer = nil
-        flashTimer!.invalidate()
-        flashTimer = nil
+        if ((timer?.isValid) != nil){
+            timer.invalidate()
+            timer = nil
+        }
+        if ((flashTimer?.isValid) != nil){
+            pauseFlashing()
+            flashTimer.invalidate()
+            flashTimer = nil
+        }
     }
     func flashingTimer(duration: Int, speed: Float){
-        var countDownNum = duration
+        print(60/Int(speed))
         flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(60/speed), repeats: true, block: { [self] (timer) in
             playAudio()
             flashing(setColor: color, trainingSpeed: speed)
-            countDownNum -= 1
-            if countDownNum == 0{
-                restOfTime.text = String(duration)
-                timer.invalidate()
-                pauseFlashing()
-                let finishAlert = UIAlertController(title: "完成", message: "測驗已完成", preferredStyle: .alert)
-                finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-                self.present(finishAlert, animated: true)
-            }
         }
         )
     }
@@ -254,99 +226,4 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
     }
-    
-    
-    //time to timestamp
-    func fetchTime()-> [Int]{
-        let startInterval: TimeInterval = startTime!.timeIntervalSince1970
-        let stopInterval: TimeInterval = stopTime!.timeIntervalSince1970
-        let timeStamp = Int(startInterval)
-        let timeStamp2 = Int(stopInterval)
-        return [timeStamp, timeStamp2]
-    }
-    
-    func realtimeHR(id: String){
-        let id:String = "k87j6e7c"
-        let Timestamp = fetchTime()
-        let startTimestamp = Timestamp[0]
-        let stopTimestamp = Timestamp[1]
-//        let startTimestamp = 1616571000
-//        let stopTimestamp = 1616571600
-        let url:String = "https://ntu-med-god.ml/api/getHeartRateBySpecific?id="+id+"&start="+String(startTimestamp)+"&end="+String(stopTimestamp)
-        let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string:url)!,timeoutInterval: Double.infinity)
-        request.addValue(cookie, forHTTPHeaderField: "Cookie")
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                semaphore.signal()
-                return
-            }
-            heartRateSet = String(data: data, encoding: .utf8)!
-            heartRateAry = processingAPIdata(data: heartRateSet)
-            semaphore.signal()
-        }
-        task.resume()
-        semaphore.wait()
-    }
-    func realtimeStep(id: String){
-        let id:String = "k87j6e7c"
-        let Timestamp = fetchTime()
-        let startTimestamp = Timestamp[0]
-        let stopTimestamp = Timestamp[1]
-//        let startTimestamp = 1616569437
-//        let stopTimestamp = 1616572620
-        let url:String = "https://ntu-med-god.ml/api/getStepsBySpecific?id="+id+"&start="+String(startTimestamp)+"&end="+String(stopTimestamp)
-        let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string:url)!,timeoutInterval: Double.infinity)
-        request.addValue(cookie, forHTTPHeaderField: "Cookie")
-        request.httpMethod = "GET"
-        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
-            guard let data = data else {
-                print(String(describing: error))
-                semaphore.signal()
-                return
-            }
-            stepSet = String(data: data, encoding: .utf8)!
-            stepAry = processingAPIdataWithStep(data: stepSet)
-            semaphore.signal()
-        }
-        task.resume()
-        semaphore.wait()
-    }
-    
-    func processingAPIdataWithStep(data: String)-> Int{
-        var proText: String = ""
-        var sum: Int = 0
-        proText = data.replacingOccurrences(of: "[", with: "")
-        proText = proText.replacingOccurrences(of: "]", with: "")
-        proText = proText.replacingOccurrences(of: "{", with: "")
-        proText = proText.replacingOccurrences(of: "}", with: "")
-        let lifeAry = proText.components(separatedBy: ",")
-        for i in Range(0...lifeAry.count-1){
-            if (lifeAry[i].range(of:"sum") != nil){
-                let text = lifeAry[i].split(separator: ":")
-                sum = Int(text[1]) ?? 0
-            }
-        }
-        return sum
-    }
-    func processingAPIdata(data: String)-> [Int]{
-        var proText: String = ""
-        var numAry: [Int] = []
-        proText = data.replacingOccurrences(of: "[", with: "")
-        proText = proText.replacingOccurrences(of: "]", with: "")
-        proText = proText.replacingOccurrences(of: "{", with: "")
-        proText = proText.replacingOccurrences(of: "}", with: "")
-        let lifeAry = proText.components(separatedBy: ",")
-        for i in Range(0...lifeAry.count-1){
-            if (lifeAry[i].range(of:"value") != nil){
-                let text = lifeAry[i].split(separator: ":")
-                numAry.append(Int(text[1])!)
-            }
-        }
-        return numAry
-    }
-    
 }

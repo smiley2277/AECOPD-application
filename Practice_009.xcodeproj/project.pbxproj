@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		46026145261706C600EE6236 /* site_opendata.csv in Resources */ = {isa = PBXBuildFile; fileRef = 46026144261706C600EE6236 /* site_opendata.csv */; };
+		460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8B62632ABEB004E8DD3 /* signUpGetUserIDRepository.swift */; };
+		460EF8BC2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8BB2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift */; };
+		460EF8C12632AC0C004E8DD3 /* signUpGetUserIDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8C02632AC0C004E8DD3 /* signUpGetUserIDProtocol.swift */; };
+		460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */; };
+		460EF8D22633FF56004E8DD3 /* userMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */; };
+		460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D62633FF67004E8DD3 /* userMainRepository.swift */; };
 		462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */; };
 		462C1C372611B88E0045DB40 /* variableSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */; };
 		462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 462C1C3B2611C4FA0045DB40 /* refresh.png */; };
@@ -53,6 +59,13 @@
 		462D25EF262D6BBC00A589E0 /* PatientSurvey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D25C5262D6BBC00A589E0 /* PatientSurvey.swift */; };
 		462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D25C6262D6BBC00A589E0 /* PostPatientCoachResponse.swift */; };
 		462D2614262D6E1F00A589E0 /* UserDefaultUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462D2613262D6E1F00A589E0 /* UserDefaultUtil.swift */; };
+		46364C36263005400076C55C /* signUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46364C35263005400076C55C /* signUp.storyboard */; };
+		46364C3C263005EC0076C55C /* signUpToBackendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46364C3B263005EC0076C55C /* signUpToBackendViewController.swift */; };
+		46364C4A263157530076C55C /* signUpToBackendProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46364C49263157530076C55C /* signUpToBackendProtocol.swift */; };
+		46364C4F2631585E0076C55C /* signUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46364C4E2631585E0076C55C /* signUpPresenter.swift */; };
+		46364C54263158D30076C55C /* signUpToBackendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46364C53263158D30076C55C /* signUpToBackendRepository.swift */; };
+		463B43F42632A63600906E0F /* signUpGetUserIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B43F32632A63600906E0F /* signUpGetUserIDViewController.swift */; };
+		463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463B43FB2632A68A00906E0F /* signUpGetUserID.storyboard */; };
 		4649C7FA262583760047299C /* variableSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4649C7F9262583760047299C /* variableSettingViewController.swift */; };
 		46530D1825EF860A0098F161 /* quesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46530D1725EF860A0098F161 /* quesViewController.swift */; };
 		466658D1261C801600EBBD6E /* weather_site.csv in Resources */ = {isa = PBXBuildFile; fileRef = 466658D0261C801600EBBD6E /* weather_site.csv */; };
@@ -79,6 +92,9 @@
 		46CB99ED25E79D4600490562 /* CATViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99EC25E79D4600490562 /* CATViewController.swift */; };
 		46CCAEE225EE7D8D009D001C /* mMRCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CCAEE125EE7D8D009D001C /* mMRCViewController.swift */; };
 		46CCAEE725EE8C6E009D001C /* eq5dViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CCAEE625EE8C6E009D001C /* eq5dViewController.swift */; };
+		46CE401E2637BFFC00E93755 /* quesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE401D2637BFFC00E93755 /* quesPresenter.swift */; };
+		46CE402E2637C01600E93755 /* quesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE402D2637C01600E93755 /* quesRepository.swift */; };
+		46CE40332637C02700E93755 /* quesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE40322637C02700E93755 /* quesProtocol.swift */; };
 		46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46CF1CE425EE19E2006C459C /* Main.storyboard */; };
 		46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */; };
 		46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */; };
@@ -107,6 +123,12 @@
 		14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Practice_009.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46026144261706C600EE6236 /* site_opendata.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = site_opendata.csv; sourceTree = SOURCE_ROOT; };
 		460261492617188200EE6236 /* Practice_009.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Practice_009.entitlements; sourceTree = "<group>"; };
+		460EF8B62632ABEB004E8DD3 /* signUpGetUserIDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpGetUserIDRepository.swift; sourceTree = "<group>"; };
+		460EF8BB2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpGetUserIDPresenter.swift; sourceTree = "<group>"; };
+		460EF8C02632AC0C004E8DD3 /* signUpGetUserIDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpGetUserIDProtocol.swift; sourceTree = "<group>"; };
+		460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainProtocol.swift; sourceTree = "<group>"; };
+		460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainPresenter.swift; sourceTree = "<group>"; };
+		460EF8D62633FF67004E8DD3 /* userMainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainRepository.swift; sourceTree = "<group>"; };
 		462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = airQualityViewController.swift; sourceTree = "<group>"; };
 		462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableSpeedViewController.swift; sourceTree = "<group>"; };
 		462C1C3B2611C4FA0045DB40 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
@@ -152,6 +174,13 @@
 		462D25C5262D6BBC00A589E0 /* PatientSurvey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientSurvey.swift; sourceTree = "<group>"; };
 		462D25C6262D6BBC00A589E0 /* PostPatientCoachResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPatientCoachResponse.swift; sourceTree = "<group>"; };
 		462D2613262D6E1F00A589E0 /* UserDefaultUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultUtil.swift; sourceTree = "<group>"; };
+		46364C35263005400076C55C /* signUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signUp.storyboard; sourceTree = "<group>"; };
+		46364C3B263005EC0076C55C /* signUpToBackendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpToBackendViewController.swift; sourceTree = "<group>"; };
+		46364C49263157530076C55C /* signUpToBackendProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpToBackendProtocol.swift; sourceTree = "<group>"; };
+		46364C4E2631585E0076C55C /* signUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpPresenter.swift; sourceTree = "<group>"; };
+		46364C53263158D30076C55C /* signUpToBackendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpToBackendRepository.swift; sourceTree = "<group>"; };
+		463B43F32632A63600906E0F /* signUpGetUserIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpGetUserIDViewController.swift; sourceTree = "<group>"; };
+		463B43FB2632A68A00906E0F /* signUpGetUserID.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = signUpGetUserID.storyboard; sourceTree = "<group>"; };
 		4649C7F9262583760047299C /* variableSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableSettingViewController.swift; sourceTree = "<group>"; };
 		46530D1725EF860A0098F161 /* quesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesViewController.swift; sourceTree = "<group>"; };
 		466658D0261C801600EBBD6E /* weather_site.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = weather_site.csv; sourceTree = "<group>"; };
@@ -184,6 +213,9 @@
 		46CB99EC25E79D4600490562 /* CATViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CATViewController.swift; sourceTree = "<group>"; };
 		46CCAEE125EE7D8D009D001C /* mMRCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mMRCViewController.swift; sourceTree = "<group>"; };
 		46CCAEE625EE8C6E009D001C /* eq5dViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eq5dViewController.swift; sourceTree = "<group>"; };
+		46CE401D2637BFFC00E93755 /* quesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesPresenter.swift; sourceTree = "<group>"; };
+		46CE402D2637C01600E93755 /* quesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesRepository.swift; sourceTree = "<group>"; };
+		46CE40322637C02700E93755 /* quesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesProtocol.swift; sourceTree = "<group>"; };
 		46CF1CE425EE19E2006C459C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offlinePredictViewController.swift; sourceTree = "<group>"; };
 		46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifestyleViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +254,17 @@
 				14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		460EF8C52633FC88004E8DD3 /* sendBorg */ = {
+			isa = PBXGroup;
+			children = (
+				46CB99B325E793C000490562 /* ViewController.swift */,
+				460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */,
+				460EF8D62633FF67004E8DD3 /* userMainRepository.swift */,
+				460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */,
+			);
+			path = sendBorg;
 			sourceTree = "<group>";
 		};
 		462D258F262D6B7800A589E0 /* Ad */ = {
@@ -345,6 +388,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		46364C3A2630059B0076C55C /* signUp */ = {
+			isa = PBXGroup;
+			children = (
+				46364C3B263005EC0076C55C /* signUpToBackendViewController.swift */,
+				46364C49263157530076C55C /* signUpToBackendProtocol.swift */,
+				46364C4E2631585E0076C55C /* signUpPresenter.swift */,
+				46364C53263158D30076C55C /* signUpToBackendRepository.swift */,
+			);
+			path = signUp;
+			sourceTree = "<group>";
+		};
+		463B43E72632A5E200906E0F /* signUpGetUserID */ = {
+			isa = PBXGroup;
+			children = (
+				463B43F32632A63600906E0F /* signUpGetUserIDViewController.swift */,
+				460EF8BB2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift */,
+				460EF8C02632AC0C004E8DD3 /* signUpGetUserIDProtocol.swift */,
+				460EF8B62632ABEB004E8DD3 /* signUpGetUserIDRepository.swift */,
+			);
+			path = signUpGetUserID;
+			sourceTree = "<group>";
+		};
 		466BE587261462BB0042BE38 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,22 +448,23 @@
 				460261492617188200EE6236 /* Practice_009.entitlements */,
 				466BE587261462BB0042BE38 /* model */,
 				46CB99AF25E793C000490562 /* AppDelegate.swift */,
+				460EF8C52633FC88004E8DD3 /* sendBorg */,
+				46364C3A2630059B0076C55C /* signUp */,
+				463B43E72632A5E200906E0F /* signUpGetUserID */,
 				46CB99B125E793C000490562 /* SceneDelegate.swift */,
 				46716CBC25FF63CE00FDB785 /* America.gpx */,
 				46026144261706C600EE6236 /* site_opendata.csv */,
 				466658D0261C801600EBBD6E /* weather_site.csv */,
+				46364C35263005400076C55C /* signUp.storyboard */,
+				463B43FB2632A68A00906E0F /* signUpGetUserID.storyboard */,
 				46CB99BA25E793C100490562 /* LaunchScreen.storyboard */,
 				46CF1CE425EE19E2006C459C /* Main.storyboard */,
 				46CB99BD25E793C100490562 /* Info.plist */,
 				46CB99B825E793C100490562 /* Assets.xcassets */,
-				46CB99B325E793C000490562 /* ViewController.swift */,
+				46CE401C2637BFBE00E93755 /* Questionnaire */,
 				468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */,
 				46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */,
 				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
-				46530D1725EF860A0098F161 /* quesViewController.swift */,
-				46CB99EC25E79D4600490562 /* CATViewController.swift */,
-				46CCAEE625EE8C6E009D001C /* eq5dViewController.swift */,
-				46CCAEE125EE7D8D009D001C /* mMRCViewController.swift */,
 				4649C7F9262583760047299C /* variableSettingViewController.swift */,
 				466C70CF2609E8D5003710F3 /* smartSubViewController.swift */,
 				46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */,
@@ -432,6 +498,20 @@
 				46CB99D325E793C100490562 /* Info.plist */,
 			);
 			path = Practice_009UITests;
+			sourceTree = "<group>";
+		};
+		46CE401C2637BFBE00E93755 /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+				46530D1725EF860A0098F161 /* quesViewController.swift */,
+				46CE40322637C02700E93755 /* quesProtocol.swift */,
+				46CE402D2637C01600E93755 /* quesRepository.swift */,
+				46CE401D2637BFFC00E93755 /* quesPresenter.swift */,
+				46CB99EC25E79D4600490562 /* CATViewController.swift */,
+				46CCAEE625EE8C6E009D001C /* eq5dViewController.swift */,
+				46CCAEE125EE7D8D009D001C /* mMRCViewController.swift */,
+			);
+			path = Questionnaire;
 			sourceTree = "<group>";
 		};
 		C7276A75ABE5028670C62740 /* Pods */ = {
@@ -555,12 +635,14 @@
 				46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */,
 				462D25D8262D6BBC00A589E0 /* PatientList.storyboard in Resources */,
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
+				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
 				466658D1261C801600EBBD6E /* weather_site.csv in Resources */,
 				468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */,
 				462D25E5262D6BBC00A589E0 /* PatientDetailTabList.storyboard in Resources */,
 				462D25E7262D6BBC00A589E0 /* AdminMain.storyboard in Resources */,
 				46716CBD25FF63CE00FDB785 /* America.gpx in Resources */,
 				468B1EF926048EC900C52990 /* stop-button.png in Resources */,
+				46364C36263005400076C55C /* signUp.storyboard in Resources */,
 				468B1EF426048C9800C52990 /* play-button.png in Resources */,
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
@@ -637,23 +719,31 @@
 				462D25D7262D6BBC00A589E0 /* PatientListRepository.swift in Sources */,
 				462D25EC262D6BBC00A589E0 /* PatientBorg.swift in Sources */,
 				462D25EE262D6BBC00A589E0 /* PatientCoach.swift in Sources */,
+				46CE402E2637C01600E93755 /* quesRepository.swift in Sources */,
 				462D25CA262D6BBC00A589E0 /* ColorDefine.swift in Sources */,
 				462D25D9262D6BBC00A589E0 /* PatientDetailTabListSenbButtonCell.swift in Sources */,
+				460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */,
 				462D25D1262D6BBC00A589E0 /* PatientListViewController.swift in Sources */,
 				46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */,
 				468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */,
 				46CB99B425E793C000490562 /* ViewController.swift in Sources */,
 				462D25DD262D6BBC00A589E0 /* PatientDetailEmptyCell.swift in Sources */,
+				460EF8C12632AC0C004E8DD3 /* signUpGetUserIDProtocol.swift in Sources */,
 				462D25DE262D6BBC00A589E0 /* PatientDetailViewController.swift in Sources */,
 				4649C7FA262583760047299C /* variableSettingViewController.swift in Sources */,
 				462D25EA262D6BBC00A589E0 /* LoginPresenter.swift in Sources */,
 				462D25DB262D6BBC00A589E0 /* PatientDetailTablListInputCell.swift in Sources */,
+				46CE401E2637BFFC00E93755 /* quesPresenter.swift in Sources */,
 				462D25ED262D6BBC00A589E0 /* PatientBorgAndCoach.swift in Sources */,
 				462D25E3262D6BBC00A589E0 /* PatientDetailTabListRepository.swift in Sources */,
 				462D25DA262D6BBC00A589E0 /* PatientDetailTablListAddCoachViewController.swift in Sources */,
+				46CE40332637C02700E93755 /* quesProtocol.swift in Sources */,
 				462D25E2262D6BBC00A589E0 /* PatientDetailTabListViewController.swift in Sources */,
+				46364C4A263157530076C55C /* signUpToBackendProtocol.swift in Sources */,
+				460EF8BC2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift in Sources */,
 				462D25EB262D6BBC00A589E0 /* LoginResult.swift in Sources */,
 				462D25D0262D6BBC00A589E0 /* UIViewExtension.swift in Sources */,
+				460EF8D22633FF56004E8DD3 /* userMainPresenter.swift in Sources */,
 				462D25E1262D6BBC00A589E0 /* PatientDetailTabListProtocol.swift in Sources */,
 				462D25C7262D6BBC00A589E0 /* APIHelper.swift in Sources */,
 				462D25EF262D6BBC00A589E0 /* PatientSurvey.swift in Sources */,
@@ -666,10 +756,13 @@
 				46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */,
 				46530D1825EF860A0098F161 /* quesViewController.swift in Sources */,
 				462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */,
+				46364C54263158D30076C55C /* signUpToBackendRepository.swift in Sources */,
 				462D25E6262D6BBC00A589E0 /* LoginProtocol.swift in Sources */,
 				462D25CE262D6BBC00A589E0 /* APIDefine.swift in Sources */,
 				466C70D02609E8D5003710F3 /* smartSubViewController.swift in Sources */,
+				46364C4F2631585E0076C55C /* signUpPresenter.swift in Sources */,
 				466BE58F2615A63B0042BE38 /* borgScalePostTestViewController.swift in Sources */,
+				46364C3C263005EC0076C55C /* signUpToBackendViewController.swift in Sources */,
 				462D2614262D6E1F00A589E0 /* UserDefaultUtil.swift in Sources */,
 				462D25D5262D6BBC00A589E0 /* PatientListProtocol.swift in Sources */,
 				46CB99B025E793C000490562 /* AppDelegate.swift in Sources */,
@@ -681,9 +774,12 @@
 				46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */,
 				466C70CB2609D4D3003710F3 /* borgScaleViewController.swift in Sources */,
 				462D25C9262D6BBC00A589E0 /* BaseViewController.swift in Sources */,
+				460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */,
 				462D25DC262D6BBC00A589E0 /* PatientDetailBorgCell.swift in Sources */,
 				46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */,
+				463B43F42632A63600906E0F /* signUpGetUserIDViewController.swift in Sources */,
 				46CB99E425E794E200490562 /* COPDRfcOffline.mlmodel in Sources */,
+				460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */,
 				462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */,
 				462D25D4262D6BBC00A589E0 /* PatientListPresenter.swift in Sources */,
 				462D25CF262D6BBC00A589E0 /* BaseModel.swift in Sources */,
@@ -869,13 +965,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Practice_009/Practice_009.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RZ5GR5PY32;
+				DEVELOPMENT_TEAM = A8N9BY8Z9M;
 				INFOPLIST_FILE = Practice_009/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "COPDDDD.Practice-009";
+				PRODUCT_BUNDLE_IDENTIFIER = com.COPD.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -890,13 +986,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Practice_009/Practice_009.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = RZ5GR5PY32;
+				DEVELOPMENT_TEAM = A8N9BY8Z9M;
 				INFOPLIST_FILE = Practice_009/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "COPDDDD.Practice-009";
+				PRODUCT_BUNDLE_IDENTIFIER = com.COPD.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -402,6 +402,5 @@ class lifestyleViewController: UIViewController, CLLocationManagerDelegate{
 
 extension lifestyleViewController: lifestyleViewControllerProtocol {
     func SendStepSize(size: Int) {
-        
     }
 }
