@@ -13,7 +13,7 @@ class variableSettingViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var stepSize: UITextField!
     @IBOutlet weak var stepSizeDefault: UILabel!
     @IBOutlet weak var timeDefault: UILabel!
-    
+    // TODO: 多筆的建議
     override func viewDidLoad() {
         stepSize.delegate = self
         userDefaults = UserDefaults.standard

@@ -229,7 +229,7 @@ extension APIManager {
                       "prebeat": prebeat,
                       "preborg": preborg,
                       "step": step] as [String : Any]
-        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) , parameters: params, appendHeaders: nil, userId: userId)
+        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) , parameters: params, appendHeaders: nil, userId: userId)
     }
     
     func postQues(userId: String, cat1: Int, cat2: Int, cat3: Int, cat4: Int, cat5: Int, cat6: Int, cat7: Int, cat8: Int, catsum: Int, eq1: Int, eq2: Int, eq3: Int, eq4: Int, eq5: Int, mmrc: Int, timestamp: String)-> Single<[String:Any]>{
@@ -242,6 +242,10 @@ extension APIManager {
                       "eq2": eq2, "eq3": eq3,
                       "eq4": eq4, "eq5": eq5, "mmrc": mmrc ] as [String : Any]
         return manager(method: .post, appendUrl: "", url: APIUrl.userApi(type: .survey) , parameters: params, appendHeaders: nil, userId: userId)
+    }
+    func getCoach(userId: String, borg_uuid: String, timestamp: String)-> Single<[String:Any]> {
+        let appendUrl = "?timestamp=\(timestamp)"
+        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) ,parameters: nil, appendHeaders: nil, userId: userId)
     }
 }
 

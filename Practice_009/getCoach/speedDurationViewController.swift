@@ -18,7 +18,10 @@ class speedDurationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var timeDefault: UILabel!
     @IBOutlet weak var stepCountDefault: UILabel!
     
+    private var presenter: speedDurationPresenterProtocol?
+    //TODO: catch 單筆的建議
     override func viewDidLoad() {
+        presenter = speedDurationPresenter(delegate: self)
         durationFill.delegate = self
         speedFill.delegate = self
         stepSize.delegate = self
@@ -99,5 +102,14 @@ class speedDurationViewController: UIViewController, UITextFieldDelegate {
             defaults = String(UserDefaults.standard.integer(forKey: keyName))
         }
         return defaults
+    }
+}
+
+extension speedDurationViewController: speedDurationViewProtocol {
+    func onBindSettingErrorResult() {
+    }
+    func onBindSettingResult() {
+        //TODO: 改寫speed and duration
+        //TODO: 存入user default
     }
 }
