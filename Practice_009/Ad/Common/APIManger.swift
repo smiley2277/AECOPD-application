@@ -97,7 +97,6 @@ class APIManager: NSObject {
                         
                         //MARK: 如果沒有收到，會自動填補「發生錯誤」
                         let alertMsg = json["message"] ?? "發生錯誤"
-                        
                         self.printErrorResponse(requestUrl, response, error, alertMsg: alertMsg, method)
                         
                         let localDesc = (error as NSError).localizedDescription
