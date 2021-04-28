@@ -160,8 +160,24 @@ class PatientDetailTabListViewController: BaseViewController {
     private func loadData() {
         patientBorgAndCoachList = []
         presenter?.getPatientSurvey(userId: userId!, timestamp: DateFormat.shared.dateFormat(date: datePicker.date))
-        presenter?.getPatientCoach(userId: userId!, timestamp: DateFormat.shared.dateFormat(date: datePicker.date))
         presenter?.getPatientBorg(userId: userId!, timestamp: DateFormat.shared.dateFormat(date: datePicker.date))
+    }
+    
+    private func getPatientCoach(borgUUID: String) {
+        presenter?.getPatientCoach(userId: userId!, timestamp: DateFormat.shared.dateFormat(date: datePicker.date), borgUUID: borgUUID)
+    }
+    
+    private func postPatientCoach(addCoachList: [(speed: Int?, time: Int?)]) {
+        datePicker.date = Date()
+        let now = Date()
+        let timeStamp = DateFormat.shared.dateFormatLong(date: now)
+        //MARK: 目前都回覆最後一個borgUUID (有bug 因為當天最後一個不一定是資料庫裡面最後一個)
+        let borgUUID = patientBorgAndCoachList.first(where: {$0.isBorg})?.borgUUID
+        //TODO remove空的
+        let patientCoachList = addCoachList.filter({ $0.speed != nil || $0.time != nil })
+        if patientCoachList.isEmpty { return }
+        if borgUUID == nil { return }
+        presenter?.postPatientCoach(userId: userId!, timeStamp: timeStamp, borgUUID: borgUUID!, patientCoachList: patientCoachList)
     }
     
     private func viewReload(){
@@ -242,15 +258,6 @@ class PatientDetailTabListViewController: BaseViewController {
         UIView.animate(withDuration: 0.2, animations: {
                         self.backgroundGrayView.alpha = isEnable ? 1 : 0 })
     }
-    
-    @objc private func onTouchAddCoachButton() {
-        datePicker.date = Date()
-        let now = Date()
-        let timeStamp = DateFormat.shared.dateFormatLong(date: now)
-        //TODO
-        //presenter?.postPatientCoach(userId: userId!, timeStamp: timeStamp, speed: addCoachSpeedTextField.text ?? "", time: addCoachTimeTextField.text ?? "")
-    }
-    
 }
 
 extension PatientDetailTabListViewController: PatientDetailTabListViewProtocol {
@@ -265,6 +272,7 @@ extension PatientDetailTabListViewController: PatientDetailTabListViewProtocol {
         let dataList = patientCoach.data?.data.map({PatientBorgAndCoach(patientCoachData:  $0)}) ?? []
     
         self.patientBorgAndCoachList.append(contentsOf: dataList)
+        //TODO 排序用borg為主
         self.patientBorgAndCoachList = self.patientBorgAndCoachList.sorted(by: {return $0.date! > $1.date!} )
         viewReload()
     }
@@ -275,6 +283,10 @@ extension PatientDetailTabListViewController: PatientDetailTabListViewProtocol {
     
         self.patientBorgAndCoachList.append(contentsOf: dataList)
         self.patientBorgAndCoachList = self.patientBorgAndCoachList.sorted(by: {return $0.date! > $1.date!} )
+        
+        let borgUUIDs = patientBorgAndCoachList.filter({ $0.isBorg }).map({ $0.borgUUID! })
+        //TODO 排序用borg為主
+        borgUUIDs.forEach({ getPatientCoach(borgUUID: $0) })
         viewReload()
     }
 
@@ -397,5 +409,9 @@ extension PatientDetailTabListViewController: PatientDetailTabListAddCoachViewCo
             self.patientDetailAddCoachViewController?.scrollToBottom()
             self.view.layoutIfNeeded()
       })
+    }
+    
+    func onTouchSendButton(addCoachList: [(speed: Int?, time: Int?)]) {
+        postPatientCoach(addCoachList: addCoachList)
     }
 }

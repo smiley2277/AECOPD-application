@@ -9,6 +9,7 @@ class PatientBorgAndCoach: NSObject {
     var postbeat: Int?
     var timestamp: String?
     var date: Date?
+    var borgUUID: String?
     var isBorg: Bool = false
     
     init(patientBorgData: PatientBorg.OuterData.Data) {
@@ -18,6 +19,7 @@ class PatientBorgAndCoach: NSObject {
         postbeat = patientBorgData.postbeat
         timestamp = patientBorgData.timestamp
         date = patientBorgData.date
+        borgUUID = patientBorgData.borgUUID
         isBorg = true
     }
     
@@ -26,6 +28,7 @@ class PatientBorgAndCoach: NSObject {
         speed = patientCoachData.speed
         timestamp = patientCoachData.timestamp
         date = patientCoachData.date
+        borgUUID = nil
         isBorg = false
     }
 }

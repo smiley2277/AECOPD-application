@@ -15,11 +15,19 @@ class LoginPresenter: NSObject, LoginPresenterProtocol {
             if (model.status == "Success") {
                 self.delegate?.onBindLoginResult(loginResult: model)
             } else {
-                self.delegate?.onBindLoginErrorResult()
+                self.delegate?.onApiError(error: APIError.init(type: .apiFailException, localDesc: "", alertMsg: ""))
             }
-        }, onError: {error in
+        }, onError: { error in
             self.repository.setLocalAdminLoginResult(nil)
-            self.delegate?.onBindLoginErrorResult()
+            self.delegate?.onApiError(error: error as! APIError)
+        }).disposed(by: disposeBag)
+    }
+    
+    func getLocalAuthorization(){
+        LoginRepository.shared.localAuthorizationData.subscribe(onSuccess:{  (model) in
+            self.delegate?.onBindLocalAuthoriztion(localAuthoirizationData: model)
+        }, onError: { error in
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 }

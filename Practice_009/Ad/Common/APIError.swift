@@ -1,7 +1,7 @@
 
 import UIKit
 
-struct APIError: Error {
+class APIError: NSObject, Error {
     enum ErrorType {
         case apiFailException
         case apiFailForUserException
@@ -21,7 +21,7 @@ struct APIError: Error {
         self.alertMsg = alertMsg
     }
     
-    init(statusCode: Int?, errorCode: Int , localDesc: String, alertMsg: String) {
+    convenience init(statusCode: Int?, errorCode: Int , localDesc: String, alertMsg: String) {
         switch statusCode {
         case 401:
             self.init(type: .apiUnauthorizedException, localDesc: localDesc, alertMsg: alertMsg)

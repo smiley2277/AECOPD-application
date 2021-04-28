@@ -10,6 +10,7 @@ import UIKit
 
 protocol PatientDetailTabListAddCoachViewControllerProtocol: NSObjectProtocol {
     func onChangedHeight(newHeight: CGFloat)
+    func onTouchSendButton(addCoachList: [(speed: Int?, time: Int?)])
 }
 
 class PatientDetailTabListAddCoachViewController: UIViewController {
@@ -110,7 +111,9 @@ extension PatientDetailTabListAddCoachViewController: UITableViewDataSource, UIT
             cell.delegate = self
             return cell
         case .sendButton:
-            return tableView.dequeueReusableCell(withIdentifier: "SendButton")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SendButton") as! PatientDetailTablListSendButtonCell
+            cell.delegate = self
+            return cell
         }
     }
     
@@ -150,5 +153,13 @@ extension PatientDetailTabListAddCoachViewController: PatientDetailTabListInputC
     
     func onTextFieldDidEndEditing() {
         ()
+    }
+}
+
+extension PatientDetailTabListAddCoachViewController: PatientDetailTablListSendButtonCellProtocol {
+    func onTouchSendButton(){
+        delegate?.onTouchSendButton(addCoachList: addCoachList)
+        addCoachList = [(nil, nil)]
+        reloadDataViewAndChangedHeight()
     }
 }
