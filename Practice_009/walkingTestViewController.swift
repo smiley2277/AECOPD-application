@@ -54,7 +54,7 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit
-        //using protocol and delegate to receive
+        // using protocol and delegate to receive
         // 導覽列右邊按鈕
         let rightButton = UIBarButtonItem(
             title:"設定",
@@ -200,7 +200,6 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         }
     }
     func flashingTimer(duration: Int, speed: Float){
-        print(60/Int(speed))
         flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(60/speed), repeats: true, block: { [self] (timer) in
             playAudio()
             flashing(setColor: color, trainingSpeed: speed)

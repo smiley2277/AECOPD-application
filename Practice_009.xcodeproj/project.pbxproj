@@ -80,6 +80,9 @@
 		468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EFD2604911100C52990 /* knob-458.mp3 */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
+		46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20103263956BC0027165B /* speedDurationProtocol.swift */; };
+		46C20109263956CF0027165B /* speedDurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20108263956CF0027165B /* speedDurationPresenter.swift */; };
+		46C2010E263956E40027165B /* speedDurationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2010D263956E40027165B /* speedDurationRepository.swift */; };
 		46CB99B025E793C000490562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99AF25E793C000490562 /* AppDelegate.swift */; };
 		46CB99B225E793C000490562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B125E793C000490562 /* SceneDelegate.swift */; };
 		46CB99B425E793C000490562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B325E793C000490562 /* ViewController.swift */; };
@@ -195,6 +198,9 @@
 		468B1EFD2604911100C52990 /* knob-458.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "knob-458.mp3"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
+		46C20103263956BC0027165B /* speedDurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationProtocol.swift; sourceTree = "<group>"; };
+		46C20108263956CF0027165B /* speedDurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationPresenter.swift; sourceTree = "<group>"; };
+		46C2010D263956E40027165B /* speedDurationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationRepository.swift; sourceTree = "<group>"; };
 		46CB99AC25E793C000490562 /* Practice_009.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_009.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CB99AF25E793C000490562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46CB99B125E793C000490562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -419,6 +425,18 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		46C20102263956960027165B /* getCoach */ = {
+			isa = PBXGroup;
+			children = (
+				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
+				46C20103263956BC0027165B /* speedDurationProtocol.swift */,
+				46C2010D263956E40027165B /* speedDurationRepository.swift */,
+				46C20108263956CF0027165B /* speedDurationPresenter.swift */,
+				4649C7F9262583760047299C /* variableSettingViewController.swift */,
+			);
+			path = getCoach;
+			sourceTree = "<group>";
+		};
 		46CB99A325E793C000490562 = {
 			isa = PBXGroup;
 			children = (
@@ -447,11 +465,12 @@
 				462D258F262D6B7800A589E0 /* Ad */,
 				460261492617188200EE6236 /* Practice_009.entitlements */,
 				466BE587261462BB0042BE38 /* model */,
-				46CB99AF25E793C000490562 /* AppDelegate.swift */,
 				460EF8C52633FC88004E8DD3 /* sendBorg */,
 				46364C3A2630059B0076C55C /* signUp */,
 				463B43E72632A5E200906E0F /* signUpGetUserID */,
+				46CE401C2637BFBE00E93755 /* Questionnaire */,
 				46CB99B125E793C000490562 /* SceneDelegate.swift */,
+				46CB99AF25E793C000490562 /* AppDelegate.swift */,
 				46716CBC25FF63CE00FDB785 /* America.gpx */,
 				46026144261706C600EE6236 /* site_opendata.csv */,
 				466658D0261C801600EBBD6E /* weather_site.csv */,
@@ -461,11 +480,9 @@
 				46CF1CE425EE19E2006C459C /* Main.storyboard */,
 				46CB99BD25E793C100490562 /* Info.plist */,
 				46CB99B825E793C100490562 /* Assets.xcassets */,
-				46CE401C2637BFBE00E93755 /* Questionnaire */,
 				468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */,
+				46C20102263956960027165B /* getCoach */,
 				46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */,
-				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
-				4649C7F9262583760047299C /* variableSettingViewController.swift */,
 				466C70CF2609E8D5003710F3 /* smartSubViewController.swift */,
 				46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */,
 				468B1EE926033B0C00C52990 /* walkingTestViewController.swift */,
@@ -717,6 +734,7 @@
 				462D25CD262D6BBC00A589E0 /* ColorHexUtil.swift in Sources */,
 				462D25E8262D6BBC00A589E0 /* LoginRepository.swift in Sources */,
 				462D25D7262D6BBC00A589E0 /* PatientListRepository.swift in Sources */,
+				46C20109263956CF0027165B /* speedDurationPresenter.swift in Sources */,
 				462D25EC262D6BBC00A589E0 /* PatientBorg.swift in Sources */,
 				462D25EE262D6BBC00A589E0 /* PatientCoach.swift in Sources */,
 				46CE402E2637C01600E93755 /* quesRepository.swift in Sources */,
@@ -779,6 +797,7 @@
 				46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */,
 				463B43F42632A63600906E0F /* signUpGetUserIDViewController.swift in Sources */,
 				46CB99E425E794E200490562 /* COPDRfcOffline.mlmodel in Sources */,
+				46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */,
 				460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */,
 				462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */,
 				462D25D4262D6BBC00A589E0 /* PatientListPresenter.swift in Sources */,
@@ -787,6 +806,7 @@
 				46CB99ED25E79D4600490562 /* CATViewController.swift in Sources */,
 				462D25CB262D6BBC00A589E0 /* DateFormat.swift in Sources */,
 				462D25E4262D6BBC00A589E0 /* PatientDetailTabListPresenter.swift in Sources */,
+				46C2010E263956E40027165B /* speedDurationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
