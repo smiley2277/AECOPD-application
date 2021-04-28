@@ -79,23 +79,26 @@
                                     <segue destination="19L-iQ-K3l" kind="show" identifier="smartCoachSegue" id="Jfg-3E-6W9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R62-3b-t3a">
-                                <rect key="frame" x="228" y="623" width="147" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="Y3k-0j-B75"/>
-                                    <constraint firstAttribute="width" constant="147" id="loD-ne-GAv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="空氣品質">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocj-SM-HYZ">
+                                <rect key="frame" x="271" y="725" width="96" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95097828874684343" green="0.47732092542885884" blue="0.42251049895213677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="refresh.png"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sync:" destination="BYZ-38-t0r" eventType="touchUpInside" id="as0-XB-FGC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="roH-IX-StR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="7VK-4e-C4k"/>
-                            <constraint firstItem="R62-3b-t3a" firstAttribute="top" secondItem="OUu-vW-7NL" secondAttribute="bottom" constant="104" id="7ai-4E-szG"/>
                             <constraint firstItem="Odh-cy-wcJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="8T4-NT-OLf"/>
                             <constraint firstItem="PUe-H6-AiR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="224" id="9tb-2y-eGD"/>
                             <constraint firstItem="roH-IX-StR" firstAttribute="top" secondItem="Odh-cy-wcJ" secondAttribute="bottom" constant="104" id="Sgf-vp-qUh"/>
@@ -103,7 +106,6 @@
                             <constraint firstItem="6lP-l1-t9g" firstAttribute="leading" secondItem="PUe-H6-AiR" secondAttribute="trailing" constant="93" id="aXj-mS-7LJ"/>
                             <constraint firstItem="OUu-vW-7NL" firstAttribute="leading" secondItem="Odh-cy-wcJ" secondAttribute="trailing" constant="62" id="dSX-wN-fGR"/>
                             <constraint firstItem="6lP-l1-t9g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="224" id="eW7-ua-ntd"/>
-                            <constraint firstItem="R62-3b-t3a" firstAttribute="leading" secondItem="roH-IX-StR" secondAttribute="trailing" constant="37" id="mSg-oh-USe"/>
                             <constraint firstItem="Odh-cy-wcJ" firstAttribute="top" secondItem="PUe-H6-AiR" secondAttribute="bottom" constant="111" id="r43-85-XiB"/>
                             <constraint firstItem="OUu-vW-7NL" firstAttribute="top" secondItem="6lP-l1-t9g" secondAttribute="bottom" constant="111" id="t1v-eq-gDi"/>
                         </constraints>
@@ -2280,9 +2282,9 @@
         <!--Borg Scale Post Test View Controller-->
         <scene sceneID="9Xh-XT-BOS">
             <objects>
-                <viewController id="TvU-4M-WAV" customClass="borgScalePostTestViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="borgScalePostTestViewController" storyboardIdentifier="borgScalePostTestViewController" id="TvU-4M-WAV" customClass="borgScalePostTestViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uMW-c4-lms">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2Z-Ag-RD4">
@@ -3032,7 +3034,7 @@
                                 <state key="normal" title="完成"/>
                                 <connections>
                                     <action selector="finish:" destination="hLe-wX-lbk" eventType="touchUpInside" id="Zq8-NW-4Wc"/>
-                                    <segue destination="TvU-4M-WAV" kind="show" id="pPS-nk-REB"/>
+                                    <segue destination="TvU-4M-WAV" kind="show" identifier="showPostBorgSegue" id="pPS-nk-REB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56B-4O-pxv">
@@ -3089,7 +3091,6 @@
                                 <state key="normal" title="變速版本"/>
                                 <connections>
                                     <action selector="variableTest:" destination="2yR-G6-saO" eventType="touchUpInside" id="nKF-dd-s8x"/>
-                                    <segue destination="Ux5-JG-ZSq" kind="show" id="2xn-Lb-e4A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ge9-Vr-g7j">
@@ -3140,9 +3141,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="每10公尺走" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLT-9r-50E">
-                                <rect key="frame" x="51" y="338" width="159" height="37"/>
+                                <rect key="frame" x="51" y="338" width="118" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3394,7 +3395,7 @@
                                 <state key="normal" title="完成"/>
                                 <connections>
                                     <action selector="finish:" destination="Ux5-JG-ZSq" eventType="touchUpInside" id="zg1-xI-Phu"/>
-                                    <segue destination="TvU-4M-WAV" kind="show" id="0nZ-RK-WiW"/>
+                                    <segue destination="TvU-4M-WAV" kind="show" identifier="showPostBorgByVarSegue" id="0nZ-RK-WiW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTC-NZ-Y7S">
@@ -3524,9 +3525,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="每10公尺走" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0q-cY-nv5">
-                                <rect key="frame" x="28" y="250" width="159" height="37"/>
+                                <rect key="frame" x="28" y="250" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

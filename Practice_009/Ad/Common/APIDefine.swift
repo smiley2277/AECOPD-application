@@ -5,11 +5,13 @@ import UIKit
 let APITimeout: Double = 30.0
 
 let WEB_HOST = "https://copd-smart-coach.ml/v1"
+let TEST =  "https://requestinspector.com/inspect/01f3ws019zcyfgb31cvvfg8cbh"
 
 enum APIUrl {
     case userApi(type: UserApi)
     case authApi(type: AuthApi)
     case tokenApi(type: TokenApi)
+    case testApi(type: TestApi)
     
     enum UserApi: String {
         case coach = "coach"
@@ -18,7 +20,7 @@ enum APIUrl {
         
         static func urlWith(type: UserApi, append: String, userId: String? = nil) -> String {
             let base = WEB_HOST
-            return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)"
+            return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)" //
         }
     
         func url () -> String {
@@ -62,6 +64,24 @@ enum APIUrl {
         
         func url(append: String, userId: String? = nil) -> String {
             return APIUrl.TokenApi.urlWith(type: self, append: append)
+        }
+    }
+    
+    
+    enum TestApi: String {
+        case normal = ""
+        
+        static func urlWith(type: TestApi, append: String) -> String {
+            let base = TEST
+            return "\(base)\(type.rawValue)\(append)"
+        }
+    
+        func url () -> String {
+            return APIUrl.TestApi.urlWith(type: self, append: "")
+        }
+        
+        func url(append: String, userId: String? = nil) -> String {
+            return APIUrl.TestApi.urlWith(type: self, append: append)
         }
     }
 }
