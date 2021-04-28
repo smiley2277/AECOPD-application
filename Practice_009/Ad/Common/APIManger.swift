@@ -75,6 +75,7 @@ class APIManager: NSObject {
                     case .success(let value):
                         if (value is [String:Any]) {
                             self.printResponse(requestUrl, value, method)
+                            
                             single(.success(value as! [String:Any]))
                         } else {
                             let err = APIError.init(type: .otherException, localDesc: "It's success.But AlertMsg doesn't exist.", alertMsg: "")
@@ -122,6 +123,8 @@ class APIManager: NSObject {
             requestUrl = type.url(append: "",userId: userId)
         case .tokenApi(type: let type):
             requestUrl = type.url(append: "",userId: userId)
+        case .testApi(let type):
+            requestUrl = type.url(append: "",userId: userId)
         }
         
         requestUrl =  (requestUrl + encodeUrl ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -151,11 +154,11 @@ class APIManager: NSObject {
         var headers: HTTPHeaders = [
             "X-API-KEY": "ca346174031c0cd2a6d6ccddc57b12171fe3a79669c25281163b534fca5acc5247975553aaa3443e3398286b2a61ecd779653f90ff2b651388fbe14b8eaf658cbfc9941c324164ffd09780dd50d144d5fc3ab200bd660ce7837ee9b9baefece2ce8b1fd373f3173df1777375d48c3ae9406e17b0baea088e07018a41363579f6"
         ]
-        
+
         if let authorization = UserDefaultUtil.shared.adminAuthorization {
             headers["Authorization"] = "Bearer \(authorization)"
         }
-        
+
         appendHeaders?.forEach({ header in
             headers[ header.key ] =  header.value
         })
@@ -221,6 +224,39 @@ extension APIManager {
     func getPatientBorg(userId: String, timestamp: String) -> Single<[String:Any]> {
         let appendUrl = "?timestamp=\(timestamp)"
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) ,parameters: nil, appendHeaders: nil, userId: userId)
+    }
+    
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String) -> Single<[String:Any]> {
+        let appendUrl = ""
+        let params = ["lastname": lastname, "firstname": firstname,
+                      "age": age, "email": email, "birthday": birthday,
+                      "gender": gender, "height": height,
+                      "weight": height, "phone": phone,
+                      "identity": identity, "password": password] as [String : Any]
+        return manager(method: .put, appendUrl: appendUrl, url: APIUrl.authApi(type: .normal) , parameters: params, appendHeaders: nil)
+    }
+    
+    func postBorg(userId: String, postbeat: Int, postborg: Int, prebeat: Int, preborg: Int, step: Int, timestamp: String)-> Single<[String:Any]>{
+        let appendUrl = "?timestamp=\(timestamp)"
+        let params = ["timestamp": timestamp,
+                      "postbeat": postbeat,
+                      "postborg": postborg,
+                      "prebeat": prebeat,
+                      "preborg": preborg,
+                      "step": step] as [String : Any]
+        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) , parameters: params, appendHeaders: nil, userId: userId)
+    }
+    
+    func postQues(userId: String, cat1: Int, cat2: Int, cat3: Int, cat4: Int, cat5: Int, cat6: Int, cat7: Int, cat8: Int, catsum: Int, eq1: Int, eq2: Int, eq3: Int, eq4: Int, eq5: Int, mmrc: Int, timestamp: String)-> Single<[String:Any]>{
+        let params = ["timestamp": timestamp,
+                      "cat1": cat1, "cat2": cat2,
+                      "cat3": cat3, "cat4": cat4,
+                      "cat5": cat5, "cat6": cat6,
+                      "cat7": cat7, "cat8": cat8,
+                      "catsum": catsum, "eq1": eq1,
+                      "eq2": eq2, "eq3": eq3,
+                      "eq4": eq4, "eq5": eq5, "mmrc": mmrc ] as [String : Any]
+        return manager(method: .post, appendUrl: "", url: APIUrl.userApi(type: .survey) , parameters: params, appendHeaders: nil, userId: userId)
     }
 }
 

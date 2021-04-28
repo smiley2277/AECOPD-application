@@ -8,12 +8,9 @@
 import Foundation
 import UIKit
 
-//protocol  smartCoachListViewControllerProtocol : NSObjectProtocol{
-//    func onBindW(w: Int)
-//}
-
 class smartCoachListViewController: UIViewController {
     var stepSize: Double = 0.0
+    var startTime: String = ""
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
     }
     @IBAction func walkingTest(_ sender: Any) {
@@ -21,6 +18,7 @@ class smartCoachListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "walkingTestViewController") as! walkingTestViewController
         vc.setStepSize(size: stepSize)
+        vc.startString = startTime
         //open walkingTestViewController.swift without segue
         self.navigationController?.pushViewController(vc, animated: true)
         //using protocol and delagate to deliver
@@ -31,13 +29,10 @@ class smartCoachListViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "variableSpeedViewController") as! variableSpeedViewController
         vc.setStepSize(size: stepSize)
+        vc.startString = startTime
+        print("@SCLVC startString,", startTime)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
     }
 }
-
-//extension smartCoachListViewController: smartCoachListViewControllerProtocol {
-//    func onBindW(w: Int) {
-//
-//    }
-//}
