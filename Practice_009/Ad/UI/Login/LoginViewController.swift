@@ -64,6 +64,13 @@ class LoginViewController: BaseViewController {
         clearTextField()
     }
     
+    @IBAction func onTouchRegisterButton(_ sender: Any) {
+        //TODO 開註冊頁
+        //let vc = getVC(st: "", vc: "") as!
+        //vc.delegate = self
+        //self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private func enableLoginButton(_ isEnable: Bool) {
         login.alpha = isEnable ? 1 : 0.5
         login.isUserInteractionEnabled = isEnable
