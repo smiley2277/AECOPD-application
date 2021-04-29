@@ -85,6 +85,7 @@
                                                         <state key="normal" title="註冊"/>
                                                         <connections>
                                                             <action selector="onTouchLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iG3-rG-hob"/>
+                                                            <action selector="onTouchRegisterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4UH-0b-iOV"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

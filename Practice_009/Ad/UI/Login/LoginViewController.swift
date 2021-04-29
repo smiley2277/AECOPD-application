@@ -3,6 +3,7 @@ import RxSwift
 
 protocol LoginViewControllerProtocol: NSObjectProtocol {
     func onSignUpSuccess(loginResult: LoginResult)
+    func onGetUserIDSucces(userID: String)
 }
 
 extension LoginViewController {
@@ -22,6 +23,8 @@ class LoginViewController: BaseViewController {
     private var presenter: LoginPresenterProtocol?
     private var isNeedToRedirect = true
     private var isFirstLaunchApp = true
+    private var isJustGetUserID = false
+    private var isJustSignUp = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +47,28 @@ class LoginViewController: BaseViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if isJustSignUp || isJustGetUserID {
+            presenter?.getLocalAuthorization()
+            isJustSignUp = false
+            isJustGetUserID = false
+        }
+    }
+    
     @IBAction func onTouchLogin(_ sender: Any) {
         if userID.text == "" || userID.text == nil { return }
         if password.text == "" || password.text == nil { return }
         presenter?.getLoginResult(email: userID.text!, password: password.text!)
         clearTextField()
+    }
+    
+    @IBAction func onTouchRegisterButton(_ sender: Any) {
+        //TODO 開註冊頁
+        //let vc = getVC(st: "", vc: "") as!
+        //vc.delegate = self
+        //self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func enableLoginButton(_ isEnable: Bool) {
@@ -107,5 +127,17 @@ extension LoginViewController {
         enableLoginErrorHint(false)
         let isFilled = !(userID.text == "" || password.text == "")
         enableLoginButton(isFilled)
+    }
+}
+
+extension LoginViewController: LoginViewControllerProtocol {
+    func onSignUpSuccess(loginResult: LoginResult) {
+        LoginRepository.shared.setLocalAdminLoginResult(loginResult)
+        isJustSignUp = true
+    }
+    
+    func onGetUserIDSucces(userID: String) {
+        UserDefaultUtil.shared.adminUserID = userID
+        isJustGetUserID = true
     }
 }
