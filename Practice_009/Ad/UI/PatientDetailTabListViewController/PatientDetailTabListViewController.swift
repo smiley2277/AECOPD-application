@@ -266,27 +266,31 @@ extension PatientDetailTabListViewController: PatientDetailTabListViewProtocol {
         self.patientSurvey = patientSurvey
         viewReload()
     }
-
-    func onBindPatientCoach(patientCoach: PatientCoach) {
-        self.patientCoach = patientCoach
-        let dataList = patientCoach.data?.data.map({PatientBorgAndCoach(patientCoachData:  $0)}) ?? []
-    
-        self.patientBorgAndCoachList.append(contentsOf: dataList)
-        //TODO 排序用borg為主
-        self.patientBorgAndCoachList = self.patientBorgAndCoachList.sorted(by: {return $0.date! > $1.date!} )
-        viewReload()
-    }
     
     func onBindPatientBorg(patientBorg: PatientBorg) {
         self.patientBorg = patientBorg
         let dataList = patientBorg.data?.data.map({PatientBorgAndCoach(patientBorgData:  $0)}) ?? []
     
         self.patientBorgAndCoachList.append(contentsOf: dataList)
-        self.patientBorgAndCoachList = self.patientBorgAndCoachList.sorted(by: {return $0.date! > $1.date!} )
+        self.patientBorgAndCoachList = self.patientBorgAndCoachList.sorted(by: {return $0.date! > $1.date!})
         
         let borgUUIDs = patientBorgAndCoachList.filter({ $0.isBorg }).map({ $0.borgUUID! })
-        //TODO 排序用borg為主
         borgUUIDs.forEach({ getPatientCoach(borgUUID: $0) })
+        viewReload()
+    }
+    
+    func onBindPatientCoach(patientCoach: PatientCoach) {
+        self.patientCoach = patientCoach
+        var dataList = patientCoach.data?.data.map({PatientBorgAndCoach(patientCoachData:  $0)}) ?? []
+        //MARK: 每個borgID底下coach的排序方式
+        dataList.sort(by: {return $0.date! > $1.date!} )
+        dataList.forEach({ data in
+            //MARK: 找到特定的borg，再放到該筆後面
+            let properIndex = patientBorgAndCoachList.lastIndex(where: { data.borgUUID! == $0.borgUUID! })
+            if let index = properIndex {
+                self.patientBorgAndCoachList.insert(data, at: index)
+            }
+        })
         viewReload()
     }
 

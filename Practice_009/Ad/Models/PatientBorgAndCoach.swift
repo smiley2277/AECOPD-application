@@ -28,7 +28,7 @@ class PatientBorgAndCoach: NSObject {
         speed = patientCoachData.speed
         timestamp = patientCoachData.timestamp
         date = patientCoachData.date
-        borgUUID = nil
+        borgUUID = patientCoachData.borgUUID
         isBorg = false
     }
 }
