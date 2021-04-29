@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 import Alamofire
 
-class signUpToBackendViewController: UIViewController,UITextFieldDelegate {
+class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var summitBtn: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var bDayFill: UITextField!

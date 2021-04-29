@@ -27,8 +27,7 @@ class signUpToBackendPresenter: NSObject, signUpToBackendPresenterProtocol {
                 self.delegate?.onBindSignUpErrorResult()
             }
         }, onError: {error in
-//            self.repository.setLocalAdminLoginResult(nil)
-            self.delegate?.onBindSignUpErrorResult()
+//            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 }

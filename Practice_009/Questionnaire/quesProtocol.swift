@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-protocol quesViewProtocol: NSObjectProtocol {
-    func onBindQuesResult(SignUpResult: LoginResult)
+protocol quesViewProtocol: BaseViewControllerProtocol {
+    func onBindQuesResult(PostQues: PostQues)
     func onBindQuesErrorResult()
 }
 

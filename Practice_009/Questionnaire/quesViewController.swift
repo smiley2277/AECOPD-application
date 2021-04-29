@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class quesViewController: UIViewController{
+class quesViewController: BaseViewController{
     @IBOutlet weak var completeLabel: UILabel!
     @IBOutlet weak var compContentLabel: UILabel!
     var catAry:[String] = []
@@ -69,8 +69,9 @@ class quesViewController: UIViewController{
             let str: String = dateFormatter.string(from: today)
             let sent: [String: [Int]] = [str : totalAry]
             Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":sent])
+            print("QUES, API")
             presenter?.postQues(userId: "test_id", cat1: totalAry[6], cat2: totalAry[7], cat3: totalAry[8], cat4: totalAry[9], cat5: totalAry[10], cat6: totalAry[11], cat7: totalAry[12], cat8: totalAry[13], catsum: totalAry[14], eq1: totalAry[1], eq2: totalAry[2], eq3: totalAry[3], eq4: totalAry[4], eq5: totalAry[5], mmrc: totalAry[0], timestamp: str)
-            //TODO: token
+            
         }
     }
     override func viewDidLoad() {
@@ -80,10 +81,11 @@ class quesViewController: UIViewController{
 
 
 extension quesViewController: quesViewProtocol {
-    func onBindQuesErrorResult() {
+    func onBindQuesResult(PostQues: PostQues) {
         //TODO
     }
-    func onBindQuesResult(SignUpResult: LoginResult) {
+    
+    func onBindQuesErrorResult() {
         //TODO
     }
 }

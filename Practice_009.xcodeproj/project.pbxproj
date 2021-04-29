@@ -83,6 +83,7 @@
 		46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20103263956BC0027165B /* speedDurationProtocol.swift */; };
 		46C20109263956CF0027165B /* speedDurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20108263956CF0027165B /* speedDurationPresenter.swift */; };
 		46C2010E263956E40027165B /* speedDurationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2010D263956E40027165B /* speedDurationRepository.swift */; };
+		46C2011F263A6F720027165B /* PostQues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2011E263A6F710027165B /* PostQues.swift */; };
 		46CB99B025E793C000490562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99AF25E793C000490562 /* AppDelegate.swift */; };
 		46CB99B225E793C000490562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B125E793C000490562 /* SceneDelegate.swift */; };
 		46CB99B425E793C000490562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B325E793C000490562 /* ViewController.swift */; };
@@ -201,6 +202,7 @@
 		46C20103263956BC0027165B /* speedDurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationProtocol.swift; sourceTree = "<group>"; };
 		46C20108263956CF0027165B /* speedDurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationPresenter.swift; sourceTree = "<group>"; };
 		46C2010D263956E40027165B /* speedDurationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationRepository.swift; sourceTree = "<group>"; };
+		46C2011E263A6F710027165B /* PostQues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQues.swift; sourceTree = "<group>"; };
 		46CB99AC25E793C000490562 /* Practice_009.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_009.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CB99AF25E793C000490562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46CB99B125E793C000490562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				462D25C1262D6BBC00A589E0 /* LoginResult.swift */,
+				46C2011E263A6F710027165B /* PostQues.swift */,
 				462D25C2262D6BBC00A589E0 /* PatientBorg.swift */,
 				462D25C3262D6BBC00A589E0 /* PatientBorgAndCoach.swift */,
 				462D25C4262D6BBC00A589E0 /* PatientCoach.swift */,
@@ -799,6 +802,7 @@
 				46CB99E425E794E200490562 /* COPDRfcOffline.mlmodel in Sources */,
 				46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */,
 				460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */,
+				46C2011F263A6F720027165B /* PostQues.swift in Sources */,
 				462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */,
 				462D25D4262D6BBC00A589E0 /* PatientListPresenter.swift in Sources */,
 				462D25CF262D6BBC00A589E0 /* BaseModel.swift in Sources */,
