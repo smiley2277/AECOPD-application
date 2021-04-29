@@ -13,8 +13,5 @@ class signUpGetUserIDRepository {
 //        let api = APIManager.shared.getLoginResult(email: email, password: password)
 //        return api
 //            .map{ LoginResult(JSON: $0)! }
-//            .flatMap{ response -> Single<LoginResult> in
-//                return self.procressToken(loginResult: response)
-//            }
 //    }
 }

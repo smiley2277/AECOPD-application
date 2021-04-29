@@ -10,7 +10,6 @@ import UIKit
 
 protocol signUpGetUserIDViewProtocol: NSObjectProtocol {
 //    func onBindLoginResult(loginResult: LoginResult)
-//    func onBindLoginErrorResult()
 }
 
 protocol signUpGetUserIDPresenterProtocol: NSObjectProtocol {

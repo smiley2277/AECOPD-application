@@ -10,7 +10,6 @@ import UIKit
 
 protocol quesViewProtocol: BaseViewControllerProtocol {
     func onBindQuesResult(PostQues: PostQues)
-    func onBindQuesErrorResult()
 }
 
 protocol quesPresenterProtocol: NSObjectProtocol {

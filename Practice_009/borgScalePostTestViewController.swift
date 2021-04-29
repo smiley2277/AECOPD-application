@@ -199,8 +199,15 @@ class borgScalePostTestViewController: UIViewController {
         sent[stopTime] = borgAns
         print("Post sent,",stopTime, sent)
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS": sent])
-        navigationController?.popToRootViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        //MARK: 有改動要注意
+        var vcs = navigationController?.viewControllers
+        vcs?.removeLast()
+        vcs?.removeLast()
+        vcs?.removeLast()
+        vcs?.removeLast()
+        navigationController?.viewControllers = vcs ?? []
+        //navigationController?.popToRootViewController(animated: true)
+        //dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

@@ -80,10 +80,8 @@
 		468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EFD2604911100C52990 /* knob-458.mp3 */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
-		46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20103263956BC0027165B /* speedDurationProtocol.swift */; };
-		46C20109263956CF0027165B /* speedDurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20108263956CF0027165B /* speedDurationPresenter.swift */; };
-		46C2010E263956E40027165B /* speedDurationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2010D263956E40027165B /* speedDurationRepository.swift */; };
 		46C2011F263A6F720027165B /* PostQues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2011E263A6F710027165B /* PostQues.swift */; };
+		46C20124263A89400027165B /* PostBorg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20123263A89400027165B /* PostBorg.swift */; };
 		46CB99B025E793C000490562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99AF25E793C000490562 /* AppDelegate.swift */; };
 		46CB99B225E793C000490562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B125E793C000490562 /* SceneDelegate.swift */; };
 		46CB99B425E793C000490562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B325E793C000490562 /* ViewController.swift */; };
@@ -102,6 +100,9 @@
 		46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46CF1CE425EE19E2006C459C /* Main.storyboard */; };
 		46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */; };
 		46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */; };
+		46FE3563263AA4590010779B /* getCoachPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3562263AA4590010779B /* getCoachPresenter.swift */; };
+		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
+		46FE356D263AA4790010779B /* getCoachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE356C263AA4790010779B /* getCoachRepository.swift */; };
 		755602206C8599C81157D952 /* Pods_Practice_009.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */; };
 /* End PBXBuildFile section */
 
@@ -199,10 +200,8 @@
 		468B1EFD2604911100C52990 /* knob-458.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "knob-458.mp3"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
-		46C20103263956BC0027165B /* speedDurationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationProtocol.swift; sourceTree = "<group>"; };
-		46C20108263956CF0027165B /* speedDurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationPresenter.swift; sourceTree = "<group>"; };
-		46C2010D263956E40027165B /* speedDurationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationRepository.swift; sourceTree = "<group>"; };
 		46C2011E263A6F710027165B /* PostQues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQues.swift; sourceTree = "<group>"; };
+		46C20123263A89400027165B /* PostBorg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBorg.swift; sourceTree = "<group>"; };
 		46CB99AC25E793C000490562 /* Practice_009.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_009.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CB99AF25E793C000490562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46CB99B125E793C000490562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +226,9 @@
 		46CF1CE425EE19E2006C459C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offlinePredictViewController.swift; sourceTree = "<group>"; };
 		46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifestyleViewController.swift; sourceTree = "<group>"; };
+		46FE3562263AA4590010779B /* getCoachPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachPresenter.swift; sourceTree = "<group>"; };
+		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
+		46FE356C263AA4790010779B /* getCoachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachRepository.swift; sourceTree = "<group>"; };
 		5C11ACBDDD69553C6FF829CE /* Pods-Practice_009.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_009.release.xcconfig"; path = "Target Support Files/Pods-Practice_009/Pods-Practice_009.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -388,6 +390,7 @@
 			children = (
 				462D25C1262D6BBC00A589E0 /* LoginResult.swift */,
 				46C2011E263A6F710027165B /* PostQues.swift */,
+				46C20123263A89400027165B /* PostBorg.swift */,
 				462D25C2262D6BBC00A589E0 /* PatientBorg.swift */,
 				462D25C3262D6BBC00A589E0 /* PatientBorgAndCoach.swift */,
 				462D25C4262D6BBC00A589E0 /* PatientCoach.swift */,
@@ -431,11 +434,10 @@
 		46C20102263956960027165B /* getCoach */ = {
 			isa = PBXGroup;
 			children = (
-				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
-				46C20103263956BC0027165B /* speedDurationProtocol.swift */,
-				46C2010D263956E40027165B /* speedDurationRepository.swift */,
-				46C20108263956CF0027165B /* speedDurationPresenter.swift */,
-				4649C7F9262583760047299C /* variableSettingViewController.swift */,
+				46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */,
+				46FE3562263AA4590010779B /* getCoachPresenter.swift */,
+				46FE3567263AA4650010779B /* getCoachProtocol.swift */,
+				46FE356C263AA4790010779B /* getCoachRepository.swift */,
 			);
 			path = getCoach;
 			sourceTree = "<group>";
@@ -483,11 +485,12 @@
 				46CF1CE425EE19E2006C459C /* Main.storyboard */,
 				46CB99BD25E793C100490562 /* Info.plist */,
 				46CB99B825E793C100490562 /* Assets.xcassets */,
-				468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */,
 				46C20102263956960027165B /* getCoach */,
 				46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */,
+				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
+				4649C7F9262583760047299C /* variableSettingViewController.swift */,
 				466C70CF2609E8D5003710F3 /* smartSubViewController.swift */,
-				46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */,
+				468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */,
 				468B1EE926033B0C00C52990 /* walkingTestViewController.swift */,
 				462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */,
 				466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */,
@@ -737,8 +740,8 @@
 				462D25CD262D6BBC00A589E0 /* ColorHexUtil.swift in Sources */,
 				462D25E8262D6BBC00A589E0 /* LoginRepository.swift in Sources */,
 				462D25D7262D6BBC00A589E0 /* PatientListRepository.swift in Sources */,
-				46C20109263956CF0027165B /* speedDurationPresenter.swift in Sources */,
 				462D25EC262D6BBC00A589E0 /* PatientBorg.swift in Sources */,
+				46FE3563263AA4590010779B /* getCoachPresenter.swift in Sources */,
 				462D25EE262D6BBC00A589E0 /* PatientCoach.swift in Sources */,
 				46CE402E2637C01600E93755 /* quesRepository.swift in Sources */,
 				462D25CA262D6BBC00A589E0 /* ColorDefine.swift in Sources */,
@@ -781,12 +784,15 @@
 				462D25E6262D6BBC00A589E0 /* LoginProtocol.swift in Sources */,
 				462D25CE262D6BBC00A589E0 /* APIDefine.swift in Sources */,
 				466C70D02609E8D5003710F3 /* smartSubViewController.swift in Sources */,
+				46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */,
 				46364C4F2631585E0076C55C /* signUpPresenter.swift in Sources */,
 				466BE58F2615A63B0042BE38 /* borgScalePostTestViewController.swift in Sources */,
+				46C20124263A89400027165B /* PostBorg.swift in Sources */,
 				46364C3C263005EC0076C55C /* signUpToBackendViewController.swift in Sources */,
 				462D2614262D6E1F00A589E0 /* UserDefaultUtil.swift in Sources */,
 				462D25D5262D6BBC00A589E0 /* PatientListProtocol.swift in Sources */,
 				46CB99B025E793C000490562 /* AppDelegate.swift in Sources */,
+				46FE356D263AA4790010779B /* getCoachRepository.swift in Sources */,
 				46CB99E525E794E200490562 /* COPDRfc.mlmodel in Sources */,
 				462C1C372611B88E0045DB40 /* variableSpeedViewController.swift in Sources */,
 				462D25CC262D6BBC00A589E0 /* APIManger.swift in Sources */,
@@ -800,7 +806,6 @@
 				46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */,
 				463B43F42632A63600906E0F /* signUpGetUserIDViewController.swift in Sources */,
 				46CB99E425E794E200490562 /* COPDRfcOffline.mlmodel in Sources */,
-				46C20104263956BC0027165B /* speedDurationProtocol.swift in Sources */,
 				460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */,
 				46C2011F263A6F720027165B /* PostQues.swift in Sources */,
 				462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */,
@@ -810,7 +815,6 @@
 				46CB99ED25E79D4600490562 /* CATViewController.swift in Sources */,
 				462D25CB262D6BBC00A589E0 /* DateFormat.swift in Sources */,
 				462D25E4262D6BBC00A589E0 /* PatientDetailTabListPresenter.swift in Sources */,
-				46C2010E263956E40027165B /* speedDurationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

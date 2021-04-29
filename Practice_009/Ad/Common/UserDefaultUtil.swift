@@ -7,6 +7,7 @@ enum UserDefaultKey: String {
     case adminUserID = "ADMIN_USER_ID"
     case adminExpireIn = "EXPIRE_IN"
     case adminRoles = "ROLES"
+    case borgUuid = "BORG_UUID"
 }
 
 class UserDefaultUtil: NSObject {
@@ -55,6 +56,15 @@ class UserDefaultUtil: NSObject {
         }
         set(adminRoles){
             update(object: adminRoles, key: .adminRoles)
+        }
+    }
+    
+    var borgUuid: String? {
+        get{
+            return getObject(classType: String(), key: .borgUuid)
+        }
+        set(borgUuid){
+            update(object: borgUuid, key: .borgUuid)
         }
     }
 

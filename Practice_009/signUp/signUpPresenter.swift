@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 class signUpToBackendPresenter: NSObject, signUpToBackendPresenterProtocol {
+    
     weak var delegate: signUpToBackendViewProtocol?
     fileprivate var disposeBag = DisposeBag()
     let repository = signUpToBackendRepository.shared
@@ -18,16 +19,11 @@ class signUpToBackendPresenter: NSObject, signUpToBackendPresenterProtocol {
         self.delegate = delegate
     }
     
-    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String){
-        repository.getSignUpResult(lastname: lastname, firstname: firstname, age: age, email: email, birthday: birthday, gender: gender, height: height, weight: height, phone: phone, identity: identity, password: password).subscribe(onSuccess:{ (model) in
-            if (model.status == "Success") {
-                print("SUCCESS", model)
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String, user_id: String){
+        repository.getSignUpResult(lastname: lastname, firstname: firstname, age: age, email: email, birthday: birthday, gender: gender, height: height, weight: height, phone: phone, identity: identity, password: password, user_id: user_id).subscribe(onSuccess:{ (model) in
                 self.delegate?.onBindSignUpResult(SignUpResult: model)
-            } else {
-                self.delegate?.onBindSignUpErrorResult()
-            }
         }, onError: {error in
-//            self.delegate?.onApiError(error: error as! APIError)
+            self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
 }
