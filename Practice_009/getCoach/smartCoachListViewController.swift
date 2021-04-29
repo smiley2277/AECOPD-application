@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 
-class smartCoachListViewController: UIViewController {
+class smartCoachListViewController: BaseViewController {
     var stepSize: Double = 0.0
     var startTime: String = ""
+    let userId = UserDefaultUtil.shared.adminUserID
+    let dateFormatter = DateFormatter()
+    private var presenter: getCoachPresenterProtocol?
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
     }
     @IBAction func walkingTest(_ sender: Any) {
@@ -34,5 +37,19 @@ class smartCoachListViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
+        presenter = getCoachPresenter(delegate: self)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: Date())
+        if (UserDefaultUtil.shared.borgUuid == nil){
+            print("No borg_uuid")
+        }else{
+            presenter?.getCoach(userId: userId!, borg_uuid: UserDefaultUtil.shared.borgUuid!, timestamp: dateString)
+        }
+    }
+}
+
+extension smartCoachListViewController: getCoachViewProtocol {
+    func onBindGetCoachResult(Result: LoginResult){
+        //TODO: model
     }
 }

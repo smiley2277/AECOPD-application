@@ -23,7 +23,8 @@ class lifestyleViewController: UIViewController, CLLocationManagerDelegate{
     var lifedata:String = ""
     var hrdata:String = ""
     var airdata:String = ""
-    var serial:String = "k87j6e7c"
+    // let userId = UserDefaultUtil.shared.adminUserID
+    var userId:String = "k87j6e7c"
     var threeAPI:String = ""
     var hrAPI:String = ""
     var distanceNum: Double = 0.0
@@ -378,8 +379,8 @@ class lifestyleViewController: UIViewController, CLLocationManagerDelegate{
         dateLabel.text = dateFormatString
         
         //API processing & fetching
-        threeAPI = "https://ntu-med-god.ml/api/getUserFitbitByRange?id="+self.serial+"&start="+self.protext+"&end="+self.protext
-        hrAPI = "https://ntu-med-god.ml/api/getHeartRateMeanByRange?id="+self.serial+"&start="+self.protext+"&end="+self.protext
+        threeAPI = "https://ntu-med-god.ml/api/getUserFitbitByRange?id="+self.userId+"&start="+self.protext+"&end="+self.protext
+        hrAPI = "https://ntu-med-god.ml/api/getHeartRateMeanByRange?id="+self.userId+"&start="+self.protext+"&end="+self.protext
         getThree()
         getHeart()
         getAir()

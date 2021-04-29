@@ -66,9 +66,9 @@ class LoginViewController: BaseViewController {
     
     @IBAction func onTouchRegisterButton(_ sender: Any) {
         //TODO 開註冊頁
-        //let vc = getVC(st: "", vc: "") as!
-        //vc.delegate = self
-        //self.navigationController?.pushViewController(vc, animated: true)
+        let vc = getVC(st: "signUp", vc: "signUpToBackendViewController") as! signUpToBackendViewController
+        vc.delegate = self
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func enableLoginButton(_ isEnable: Bool) {
@@ -103,7 +103,9 @@ extension LoginViewController: LoginViewProtocol {
             if data.userID == "" || data.userID == nil {
                 //TODO 導頁Auth
             } else {
-                //TODO 導頁User
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

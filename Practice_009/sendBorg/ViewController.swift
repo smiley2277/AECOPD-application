@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+class ViewController: BaseViewController{
     @IBOutlet weak var lifestyleButton: UIButton!
     @IBOutlet weak var offlineButton: UIButton!
     @IBOutlet weak var onlineButton: UIButton!
@@ -26,11 +26,11 @@ class ViewController: UIViewController{
     private var presenter: userMainPresenterProtocol?
     override func viewDidLoad() {
         userDefaults = UserDefaults.standard
-//        let dics = userDefaults.dictionaryRepresentation()
+        let dics = userDefaults.dictionaryRepresentation()
 //        for key in dics {
 //            userDefaults.removeObject(forKey: key.key)
 //        }
-        userDefaults.synchronize()
+//        userDefaults.synchronize()
         presenter = userMainPresenter(delegate: self)
         
     }
@@ -45,6 +45,10 @@ class ViewController: UIViewController{
         //send to smartSubViewController.swift
         let nName = Notification.Name("sendStepsizetoSSVC")
         Foundation.NotificationCenter.default.post(name: nName, object: nil, userInfo: ["PASS":stepSize])
+    }
+    func dateDifference(dateA:Date, dateB:Date) -> Double {
+        let interval = dateB.timeIntervalSince(dateA)
+        return interval //unit: sec
     }
     //string to timestamp
     func fetchTimefromString(timestamp: [String])-> [Int]{
@@ -182,6 +186,13 @@ class ViewController: UIViewController{
                 numAry.append(Int(text[1])!)
             }
         }
+        if (numAry.count > 2){
+            for i in Range(0...numAry.count-1){
+                if (i != 0) || (i != numAry.count-1){
+                    numAry.remove(at: i)
+                }
+            }
+        }
         return numAry
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -207,10 +218,6 @@ class ViewController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(catchTimeVaria(noti:)), name: notiNamefortimebyvaria, object: nil)
         userDefaults.synchronize()
         autoFetchHRStep()
-    }
-    func questionnairePackage()-> [String: [Int]]{
-        let pacQues:[String: [Int]] = fetchingDefaultForQues(keyName: "Questionnaire")
-        return pacQues
     }
     func autoFetchHRStep(){
         var duration: [Int] = []
@@ -335,16 +342,31 @@ class ViewController: UIViewController{
         return defaults
     }
     @objc func catchTime(noti: Notification){
-        scTime = fetchTime(timestamp: (noti.userInfo!["PASS"] as? [Date])!)
-        //TODO 如果時間沒有大魚兩分鐘 不存擋
-        userDefaults.set(scTime, forKey: "smartCoachDuration")
-        print("CatchTime ByNoti @VC, ", scTime)
+        let dateFromBorg = noti.userInfo!["PASS"] as! [Date]
+        let interval = dateDifference(dateA:dateFromBorg[0], dateB:dateFromBorg[1])
+        if  (interval < 120){
+            let timeAlert = UIAlertController(title: "提醒", message: "請至少走超過10分鐘：）", preferredStyle: .alert)
+            timeAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(timeAlert, animated: true)
+        }else{
+            scTime = fetchTime(timestamp: (dateFromBorg))
+            userDefaults.set(scTime, forKey: "smartCoachDuration")
+            print("CatchTime ByNoti @VC, ", scTime)
+            
+        }
     }
     @objc func catchTimeVaria(noti: Notification){
-        scvTime = fetchTime(timestamp: (noti.userInfo!["PASS"] as! [Date]))
-        //TODO 如果時間沒有大魚兩分鐘 不存擋
-        userDefaults.set(scvTime, forKey: "smartCoachVariableDuration")
-        print("CatchTimeVariable ByNoti @VC, ", scvTime)
+        let dateFromBorg = noti.userInfo!["PASS"] as! [Date]
+        let interval = dateDifference(dateA:dateFromBorg[0], dateB:dateFromBorg[1])
+        if (interval < 120){
+            let timeAlert = UIAlertController(title: "提醒", message: "請至少走超過10分鐘：）", preferredStyle: .alert)
+            timeAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(timeAlert, animated: true)
+        }else{
+            scvTime = fetchTime(timestamp: dateFromBorg)
+            userDefaults.set(scvTime, forKey: "smartCoachVariableDuration")
+            print("CatchTimeVariable ByNoti @VC, ", scvTime)
+        }
     }
     @objc func catchBefBorg(noti: Notification){
         beforeBorg = noti.userInfo!["PASS"] as! [String: Int]
@@ -378,20 +400,16 @@ class ViewController: UIViewController{
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? offlinePredictViewController
-//        controller?.questionAry = questionAry
         let vc = segue.destination as? smartSubViewController
         vc?.stepSize = stepSize
     }
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
 //        _ = segue.source as? borgScalePostTestViewController
     }
-
 }
 
 extension ViewController: userMainViewProtocol {
-    func onBindMainErrorResult() {
-    }
-    
-    func onBindMainResult(mainResult: LoginResult) {
+    func onBindMainResult(mainResult: PostBorg) {
+        UserDefaultUtil.shared.borgUuid = mainResult.data!.borg_uuid!
     }
 }

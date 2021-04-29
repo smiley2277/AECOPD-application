@@ -25,6 +25,8 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var passwordFill: UITextField!
     @IBOutlet weak var checkpwFill: UITextField!
     @IBOutlet weak var useridFill: UITextField!
+    var user_id: String = ""
+    weak var delegate: LoginViewControllerProtocol?
     
     private var presenter: signUpToBackendPresenterProtocol?
     
@@ -85,10 +87,13 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
         }else{
+            if (useridFill.text != "" ) || (useridFill.text != nil){
+                user_id = useridFill.text!
+            }
             let age = Int((ageFill.text ?? "0") as String)!
             let height = Int((heightFill.text ?? "0") as String)!
             let weight = Int((weightFill.text ?? "0") as String)!
-            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: weight, phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!)
+            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: weight, phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!, user_id: user_id)
         }
         clearTextField()
     }
@@ -136,16 +141,9 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
 }
 
 extension signUpToBackendViewController: signUpToBackendViewProtocol {
-    func onBindSignUpErrorResult() {
-        enableSignUpErrorHint(true)
-    }
     func onBindSignUpResult(SignUpResult: LoginResult) {
-        print("onBindSignUpResult:",SignUpResult)
-        let storyboard = UIStoryboard(name: "signUpGetUserID", bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: "signUpGetUserIDViewController")
-        self.navigationController?.pushViewController(vc, animated: true)
-        //TODO 跳轉台大醫神註冊畫面
-        //TODO 存入userDefault
+        delegate?.onSignUpSuccess(loginResult: SignUpResult)
+        navigationController?.popViewController(animated: true)
     }
 }
 

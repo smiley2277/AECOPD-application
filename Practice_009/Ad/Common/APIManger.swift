@@ -225,13 +225,14 @@ extension APIManager {
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) ,parameters: nil, appendHeaders: nil, userId: userId)
     }
     
-    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String) -> Single<[String:Any]> {
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String, user_id: String) -> Single<[String:Any]> {
         let appendUrl = ""
         let params = ["lastname": lastname, "firstname": firstname,
                       "age": age, "email": email, "birthday": birthday,
                       "gender": gender, "height": height,
                       "weight": height, "phone": phone,
-                      "identity": identity, "password": password] as [String : Any]
+                      "identity": identity, "password": password,
+                      "user_id": user_id] as [String : Any]
         return manager(method: .put, appendUrl: appendUrl, url: APIUrl.authApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     

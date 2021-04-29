@@ -7,9 +7,8 @@
 import Foundation
 import UIKit
 
-protocol userMainViewProtocol: NSObjectProtocol {
-    func onBindMainResult(mainResult: LoginResult)
-    func onBindMainErrorResult()
+protocol userMainViewProtocol: BaseViewControllerProtocol {
+    func onBindMainResult(mainResult: PostBorg)
 }
 
 protocol userMainPresenterProtocol: NSObjectProtocol {

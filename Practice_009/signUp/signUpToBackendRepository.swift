@@ -11,13 +11,10 @@ import RxSwift
 
 class signUpToBackendRepository {
     static let shared = signUpToBackendRepository()
-    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String) -> Single<LoginResult> {
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String, user_id: String) -> Single<LoginResult> {
         
-        let api = APIManager.shared.getSignUpResult(lastname: lastname, firstname: firstname, age: age, email: email, birthday: birthday, gender: gender, height: height, weight: height, phone: phone, identity: identity, password: password)
+        let api = APIManager.shared.getSignUpResult(lastname: lastname, firstname: firstname, age: age, email: email, birthday: birthday, gender: gender, height: height, weight: height, phone: phone, identity: identity, password: password, user_id: user_id)
         return api
             .map{ LoginResult(JSON: $0)! }
-//            .flatMap{ response -> Single<LoginResult> in
-//                return self.procressToken(loginResult: response)
-//            }
     }
 }
