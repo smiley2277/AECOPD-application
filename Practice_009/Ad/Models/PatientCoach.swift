@@ -16,6 +16,8 @@ class PatientCoach: BaseModel {
             var speed: Int?
             var time: Int?
             var timestamp: String?
+            var borgUUID: String?
+            //MARK: for UI
             var date: Date?
             
             override func mapping(map: Map) {
@@ -28,6 +30,8 @@ class PatientCoach: BaseModel {
                 if let date = date {
                     timestamp = DateFormat.shared.dateFormatWith(format: "yyyy年MM月dd日 HH:mm", date: date)
                 }
+                
+                borgUUID <- map["borg_uuid"]
             }
         }
 

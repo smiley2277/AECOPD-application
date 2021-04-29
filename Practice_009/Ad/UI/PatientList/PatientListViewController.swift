@@ -3,7 +3,7 @@ import RxSwift
 
 class PatientListViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    var patients: [String] = ["PatientA", "PatientB", "PatientC", "PatientD", "PatientE", "PatientF"]
+    var patients: [String] = ["test_id", "test_id2", "test_id3"]
     var presenter: PatientListPresenterProtocol?
     
     override func viewDidLoad() {
@@ -33,8 +33,7 @@ extension PatientListViewController: PatientListCellProtocol {
     func onTouchPatientListCell(patientName: String, row: Int) {
         let storyboard = UIStoryboard(name: "PatientDetailTabList", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "PatientDetailTabListViewController") as! PatientDetailTabListViewController
-        //TODO
-        vc.setUserId(userId: "test_id3")
+        vc.setUserId(userId: patients[row])
         self.navigationController?.pushViewController(vc, animated: true)
    
     }
