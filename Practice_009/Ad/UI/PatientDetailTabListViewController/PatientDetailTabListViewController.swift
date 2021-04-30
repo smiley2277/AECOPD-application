@@ -90,9 +90,10 @@ class PatientDetailTabListViewController: BaseViewController {
         scrollTopPageButtonBottomLine(percent: 0)
         switchPageButton(toPage: 0)
         
+        datePicker.date = Date()
+        
         presenter = PatientDetailTabListPresenter(delegate: self)
         loadData()
-
 
         self.addCoachContainerViewBottom.constant = 301
         self.viewReload()
@@ -175,7 +176,10 @@ class PatientDetailTabListViewController: BaseViewController {
         //TODO remove空的
         let patientCoachList = addCoachList.filter({ $0.speed != nil || $0.time != nil })
         if patientCoachList.isEmpty { return }
-        if borgUUID == nil { return }
+        if borgUUID == nil {
+            showThatDateNoBorgHint()
+            return
+        }
         presenter?.postPatientCoach(userId: userId!, timeStamp: timeStamp, borgUUID: borgUUID!, patientCoachList: patientCoachList)
     }
     
@@ -208,6 +212,7 @@ class PatientDetailTabListViewController: BaseViewController {
         isDatePickerViewShowing = false
         enableDatePickerView(isDatePickerViewShowing)
         enableBackgroundGrayView(isDatePickerViewShowing)
+        patientDetailAddCoachViewController!.setDate(date: datePicker.date)
     }
     
     private func enableDatePickerView(_ isEnable: Bool) {
@@ -218,6 +223,11 @@ class PatientDetailTabListViewController: BaseViewController {
     }
     
     @objc private func onTouchPencilButton() {
+        let borgUUID = patientBorgAndCoachList.first(where: {$0.isBorg})?.borgUUID
+        if borgUUID == nil {
+            showThatDateNoBorgHint()
+            return
+        }
         isAddSuggestStackViewShowing = !isAddSuggestStackViewShowing
         isDatePickerViewShowing = false
         enableDatePickerView(isDatePickerViewShowing)
@@ -256,6 +266,13 @@ class PatientDetailTabListViewController: BaseViewController {
     private func enableBackgroundGrayView(_ isEnable: Bool) {
         UIView.animate(withDuration: 0.2, animations: {
                         self.backgroundGrayView.alpha = isEnable ? 1 : 0 })
+    }
+    
+    private func showThatDateNoBorgHint(){
+        let alertController = UIAlertController(title: nil, message: "這天沒有填寫的問券哦!", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "好", style: .default)
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true)
     }
 }
 
@@ -398,6 +415,7 @@ extension PatientDetailTabListViewController {
         } else {
             let viewController = segue.destination as? PatientDetailTabListAddCoachViewController
             patientDetailAddCoachViewController = viewController
+            patientDetailAddCoachViewController?.setDate(date: datePicker.date)
             viewController!.delegate = self
         }
     }
@@ -405,10 +423,10 @@ extension PatientDetailTabListViewController {
 
 extension PatientDetailTabListViewController: PatientDetailTabListAddCoachViewControllerProtocol {
     func onChangedHeight(newHeight: CGFloat) {
-        let spaceForTopSpace: CGFloat = 160
+        let spaceForTopSpace: CGFloat = 35
         let maxHeight = UIScreen.main.bounds.height - keyboardHeight - spaceForTopSpace
         UIView.animate(withDuration: 0.2, animations: {
-            self.addCoachContainerViewHeight.constant = (newHeight > maxHeight) ? maxHeight : newHeight
+            self.addCoachContainerViewHeight.constant = (newHeight + 20 > maxHeight) ? maxHeight : newHeight + 20
             self.patientDetailAddCoachViewController?.scrollToBottom()
             self.view.layoutIfNeeded()
       })

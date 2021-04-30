@@ -1043,8 +1043,49 @@
                                             <outlet property="title" destination="3sf-w9-qFM" id="ULX-0f-PIB"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Title" rowHeight="164" id="baO-01-ibU" userLabel="Title" customClass="PatientDetailTabListTitleCell" customModule="Practice_009" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="192" width="375" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="baO-01-ibU" id="q8B-ED-fDs">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4AL-Pf-fOj" userLabel="Outer Stack View">
+                                                    <rect key="frame" x="0.0" y="1" width="375" height="164"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr2-VA-ORW">
+                                                            <rect key="frame" x="16" y="0.0" width="343" height="156"/>
+                                                            <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <edgeInsets key="layoutMargins" top="0.0" left="16" bottom="8" right="16"/>
+                                                </stackView>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIl-TC-EOp">
+                                                    <rect key="frame" x="16" y="163.5" width="343" height="0.5"/>
+                                                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="g8R-vp-xyf"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="4AL-Pf-fOj" secondAttribute="trailing" id="31Z-tr-Y9T"/>
+                                                <constraint firstItem="RIl-TC-EOp" firstAttribute="width" secondItem="q8B-ED-fDs" secondAttribute="width" constant="-32" id="H0B-EJ-hpN"/>
+                                                <constraint firstItem="RIl-TC-EOp" firstAttribute="bottom" secondItem="4AL-Pf-fOj" secondAttribute="bottom" id="K0s-Rs-g3B"/>
+                                                <constraint firstItem="4AL-Pf-fOj" firstAttribute="top" secondItem="q8B-ED-fDs" secondAttribute="top" id="Kdb-Ab-k4l"/>
+                                                <constraint firstItem="RIl-TC-EOp" firstAttribute="centerX" secondItem="q8B-ED-fDs" secondAttribute="centerX" id="Meq-xL-No3"/>
+                                                <constraint firstAttribute="bottom" secondItem="4AL-Pf-fOj" secondAttribute="bottom" id="gjE-Fm-hBR"/>
+                                                <constraint firstItem="4AL-Pf-fOj" firstAttribute="leading" secondItem="q8B-ED-fDs" secondAttribute="leading" id="h3f-0K-f2K"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="Rr2-VA-ORW" id="7Rm-vn-lim"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SendButton" rowHeight="40" id="0t4-nq-eSf" customClass="PatientDetailTablListSendButtonCell" customModule="Practice_009" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="192" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="356" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0t4-nq-eSf" id="Fqu-EU-An1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>

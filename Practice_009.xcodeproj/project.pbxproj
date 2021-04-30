@@ -107,6 +107,7 @@
 		E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F519ED263BD7D8006E713C /* LoadingView.xib */; };
 		E7F519F3263BD7DC006E713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F2263BD7DC006E713C /* LoadingView.swift */; };
 		E7F519F8263BD89C006E713C /* APILoadingHandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */; };
+		E7F51A03263BE269006E713C /* PatientDetailTabListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F51A02263BE269006E713C /* PatientDetailTabListTitleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +237,7 @@
 		E7F519ED263BD7D8006E713C /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		E7F519F2263BD7DC006E713C /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILoadingHandleType.swift; sourceTree = "<group>"; };
+		E7F51A02263BE269006E713C /* PatientDetailTabListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailTabListTitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +354,7 @@
 				462D25AA262D6BBB00A589E0 /* PatientDetailTabListSenbButtonCell.swift */,
 				462D25AB262D6BBB00A589E0 /* PatientDetailTablListAddCoachViewController.swift */,
 				462D25AC262D6BBB00A589E0 /* PatientDetailTablListInputCell.swift */,
+				E7F51A02263BE269006E713C /* PatientDetailTabListTitleCell.swift */,
 			);
 			path = PatientDetailTabListAddCoach;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				462D25C7262D6BBC00A589E0 /* APIHelper.swift in Sources */,
 				462D25EF262D6BBC00A589E0 /* PatientSurvey.swift in Sources */,
 				462D25E0262D6BBC00A589E0 /* PatientDetailSurveyCell.swift in Sources */,
+				E7F51A03263BE269006E713C /* PatientDetailTabListTitleCell.swift in Sources */,
 				462D25C8262D6BBC00A589E0 /* APIError.swift in Sources */,
 				468B1EEA26033B0C00C52990 /* walkingTestViewController.swift in Sources */,
 				46CCAEE725EE8C6E009D001C /* eq5dViewController.swift in Sources */,

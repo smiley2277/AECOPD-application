@@ -13,18 +13,30 @@ protocol PatientDetailTabListAddCoachViewControllerProtocol: NSObjectProtocol {
     func onTouchSendButton(addCoachList: [(speed: Int?, time: Int?)])
 }
 
+extension PatientDetailTabListAddCoachViewController {
+    func setDate(date: Date) {
+        self.date = date
+        if let _ = tableView {
+            reloadDataViewAndChangedHeight()
+        }
+    }
+}
+
 class PatientDetailTabListAddCoachViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     weak var delegate: PatientDetailTabListAddCoachViewControllerProtocol?
     var addCoachList: [(speed: Int?, time: Int?)] = [(nil, nil)]
+    var date: Date?
     var isAddingCoachCount = false
     enum Section: Int, CaseIterable {
+        case title
         case input
         case sendButton
     }
     let inputCellHeight: CGFloat = 164.0
     let sendButtonHeight: CGFloat = 40.0
+    let titleHeight: CGFloat = 40.0
     
     var previousEditingFieldIndex = 0
 
@@ -48,8 +60,8 @@ class PatientDetailTabListAddCoachViewController: UIViewController {
     func reloadDataViewAndChangedHeight() {
         UIView.setAnimationsEnabled(false)
         tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath.init(row: addCoachList.count - 1, section: 0)], with: .fade)
-        tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
+        tableView.insertRows(at: [IndexPath.init(row: addCoachList.count - 1, section: Section.input.rawValue)], with: .fade)
+        tableView.reloadSections(IndexSet.init(integer: Section.input.rawValue), with: .fade)
         tableView.endUpdates()
         onChangeHeight()
         UIView.setAnimationsEnabled(true)
@@ -89,6 +101,8 @@ extension PatientDetailTabListAddCoachViewController: UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
+        case .title:
+            return 1
         case .input:
             return addCoachList.count
         case .sendButton:
@@ -98,6 +112,11 @@ extension PatientDetailTabListAddCoachViewController: UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch Section(rawValue: indexPath.section)! {
+        case .title:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Title")! as! PatientDetailTabListTitleCell
+            let dateString = DateFormat.shared.dateFormatWith(format: "yyyy年MM月dd日", date: date!)
+            cell.setCell(title: dateString)
+            return cell
         case .input:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Input")! as! PatientDetailTabListInputCell
             let isLast = (addCoachList.count == indexPath.row + 1)
@@ -116,17 +135,27 @@ extension PatientDetailTabListAddCoachViewController: UITableViewDataSource, UIT
             return cell
         }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        ()
-    }
-    
+     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.section == Section.input.rawValue) ?  inputCellHeight : sendButtonHeight
+        switch Section(rawValue: indexPath.section)! {
+        case .title:
+            return titleHeight
+        case .input:
+            return inputCellHeight
+        case .sendButton:
+            return sendButtonHeight
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.section == Section.input.rawValue) ?  inputCellHeight : sendButtonHeight
+        switch Section(rawValue: indexPath.section)! {
+        case .title:
+            return titleHeight
+        case .input:
+            return inputCellHeight
+        case .sendButton:
+            return sendButtonHeight
+        }
     }
 }
 
