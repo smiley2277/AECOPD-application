@@ -62,6 +62,7 @@ class PatientDetailTabListAddCoachViewController: UIViewController {
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath.init(row: addCoachList.count - 1, section: Section.input.rawValue)], with: .fade)
         tableView.reloadSections(IndexSet.init(integer: Section.input.rawValue), with: .fade)
+        tableView.reloadSections(IndexSet.init(integer: Section.title.rawValue), with: .fade)
         tableView.endUpdates()
         onChangeHeight()
         UIView.setAnimationsEnabled(true)
