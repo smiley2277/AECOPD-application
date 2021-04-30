@@ -104,6 +104,9 @@
 		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
 		46FE356D263AA4790010779B /* getCoachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE356C263AA4790010779B /* getCoachRepository.swift */; };
 		755602206C8599C81157D952 /* Pods_Practice_009.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */; };
+		E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F519ED263BD7D8006E713C /* LoadingView.xib */; };
+		E7F519F3263BD7DC006E713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F2263BD7DC006E713C /* LoadingView.swift */; };
+		E7F519F8263BD89C006E713C /* APILoadingHandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +233,9 @@
 		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
 		46FE356C263AA4790010779B /* getCoachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachRepository.swift; sourceTree = "<group>"; };
 		5C11ACBDDD69553C6FF829CE /* Pods-Practice_009.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_009.release.xcconfig"; path = "Target Support Files/Pods-Practice_009/Pods-Practice_009.release.xcconfig"; sourceTree = "<group>"; };
+		E7F519ED263BD7D8006E713C /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		E7F519F2263BD7DC006E713C /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILoadingHandleType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +297,7 @@
 		462D2593262D6BB900A589E0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E7F519EC263BD7CA006E713C /* LoadingView */,
 				462D2594262D6BB900A589E0 /* APIHelper.swift */,
 				462D2595262D6BB900A589E0 /* APIError.swift */,
 				462D2596262D6BB900A589E0 /* BaseViewController.swift */,
@@ -546,6 +553,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E7F519EC263BD7CA006E713C /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */,
+				E7F519F2263BD7DC006E713C /* LoadingView.swift */,
+				E7F519ED263BD7D8006E713C /* LoadingView.xib */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -666,6 +683,7 @@
 				46716CBD25FF63CE00FDB785 /* America.gpx in Resources */,
 				468B1EF926048EC900C52990 /* stop-button.png in Resources */,
 				46364C36263005400076C55C /* signUp.storyboard in Resources */,
+				E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */,
 				468B1EF426048C9800C52990 /* play-button.png in Resources */,
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
@@ -764,6 +782,7 @@
 				46CE40332637C02700E93755 /* quesProtocol.swift in Sources */,
 				462D25E2262D6BBC00A589E0 /* PatientDetailTabListViewController.swift in Sources */,
 				46364C4A263157530076C55C /* signUpToBackendProtocol.swift in Sources */,
+				E7F519F8263BD89C006E713C /* APILoadingHandleType.swift in Sources */,
 				460EF8BC2632AC03004E8DD3 /* signUpGetUserIDPresenter.swift in Sources */,
 				462D25EB262D6BBC00A589E0 /* LoginResult.swift in Sources */,
 				462D25D0262D6BBC00A589E0 /* UIViewExtension.swift in Sources */,
@@ -800,6 +819,7 @@
 				46CCAEE225EE7D8D009D001C /* mMRCViewController.swift in Sources */,
 				46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */,
 				466C70CB2609D4D3003710F3 /* borgScaleViewController.swift in Sources */,
+				E7F519F3263BD7DC006E713C /* LoadingView.swift in Sources */,
 				462D25C9262D6BBC00A589E0 /* BaseViewController.swift in Sources */,
 				460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */,
 				462D25DC262D6BBC00A589E0 /* PatientDetailBorgCell.swift in Sources */,

@@ -141,6 +141,8 @@ extension BaseViewController {
 
 class BaseViewController: UIViewController {
     private var loadingAPICount = 0
+    let loadingView = LoadingView(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    
     private var tabBarType: TabBarType = .notHidden
     private var navBarType: NavBarType = .notHidden
     private var navLeftType: NavLeftType = .defaultType
@@ -240,7 +242,8 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setUpLoadingView()
         setUpNilButton()
     }
 
@@ -258,6 +261,62 @@ class BaseViewController: UIViewController {
     func adjustViewAppearance() {
         self.navigationController?.navigationBar.accessibilityIdentifier = "navigationBar"
     }
+    
+    func onStartLoadingHandle(handleType: APILoadingHandleType) {
+        self.loadingAPICount += 1
+        self.handleLoading(handleType: handleType)
+    }
+
+    func onCompletedLoadingHandle() {
+        //TODO 由 presenter 或各自的view控管什麼時候要關
+        self.loadingAPICount -= 1
+        self.loadingView.isHidden = (self.loadingAPICount == 0) ? true : self.loadingView.isHidden
+        self.view.isUserInteractionEnabled = (self.loadingAPICount == 0) ? true : self.view.isUserInteractionEnabled
+    }
+    
+    private func handleLoading(handleType: APILoadingHandleType) {
+        switch handleType {
+        case .coverPlate:
+            //editing
+            self.loadingView.backgroundColor = UIColor.white
+            self.loadingView.backgroundView.backgroundColor = UIColor.white
+            self.loadingView.backgroundView.backgroundColor = UIColor.white.withAlphaComponent(1)
+            self.loadingView.isUserInteractionEnabled = true
+            self.view.isUserInteractionEnabled = false
+            self.loadingView.isHidden = false
+        case .notBlock:
+            self.loadingView.backgroundColor = UIColor.clear
+            self.loadingView.backgroundView.backgroundColor = UIColor.clear
+            self.loadingView.isUserInteractionEnabled = false
+            self.view.isUserInteractionEnabled = true
+            self.loadingView.isHidden = true
+        case .clearBackgroundAndCantTouchView:
+            self.loadingView.backgroundColor = UIColor.clear
+            self.loadingView.backgroundView.backgroundColor = UIColor.clear
+            self.loadingView.isUserInteractionEnabled = false
+            self.loadingView.isHidden = false
+            //注意:loading時阻擋viewControlelr動作，但不包含navigationBar，完成loading時，再打開
+            self.view.isUserInteractionEnabled = false
+        case .custom:
+            self.view.isUserInteractionEnabled = true
+            self.loadingView.isHidden = true
+        case .coverPlateAlpha:
+            self.loadingView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+            self.loadingView.backgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+            self.loadingView.backgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+            self.view.isUserInteractionEnabled = true
+            self.loadingView.isUserInteractionEnabled = true
+            self.loadingView.isHidden = false
+        case .ignore:
+            ()
+        }
+    }
+    
+    private func setUpLoadingView() {
+        self.loadingView.setUpLoadingView()
+        self.view.addSubview(loadingView)
+    }
+
 
 }
 
@@ -434,4 +493,6 @@ extension BaseViewController: BaseViewControllerProtocol {
 
 protocol BaseViewControllerProtocol: NSObjectProtocol {
     func onApiError(error: APIError)
+    func onStartLoadingHandle(handleType: APILoadingHandleType)
+    func onCompletedLoadingHandle()
 }
