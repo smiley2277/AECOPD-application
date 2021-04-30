@@ -49,7 +49,6 @@ class PatientSurvey: BaseModel {
                 mmrc <- map["mmrc"]
                 timestamp <- map["timestamp"]
                 
-                timestamp <- map["timestamp"]
                 //TODO 確定API傳什麼格式來，做時間格式轉換，對順序做整理
                 let date = DateFormat.shared.dateFormatWith(format: "E, d MMM yyyy HH:mm:ss Z", string: timestamp)
                 if let date = date {
