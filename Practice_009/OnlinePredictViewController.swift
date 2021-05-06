@@ -12,7 +12,7 @@ import Foundation
 import FoundationNetworking
 #endif
 
-class OnlinePredictViewController: UIViewController{
+class OnlinePredictViewController: BaseViewController{
     var probData:String = ""
 //    let userId = UserDefaultUtil.shared.adminUserID
     let userId: String = "k87j6e7c"

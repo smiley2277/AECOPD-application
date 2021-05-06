@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class borgScaleViewController: UIViewController {
+class borgScaleViewController: BaseViewController {
     var borgAns: Int = 0
     var stepSize: Double = 0.0
     let oriColor = UIColor(red: 181/255, green: 237/255, blue: 235, alpha: 1)

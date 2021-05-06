@@ -15,13 +15,16 @@ class mMRCViewController: UIViewController{
     @IBOutlet weak var level3: UIButton!
     @IBOutlet weak var level4: UIButton!
     @IBOutlet weak var level5: UIButton!
+    let color = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+    let checkColor = UIColor(red: 105/255, green: 105/255, blue: 105/255, alpha: 1)
     override func viewDidLoad() {
         super.viewDidLoad()
-        level1.layer.borderColor = UIColor.black.cgColor
-        level2.layer.borderColor = UIColor.black.cgColor
-        level3.layer.borderColor = UIColor.black.cgColor
-        level4.layer.borderColor = UIColor.black.cgColor
-        level5.layer.borderColor = UIColor.black.cgColor
+        level1.backgroundColor = color
+        level2.backgroundColor = color
+        level3.backgroundColor = color
+        level4.backgroundColor = color
+        level5.backgroundColor = color
+//        level5.layer.borderColor = UIColor.black.cgColor
         level1.layer.borderWidth = 2
         level2.layer.borderWidth = 2
         level3.layer.borderWidth = 2
@@ -33,6 +36,7 @@ class mMRCViewController: UIViewController{
     
     @IBAction func level1Check(_ sender: UIButton) {
         level1.setTitle("✓", for: .normal)
+        level1.setTitleColor(checkColor, for: UIControlState.normal)
         level2.setTitle("", for: .normal)
         level3.setTitle("", for: .normal)
         level4.setTitle("", for: .normal)
@@ -46,6 +50,7 @@ class mMRCViewController: UIViewController{
     @IBAction func level2Check(_ sender: UIButton) {
         level1.setTitle("", for: .normal)
         level2.setTitle("✓", for: .normal)
+        level2.setTitleColor(checkColor, for: UIControlState.normal)
         level3.setTitle("", for: .normal)
         level4.setTitle("", for: .normal)
         level5.setTitle("", for: .normal)
@@ -57,6 +62,7 @@ class mMRCViewController: UIViewController{
         level1.setTitle("", for: .normal)
         level2.setTitle("", for: .normal)
         level3.setTitle("✓", for: .normal)
+        level3.setTitleColor(checkColor, for: UIControlState.normal)
         level4.setTitle("", for: .normal)
         level5.setTitle("", for: .normal)
         mMRCValue = 2
@@ -67,6 +73,7 @@ class mMRCViewController: UIViewController{
         level2.setTitle("", for: .normal)
         level3.setTitle("", for: .normal)
         level4.setTitle("✓", for: .normal)
+        level4.setTitleColor(checkColor, for: UIControlState.normal)
         level5.setTitle("", for: .normal)
         mMRCValue = 3
         summitButton.isUserInteractionEnabled = true
@@ -78,6 +85,7 @@ class mMRCViewController: UIViewController{
         level3.setTitle("", for: .normal)
         level4.setTitle("", for: .normal)
         level5.setTitle("✓", for: .normal)
+        level5.setTitleColor(checkColor, for: UIControlState.normal)
         mMRCValue = 4
         summitButton.isUserInteractionEnabled = true
     }

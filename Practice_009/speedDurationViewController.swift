@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class speedDurationViewController: UIViewController, UITextFieldDelegate {
+class speedDurationViewController: BaseViewController, UITextFieldDelegate {
     var userDefaults: UserDefaults!
     @IBOutlet weak var durationFill: UITextField!
     @IBOutlet weak var speedFill: UITextField!
@@ -25,11 +25,19 @@ class speedDurationViewController: UIViewController, UITextFieldDelegate {
         userDefaults = UserDefaults.standard
     }
     override func viewWillAppear(_ animated: Bool) {
-        speedDefault.text = settingDefault(keyName: "speed")
+        let info_SFD = settingDefault(keyName: "speedFromD")
+        let info_DFD = settingDefault(keyName: "durationFromD")
+        if (info_SFD != "0") && (info_DFD != "0"){
+            speedDefault.text = info_SFD
+            timeDefault.text = info_DFD
+        }else{
+            speedDefault.text = settingDefault(keyName: "speed")
+            timeDefault.text = settingDefault(keyName: "duration")
+        }
         stepCountDefault.text = settingDefault(keyName: "stepCount")
         var stepSizeLabel = settingDefault(keyName: "stepSize")
         stepSizeDefault.text = String(lround((stepSizeLabel as! NSString).doubleValue))
-        timeDefault.text = settingDefault(keyName: "duration")
+        
     }
     //textField delegation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -84,6 +92,8 @@ class speedDurationViewController: UIViewController, UITextFieldDelegate {
             userDefaults.set(stepSize, forKey: "stepSize")
             userDefaults.synchronize()
         }
+        
+        
         performSegue(withIdentifier: "settingUnwindSegue", sender: self)
     }
     //存取預設值
@@ -96,6 +106,10 @@ class speedDurationViewController: UIViewController, UITextFieldDelegate {
         }else if (keyName == "duration"){
              defaults = String(UserDefaults.standard.integer(forKey: keyName))
         }else if (keyName == "stepCount"){
+            defaults = String(UserDefaults.standard.integer(forKey: keyName))
+        }else if (keyName == "speedFromD"){
+            defaults = String(UserDefaults.standard.float(forKey: keyName))
+        }else if (keyName == "durationFromD"){
             defaults = String(UserDefaults.standard.integer(forKey: keyName))
         }
         return defaults

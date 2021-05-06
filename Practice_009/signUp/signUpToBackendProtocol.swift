@@ -14,5 +14,5 @@ protocol signUpToBackendViewProtocol: BaseViewControllerProtocol {
 }
 
 protocol signUpToBackendPresenterProtocol: NSObjectProtocol {
-    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String, user_id: String)
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String)
 }

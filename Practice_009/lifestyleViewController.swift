@@ -15,7 +15,7 @@ import FoundationNetworking
 protocol  lifestyleViewControllerProtocol : NSObjectProtocol{
     func SendStepSize(size: Int) 
 }
-class lifestyleViewController: UIViewController, CLLocationManagerDelegate{
+class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     let locationManager = CLLocationManager()
     var date:Date = Date()
     let dateFormatter: DateFormatter = DateFormatter()

@@ -8,11 +8,21 @@
 import Foundation
 import UIKit
 
-class variableSettingViewController: UIViewController, UITextFieldDelegate{
+class variableSettingViewController: BaseViewController, UITextFieldDelegate{
     var userDefaults: UserDefaults!
     @IBOutlet weak var stepSize: UITextField!
     @IBOutlet weak var stepSizeDefault: UILabel!
     @IBOutlet weak var timeDefault: UILabel!
+    @IBOutlet weak var durationDefault: UILabel!
+    @IBOutlet weak var speedDefault: UILabel!
+    @IBOutlet weak var speed1: UITextField!
+    @IBOutlet weak var speed2: UITextField!
+    @IBOutlet weak var speed3: UITextField!
+    @IBOutlet weak var duration1: UITextField!
+    @IBOutlet weak var duration2: UITextField!
+    @IBOutlet weak var duration3: UITextField!
+    var spe: [Float] = []
+    var dur: [Int] = []
     // TODO: 多筆的建議
     override func viewDidLoad() {
         stepSize.delegate = self
@@ -22,6 +32,14 @@ class variableSettingViewController: UIViewController, UITextFieldDelegate{
         var stepSizeLabel = settingDefault(keyName: "stepSize")
         stepSizeDefault.text = String(lround((stepSizeLabel as! NSString).doubleValue))
         timeDefault.text = settingDefault(keyName: "stepCount")
+        durationDefault.text = settingDefaultForAry(keyName: "durationV")?.map({ "\($0)" }).joined(separator: "-") ?? ""
+        speedDefault.text = settingDefaultForFloatAry(keyName: "speedV")?.map({ "\($0)" }).joined(separator: "-") ?? ""
+        let info_SPFD = settingDefaultForFloatAry(keyName: "speedVFromD")
+        let info_DDFD = settingDefaultForAry(keyName: "durationVFromD")
+        if (info_SPFD != []) && (info_DDFD != []){
+            speedDefault.text = info_SPFD?.map({ "\($0)" }).joined(separator: "-") ?? ""
+            durationDefault.text  = info_DDFD?.map({ "\($0)" }).joined(separator: "-") ?? ""
+        }
     }
     //textField delegation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -60,6 +78,23 @@ class variableSettingViewController: UIViewController, UITextFieldDelegate{
 //            print("@VSVC, stepCOunt", stepsize)
             userDefaults.synchronize()
         }
+        if (speed1.text != "") && (duration1.text != ""){
+            spe.append(Float((speed1.text as! NSString).intValue))
+            dur.append(Int((duration1.text as! NSString).intValue))
+        }
+        if (speed2.text != "") && (duration2.text != ""){
+            spe.append(Float((speed2.text as! NSString).intValue))
+            dur.append(Int((duration2.text as! NSString).intValue))
+        }
+        if (speed3.text != "") && (duration3.text != ""){
+            spe.append(Float((speed3.text as! NSString).intValue))
+            dur.append(Int((duration3.text as! NSString).intValue))
+        }
+        if (spe.count != 0) && (dur.count != 0){
+            userDefaults.set(spe, forKey: "speedV")
+            userDefaults.set(dur, forKey: "durationV")
+            userDefaults.synchronize()
+        }
         performSegue(withIdentifier: "variableSettingUnwindSegue", sender: self)
     }
     //存取預設值
@@ -71,5 +106,24 @@ class variableSettingViewController: UIViewController, UITextFieldDelegate{
             defaults = String(UserDefaults.standard.integer(forKey: keyName))
         }
         return defaults
+    }
+    func settingDefaultForAry(keyName: String)->[Int]?{
+        var defaults: [Int] = []
+        if (keyName == "durationV"){
+            defaults = UserDefaults.standard.array(forKey: keyName)as? [Int] ?? [Int]()
+        }else if (keyName == "durationVFromD"){
+            defaults = UserDefaults.standard.array(forKey: keyName)as? [Int] ?? [Int]()
+        }
+        return defaults
+    }
+    func settingDefaultForFloatAry(keyName: String)->[Float]?{
+        var defaults: [Float] = []
+        if (keyName == "speedV"){
+            defaults = UserDefaults.standard.array(forKey: keyName)as? [Float] ?? [Float]()
+        }else if (keyName == "speedVFromD"){
+            defaults = UserDefaults.standard.array(forKey: keyName)as? [Float] ?? [Float]()
+        }
+        return defaults
+        
     }
 }

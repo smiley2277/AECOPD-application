@@ -12,7 +12,7 @@ import RxSwift
 class getCoachPresenter: NSObject, getCoachPresenterProtocol {
     func getCoach(userId: String, borg_uuid: String, timestamp: String) {
         repository.getCoach(userId: userId, borg_uuid: borg_uuid, timestamp: timestamp).subscribe(onSuccess:{ (model) in
-//                self.delegate?.onBindGetCoachResult(Result: model)
+                self.delegate?.onBindGetCoachResult(Result: model)
         }, onError: {error in
             self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)

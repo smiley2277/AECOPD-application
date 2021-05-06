@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class borgScalePostTestViewController: UIViewController {
+class borgScalePostTestViewController: BaseViewController {
     var borgAns: Int = 0
     var stopTime: String = ""
     var sent: [String: Int] = [:]

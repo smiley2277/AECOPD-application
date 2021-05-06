@@ -29,7 +29,6 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
     weak var delegate: LoginViewControllerProtocol?
     
     private var presenter: signUpToBackendPresenterProtocol?
-    
     var sexuality: String = ""
     let formatter = DateFormatter()
     var receiveData: [String:Any] = [:]
@@ -87,13 +86,15 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
         }else{
-            if (useridFill.text != "" ) || (useridFill.text != nil){
+            if (useridFill.text != nil){
                 user_id = useridFill.text!
+            }else{
+                user_id = ""
             }
             let age = Int((ageFill.text ?? "0") as String)!
             let height = Int((heightFill.text ?? "0") as String)!
-            let weight = Int((weightFill.text ?? "0") as String)!
-            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: weight, phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!, user_id: user_id)
+            let weight = Float((weightFill.text ?? "0") as String)!
+            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: Int(weight), phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!)
         }
         clearTextField()
     }

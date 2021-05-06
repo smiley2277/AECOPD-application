@@ -101,7 +101,9 @@ extension LoginViewController: LoginViewProtocol {
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             if data.userID == "" || data.userID == nil {
-                //TODO 導頁Auth
+                let storyboard = UIStoryboard(name: "signUpGetUserID", bundle: Bundle.main)
+                let vc = storyboard.instantiateViewController(withIdentifier: "signUpGetUserIDViewController")
+                self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")

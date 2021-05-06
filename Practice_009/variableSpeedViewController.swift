@@ -13,7 +13,7 @@ import FoundationNetworking
 #endif
 
 
-class variableSpeedViewController: UIViewController, UITextFieldDelegate {
+class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var flashSignal: UIButton!
@@ -67,6 +67,8 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
             action:#selector(variableSpeedViewController.setting))
         // 加到導覽列中
         self.navigationItem.rightBarButtonItem = rightButton
+        self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .custom)
+        self.setCustomRightBarButtonItems(barButtonItems: [rightButton])
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         startTime = dateFormatter.date(from: startString)
         print("@VSVC startSting", startString)
@@ -98,13 +100,13 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
     }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
-        let transSpeed = speed * 6000 / Float(size)
+        let transSpeed = speed * 10000  / (Float(size)/6)
         return transSpeed
     }
     func aryUnitTransfer(speed: [Float], size: Double)-> [Float]{
         var ary:[Float] = []
         for i in Range(0...speed.count-1){
-            let arc = speed[i] * 6000 / Float(size)
+            let arc = speed[i] * 10000 / (Float(size)/6)
             ary.append(arc)
         }
         return ary
@@ -113,6 +115,11 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "variableSettingViewController") as! variableSettingViewController
         let info_SS = vc.settingDefault(keyName: "stepSize")
+        let info_SP = vc.settingDefaultForFloatAry(keyName: "speed")
+        let info_DD = vc.settingDefaultForAry(keyName: "duration")
+        
+        let info_SPFD = vc.settingDefaultForFloatAry(keyName: "speedVFromD")
+        let info_DDFD = vc.settingDefaultForAry(keyName: "durationVFromD")
         if (stepSizeLife == 0){
             stepSize = (info_SS as! NSString).doubleValue
             stepSize = trunc(stepSize * 10) / 10
@@ -120,6 +127,17 @@ class variableSpeedViewController: UIViewController, UITextFieldDelegate {
         }else{
             stepSize = stepSizeLife
         }
+        if (info_SP != []) && (info_DD != []){
+            varSpeed = info_SP!
+            varDuration = info_DD!
+            print("@VSVC, info, ", varSpeed, varDuration , info_SP , info_DD)
+        }
+        if (info_SPFD != []) && (info_DDFD != []){
+            varSpeed = info_SPFD!
+            varDuration = info_DDFD!
+            print("@VSVC, info from backend, ", varSpeed, varDuration , info_SPFD , info_DDFD)
+        }
+        
     }
     
     //button function

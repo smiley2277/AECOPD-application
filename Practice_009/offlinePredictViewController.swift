@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreML
 
-class offlinePredictViewController: UIViewController {
+class offlinePredictViewController: BaseViewController {
     var questionAry:[Int] = []
     @IBAction func predict(_ sender: Any) {
         let model = COPDRfcOffline()

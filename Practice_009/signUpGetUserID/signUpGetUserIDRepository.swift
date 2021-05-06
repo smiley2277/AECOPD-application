@@ -9,9 +9,9 @@ import RxSwift
 
 class signUpGetUserIDRepository {
     static let shared = signUpGetUserIDRepository()
-//    func getLoginResult(email: String, password: String) -> Single<LoginResult> {
-//        let api = APIManager.shared.getLoginResult(email: email, password: password)
-//        return api
-//            .map{ LoginResult(JSON: $0)! }
-//    }
+    func getUserID(email: String, password: String) -> Single<LoginResult> {
+        let api = APIManager.shared.getUserID(email: email, password: password)
+        return api
+            .map{ LoginResult(JSON: $0)! }
+    }
 }

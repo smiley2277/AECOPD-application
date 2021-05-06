@@ -13,7 +13,7 @@ import FoundationNetworking
 #endif
 
 
-class walkingTestViewController: UIViewController, UITextFieldDelegate {
+class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var flashSignal: UIButton!
@@ -63,6 +63,8 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
             action:#selector(walkingTestViewController.setting))
         // 加到導覽列中
         self.navigationItem.rightBarButtonItem = rightButton
+        self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .custom)
+        self.setCustomRightBarButtonItems(barButtonItems: [rightButton])
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         startTime = dateFormatter.date(from: startString)
         print("viewDidLoad, stopString", startString)
@@ -94,7 +96,7 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
     }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
-        let transSpeed = speed * 100 / (Float(size)/6)
+        let transSpeed = speed * 10000 / (Float(size)/6)
         return transSpeed
     }
     func fetchStepSize(){
@@ -103,20 +105,29 @@ class walkingTestViewController: UIViewController, UITextFieldDelegate {
         let info_SS = vc.settingDefault(keyName: "stepSize")
         let info_S = vc.settingDefault(keyName: "speed")
         let info_D = vc.settingDefault(keyName: "duration")
+        let info_SFD = vc.settingDefault(keyName: "speedFromD")
+        let info_DFD = vc.settingDefault(keyName: "durationFromD")
         if (stepSizeLife <= 0){
-            stepSize = (info_SS as! NSString).doubleValue
+            stepSize = (info_SS! as NSString).doubleValue
             stepSize = trunc(stepSize * 10) / 10
-            trainingSpeed = (info_S as! NSString).floatValue
+            trainingSpeed = (info_S! as NSString).floatValue
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
             trainingDuration = Int((info_D as! NSString).intValue)*60
 //            print("@WTVC, info, ", stepSize, trainingSpeed, trainingDuration)
         }else{
             stepSize = stepSizeLife
-            trainingSpeed = (info_S as! NSString).floatValue
+            trainingSpeed = (info_S! as NSString).floatValue
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
             trainingDuration = Int((info_D as! NSString).intValue)*60
+        }
+        if (info_SFD != "0") && (info_DFD != "0"){
+            trainingSpeed = (info_SFD! as NSString).floatValue
+            trainingSpeed = trunc(trainingSpeed * 10) / 10
+            trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
+            trainingDuration = Int((info_DFD as! NSString).intValue)*60
+            print("@WTVC, info from backend, ", trainingDuration, trainingSpeed , info_SFD , info_DFD)
         }
     }
     //button function

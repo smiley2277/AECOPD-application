@@ -26,12 +26,13 @@ class CATViewController: UIViewController{
     @IBOutlet weak var ansSeven: UILabel!
     @IBOutlet weak var sliderEight: UISlider!
     @IBOutlet weak var ansEight: UILabel!
-    
+    @IBOutlet weak var catScrollView: UIScrollView!
+    var siteDict: [Int: Int] = [0:121,1:274,2:465,3:682,4:889,5:1103,6:1272,7:1457]
     
     @IBAction func sliderChange1(_ sender: UISlider) {
-                sender.value.round()
-                ansOne.text = Int(sender.value).description
-            }
+        sender.value.round()
+        ansOne.text = Int(sender.value).description
+    }
     @IBAction func sliderChange2(_ sender: UISlider) {
         sender.value.round()
         ansTwo.text = Int(sender.value).description
@@ -67,12 +68,20 @@ class CATViewController: UIViewController{
         var totalScore = 0
         let  ansArray = [ansOne.text,ansTwo.text,ansThree.text,ansFour.text,ansFive.text,ansSix.text,ansSeven.text,ansEight.text]
         if (ansArray.contains("請滑動滑桿")){
+            for i in Range(0...ansArray.count-1){
+                if (ansArray[i] == "請滑動滑桿"){
+                    print(siteDict[i])
+                    let targetRect = CGRect(x: 0, y: siteDict[i] ?? 0, width: 1, height: 1)
+//                    catScrollView.setContentOffset(CGPointMake(targetRect, <#CGFloat#>), animated:YES)
+                    catScrollView.scrollRectToVisible(targetRect, animated: true)
+                }
+            }
             countButton.isUserInteractionEnabled = false
-            
-        }
-        for i in ansArray{
-            let num:Int? = Int(i!)
-            totalScore += num!
+        }else{
+            for i in ansArray{
+                let num:Int? = Int(i!) ?? 0
+                totalScore += num!
+            }
         }
         sum.text = String(totalScore)
         let oneText = ansOne.text!

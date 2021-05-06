@@ -51,7 +51,7 @@ class APIManager: NSObject {
     
     
     fileprivate func manager(method: HTTPMethod, appendUrl: String, url: APIUrl, parameters: [String: Any]?, appendHeaders: [String: String]?, userId: String? = nil) -> Single<[String:Any]> {
-        
+            
         return Single.create { (single) -> Disposable in
             
             let param = (parameters) ?? [String:Any]()
@@ -124,6 +124,8 @@ class APIManager: NSObject {
             requestUrl = type.url(append: "",userId: userId)
         case .testApi(let type):
             requestUrl = type.url(append: "",userId: userId)
+        case .ntuApi(let type):
+            requestUrl = type.url(append: "")
         }
         
         requestUrl =  (requestUrl + encodeUrl ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -225,14 +227,13 @@ extension APIManager {
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) ,parameters: nil, appendHeaders: nil, userId: userId)
     }
     
-    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String, user_id: String) -> Single<[String:Any]> {
+    func getSignUpResult(lastname: String, firstname: String, age: Int, email: String, birthday: String, gender: String, height: Int, weight: Int, phone: String, identity: String, password: String) -> Single<[String:Any]> {
         let appendUrl = ""
         let params = ["lastname": lastname, "firstname": firstname,
                       "age": age, "email": email, "birthday": birthday,
                       "gender": gender, "height": height,
                       "weight": height, "phone": phone,
-                      "identity": identity, "password": password,
-                      "user_id": user_id] as [String : Any]
+                      "identity": identity, "password": password] as [String : Any]
         return manager(method: .put, appendUrl: appendUrl, url: APIUrl.authApi(type: .normal) , parameters: params, appendHeaders: nil)
     }
     
@@ -244,7 +245,7 @@ extension APIManager {
                       "prebeat": prebeat,
                       "preborg": preborg,
                       "step": step] as [String : Any]
-        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) , parameters: params, appendHeaders: nil, userId: userId)
+        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) , parameters: params, appendHeaders: nil, userId: userId)
     }
     
     func postQues(userId: String, cat1: Int, cat2: Int, cat3: Int, cat4: Int, cat5: Int, cat6: Int, cat7: Int, cat8: Int, catsum: Int, eq1: Int, eq2: Int, eq3: Int, eq4: Int, eq5: Int, mmrc: Int, timestamp: String)-> Single<[String:Any]>{
@@ -259,8 +260,12 @@ extension APIManager {
         return manager(method: .post, appendUrl: "", url: APIUrl.userApi(type: .survey) , parameters: params, appendHeaders: nil, userId: userId)
     }
     func getCoach(userId: String, borg_uuid: String, timestamp: String)-> Single<[String:Any]> {
-        let appendUrl = "?timestamp=\(timestamp)"
-        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .borg) ,parameters: nil, appendHeaders: nil, userId: userId)
+        let appendUrl = "?timestamp=\(timestamp)&borg_uuid=\(borg_uuid)"
+        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) ,parameters: nil, appendHeaders: nil, userId: userId)
+    }
+    func getUserID(email: String, password: String)-> Single<[String:Any]>{
+        let appendUrl = ""
+        return manager(method: .post, appendUrl: appendUrl, url: APIUrl.ntuApi(type: .normal) ,parameters: nil, appendHeaders: nil)
     }
 }
 
