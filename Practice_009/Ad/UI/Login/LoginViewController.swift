@@ -114,6 +114,7 @@ extension LoginViewController: LoginViewProtocol {
         if error.type == .apiUnauthorizedException {
             LoginRepository.shared.setLocalAdminLoginResult(nil)
             enableLoginErrorHint(!isFirstLaunchApp)
+            isFirstLaunchApp = false
         } else {
             let controller = UIAlertController(title: "", message: error.alertMsg , preferredStyle: .alert)
             let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
