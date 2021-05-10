@@ -21,12 +21,25 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
     @IBOutlet weak var duration1: UITextField!
     @IBOutlet weak var duration2: UITextField!
     @IBOutlet weak var duration3: UITextField!
+    @IBOutlet weak var summitBtn: UIButton!
+    
+    @IBOutlet weak var modeSpeed: UILabel!
+    @IBOutlet weak var modeDuration: UILabel!
     var spe: [Float] = []
     var dur: [Int] = []
-    // TODO: 多筆的建議
+    var mode: String = ""
     override func viewDidLoad() {
         stepSize.delegate = self
         userDefaults = UserDefaults.standard
+        let rightButton = UIBarButtonItem(
+            title:"模式",
+            style:.plain,
+            target:self,
+            action:#selector(chooseType))
+        // 加到導覽列中
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .custom)
+        self.setCustomRightBarButtonItems(barButtonItems: [rightButton])
     }
     override func viewWillAppear(_ animated: Bool) {
         var stepSizeLabel = settingDefault(keyName: "stepSize")
@@ -37,9 +50,56 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
         let info_SPFD = settingDefaultForFloatAry(keyName: "speedVFromD")
         let info_DDFD = settingDefaultForAry(keyName: "durationVFromD")
         if (info_SPFD != []) && (info_DDFD != []){
-            speedDefault.text = info_SPFD?.map({ "\($0)" }).joined(separator: "-") ?? ""
-            durationDefault.text  = info_DDFD?.map({ "\($0)" }).joined(separator: "-") ?? ""
+            var spedAry:[Int] = []
+            for i in Range(0...info_SPFD!.count-1){
+                spedAry.append(lround(Double(info_SPFD?[i] ?? 0)))
+            }
+            speedDefault.text = spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
+            modeSpeed.text = "速度：" + spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
+            durationDefault.text = info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
+            modeDuration.text  = "時間：" + info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
         }
+    }
+    @IBOutlet var modeSubView: UIView!
+    @objc func chooseType(){
+        let window = UIApplication.shared.windows.last!
+        window.frame = CGRect(x: 45, y: 230, width: 260, height: 300)
+        window.addSubview(modeSubView)
+    }
+    @IBAction func summitMode(_ sender: Any) {
+        userDefaults.set(mode, forKey: "mode")
+        userDefaults.synchronize()
+        modeSubView.removeFromSuperview()
+    }
+    @IBAction func selectSelf(_ sender: Any) {
+        mode = "self"
+    }
+    @IBAction func selectDoc(_ sender: Any) {
+        mode = "Doc"
+    }
+    func checkDuration(){
+        if(duration1.text != "") || (duration2.text != "") || (duration3.text != ""){
+            let sum = (Int((duration1.text as! NSString).intValue))+(Int((duration2.text as! NSString).intValue))+(Int((duration3.text as! NSString).intValue))
+            if (sum < 5){
+                let sumDurationAlert = UIAlertController(title: "提醒", message: "訓練時間請大於 5 分鐘", preferredStyle: .alert)
+                sumDurationAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+                self.present(sumDurationAlert, animated: true)
+                summitBtn.isUserInteractionEnabled = false
+            }else{
+                summitBtn.isUserInteractionEnabled = true
+            }
+        }else{
+            summitBtn.isUserInteractionEnabled = true
+        }
+    }
+    @IBAction func durationFieldFirst(_ sender: Any) {
+        checkDuration()
+    }
+    @IBAction func durationFieldSec(_ sender: Any) {
+        checkDuration()
+    }
+    @IBAction func durationFieldThir(_ sender: Any) {
+        checkDuration()
     }
     //textField delegation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -104,6 +164,8 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
              defaults = String(UserDefaults.standard.double(forKey: keyName))
         }else if(keyName == "stepCount"){
             defaults = String(UserDefaults.standard.integer(forKey: keyName))
+        }else if(keyName == "mode"){
+            defaults = UserDefaults.standard.string(forKey: keyName)
         }
         return defaults
     }

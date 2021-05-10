@@ -57,6 +57,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         vc?.stopTime = stopString
     }
     override func viewDidLoad() {
+        UIApplication.shared.isIdleTimerDisabled = true
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit
         // 導覽列右邊按鈕
@@ -100,13 +101,13 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
     }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
-        let transSpeed = speed * 10000  / (Float(size)/6)
+        let transSpeed = 9 * Float(size) / (250 * speed)
         return transSpeed
     }
     func aryUnitTransfer(speed: [Float], size: Double)-> [Float]{
         var ary:[Float] = []
         for i in Range(0...speed.count-1){
-            let arc = speed[i] * 10000 / (Float(size)/6)
+            let arc = 9 * Float(size) / (250 * speed[i])
             ary.append(arc)
         }
         return ary
@@ -127,15 +128,19 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         }else{
             stepSize = stepSizeLife
         }
-        if (info_SP != []) && (info_DD != []){
-            varSpeed = info_SP!
-            varDuration = info_DD!
-            print("@VSVC, info, ", varSpeed, varDuration , info_SP , info_DD)
-        }
-        if (info_SPFD != []) && (info_DDFD != []){
-            varSpeed = info_SPFD!
-            varDuration = info_DDFD!
-            print("@VSVC, info from backend, ", varSpeed, varDuration , info_SPFD , info_DDFD)
+        //怪怪的
+        if (vc.settingDefault(keyName: "mode") == "self"){
+            if (info_SP != []) && (info_DD != []){
+                varSpeed = info_SP!
+                varDuration = info_DD!
+                print("@VSVC, info, ", varSpeed, varDuration , info_SP , info_DD)
+            }
+        }else if (vc.settingDefault(keyName: "mode") == "Doc"){
+            if (info_SPFD != []) && (info_DDFD != []){
+                varSpeed = info_SPFD!
+                varDuration = info_DDFD!
+                print("@VSVC, info from backend, ", varSpeed, varDuration , info_SPFD , info_DDFD)
+            }
         }
         
     }

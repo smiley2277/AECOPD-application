@@ -52,6 +52,7 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
+        UIApplication.shared.isIdleTimerDisabled = true
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit
         // using protocol and delegate to receive
@@ -96,7 +97,7 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     }
     //unit transfer
     func unitTransfer(speed: Float, size: Double)-> Float{
-        let transSpeed = speed * 10000 / (Float(size)/6)
+        let transSpeed = 9 * Float(size) / (250 * speed)
         return transSpeed
     }
     func fetchStepSize(){
@@ -114,7 +115,6 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
             trainingDuration = Int((info_D as! NSString).intValue)*60
-//            print("@WTVC, info, ", stepSize, trainingSpeed, trainingDuration)
         }else{
             stepSize = stepSizeLife
             trainingSpeed = (info_S! as NSString).floatValue
@@ -122,12 +122,23 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
             trainingDuration = Int((info_D as! NSString).intValue)*60
         }
-        if (info_SFD != "0") && (info_DFD != "0"){
-            trainingSpeed = (info_SFD! as NSString).floatValue
-            trainingSpeed = trunc(trainingSpeed * 10) / 10
-            trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-            trainingDuration = Int((info_DFD as! NSString).intValue)*60
-            print("@WTVC, info from backend, ", trainingDuration, trainingSpeed , info_SFD , info_DFD)
+        
+        if (vc.settingDefault(keyName: "mode") == "self"){
+            if (info_S != "0") && (info_D != "0"){
+                trainingSpeed = (info_S! as NSString).floatValue
+                trainingSpeed = trunc(trainingSpeed * 10) / 10
+                trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
+                trainingDuration = Int((info_D as! NSString).intValue)*60
+            }
+        }else if(vc.settingDefault(keyName: "mode") == "Doc"){
+            if (info_SFD != "0") && (info_DFD != "0"){
+                trainingSpeed = (info_SFD! as NSString).floatValue
+                trainingSpeed = trunc(trainingSpeed * 10) / 10
+                trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
+                trainingDuration = Int((info_DFD as! NSString).intValue)*60
+                print("@WTVC, info from backend, ", trainingDuration, trainingSpeed , info_SFD , info_DFD)
+            }
+            
         }
     }
     //button function
@@ -150,6 +161,7 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
         }else{
+            print("trainingSpeed \(trainingSpeed)")
             let countDuration = trainingDuration
             countDown(duration: countDuration, speed: trainingSpeed)
             flashingTimer(duration: countDuration, speed: trainingSpeed)
@@ -211,7 +223,8 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     func flashingTimer(duration: Int, speed: Float){
-        flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(60/speed), repeats: true, block: { [self] (timer) in
+        print("speed and timeinterval \(speed)")
+        flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(speed), repeats: true, block: { [self] (timer) in
             playAudio()
             flashing(setColor: color, trainingSpeed: speed)
         }
@@ -221,8 +234,8 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         flashSignal.alpha = 1.0
         animation.fromValue = 1.0
         animation.toValue = 0
-        animation.duration = CFTimeInterval(60/trainingSpeed) //一次動畫做幾秒
-        animation.repeatDuration = CFTimeInterval(60/trainingSpeed)
+        animation.duration = CFTimeInterval(trainingSpeed) //一次動畫做幾秒
+        animation.repeatDuration = CFTimeInterval(trainingSpeed)
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
         flashSignal.layer.add(animation, forKey: "")

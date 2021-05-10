@@ -99,6 +99,9 @@ extension LoginViewController: LoginViewProtocol {
             let storyboard = UIStoryboard(name: "PatientList", bundle: Bundle.main)
             let vc = storyboard.instantiateViewController(withIdentifier: "PatientListViewController")
             self.navigationController?.pushViewController(vc, animated: true)
+//            var viewCont = navigationController?.viewControllers
+//            viewCont?.removeFirst()
+//            navigationController?.viewControllers = viewCont ?? []
         } else {
             if data.userID == "" || data.userID == nil {
                 let storyboard = UIStoryboard(name: "signUpGetUserID", bundle: Bundle.main)
@@ -108,6 +111,9 @@ extension LoginViewController: LoginViewProtocol {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let vc = storyboard.instantiateViewController(withIdentifier: "ViewController")
                 self.navigationController?.pushViewController(vc, animated: true)
+//                var viewCont = navigationController?.viewControllers
+//                viewCont?.removeFirst()
+//                navigationController?.viewControllers = viewCont ?? []
             }
         }
     }

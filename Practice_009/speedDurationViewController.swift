@@ -17,19 +17,34 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var stepSizeDefault: UILabel!
     @IBOutlet weak var timeDefault: UILabel!
     @IBOutlet weak var stepCountDefault: UILabel!
-    
+    @IBOutlet weak var summitBtn: UIButton!
+    @IBOutlet weak var speedMode: UILabel!
+    @IBOutlet weak var durationMode: UILabel!
+    var mode: String = ""
     override func viewDidLoad() {
         durationFill.delegate = self
         speedFill.delegate = self
         stepSize.delegate = self
         userDefaults = UserDefaults.standard
+        let rightButton = UIBarButtonItem(
+            title:"模式",
+            style:.plain,
+            target:self,
+            action:#selector(chooseType))
+        // 加到導覽列中
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .custom)
+        self.setCustomRightBarButtonItems(barButtonItems: [rightButton])
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         let info_SFD = settingDefault(keyName: "speedFromD")
         let info_DFD = settingDefault(keyName: "durationFromD")
         if (info_SFD != "0") && (info_DFD != "0"){
             speedDefault.text = info_SFD
+            speedMode.text = info_SFD
             timeDefault.text = info_DFD
+            durationMode.text = info_DFD
         }else{
             speedDefault.text = settingDefault(keyName: "speed")
             timeDefault.text = settingDefault(keyName: "duration")
@@ -38,6 +53,37 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
         var stepSizeLabel = settingDefault(keyName: "stepSize")
         stepSizeDefault.text = String(lround((stepSizeLabel as! NSString).doubleValue))
         
+    }
+    @IBOutlet var modeSubView: UIView!
+    @objc func chooseType(){
+        let window = UIApplication.shared.windows.last!
+        window.frame = CGRect(x: 45, y: 230, width: 260, height: 300)
+        window.addSubview(modeSubView)
+    }
+    @IBAction func summitMode(_ sender: Any) {
+        userDefaults.set(mode, forKey: "mode")
+        userDefaults.synchronize()
+        modeSubView.removeFromSuperview()
+    }
+    @IBAction func selectSelf(_ sender: Any) {
+        mode = "self"
+    }
+    @IBAction func selectDoc(_ sender: Any) {
+        mode = "Doc"
+    }
+    @IBAction func durationField(_ sender: Any) {
+        if (durationFill.text != ""){
+            if (Int((durationFill.text as! NSString).intValue) < 2){
+                let durationAlert = UIAlertController(title: "提醒", message: "訓練時間請大於 5 分鐘", preferredStyle: .alert)
+                durationAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+                self.present(durationAlert, animated: true)
+                summitBtn.isUserInteractionEnabled = false
+            }else{
+                summitBtn.isUserInteractionEnabled = true
+            }
+        }else{
+            summitBtn.isUserInteractionEnabled = true
+        }
     }
     //textField delegation
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -61,7 +107,6 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
     //傳值
     @IBAction func summit(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -84,16 +129,13 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
             }
         }
         if (stepSize.text != "") && (vc.stepSize == 0){
-            let stepsize = stepSize.text!
-            var stepSize = (stepsize as NSString).doubleValue
-            stepSize = (1/stepSize) * 1000
+            let stepcount = (stepSize.text!as NSString).doubleValue
+            var stepSize = (1/stepcount) * 1000
             vc.setStepSize(size: stepSize)
-            userDefaults.set(stepsize, forKey: "stepCount")
+            userDefaults.set(stepcount, forKey: "stepCount")
             userDefaults.set(stepSize, forKey: "stepSize")
             userDefaults.synchronize()
         }
-        
-        
         performSegue(withIdentifier: "settingUnwindSegue", sender: self)
     }
     //存取預設值
@@ -111,6 +153,8 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
             defaults = String(UserDefaults.standard.float(forKey: keyName))
         }else if (keyName == "durationFromD"){
             defaults = String(UserDefaults.standard.integer(forKey: keyName))
+        }else if (keyName == "mode"){
+            defaults = UserDefaults.standard.string(forKey: keyName)
         }
         return defaults
     }

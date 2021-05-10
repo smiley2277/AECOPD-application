@@ -27,7 +27,8 @@ class CATViewController: UIViewController{
     @IBOutlet weak var sliderEight: UISlider!
     @IBOutlet weak var ansEight: UILabel!
     @IBOutlet weak var catScrollView: UIScrollView!
-    var siteDict: [Int: Int] = [0:121,1:274,2:465,3:682,4:889,5:1103,6:1272,7:1457]
+    var siteDict: [Int: Int] = [0:1336,1:1151,2:982,3:768,4:531,5:344,6:153,7:0]
+    var labelDict: [Int: UILabel] = [:]
     
     @IBAction func sliderChange1(_ sender: UISlider) {
         sender.value.round()
@@ -66,17 +67,20 @@ class CATViewController: UIViewController{
     @IBOutlet weak var countButton: UIButton!
     @IBAction func countSum(_ sender: Any) {
         var totalScore = 0
-        let  ansArray = [ansOne.text,ansTwo.text,ansThree.text,ansFour.text,ansFive.text,ansSix.text,ansSeven.text,ansEight.text]
+        let  ansArray = [ansEight.text,ansSeven.text,ansSix.text,ansFive.text,ansFour.text,ansThree.text,ansTwo.text,ansOne.text]
         if (ansArray.contains("請滑動滑桿")){
             for i in Range(0...ansArray.count-1){
                 if (ansArray[i] == "請滑動滑桿"){
-                    print(siteDict[i])
                     let targetRect = CGRect(x: 0, y: siteDict[i] ?? 0, width: 1, height: 1)
-//                    catScrollView.setContentOffset(CGPointMake(targetRect, <#CGFloat#>), animated:YES)
+                    catScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[i] ?? 0), animated: true)
                     catScrollView.scrollRectToVisible(targetRect, animated: true)
+                    labelDict[i]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
+                    countButton.isUserInteractionEnabled = false
                 }
             }
-            countButton.isUserInteractionEnabled = false
+            let nonFillAlert = UIAlertController(title: "提醒", message: "題目尚未填寫完畢", preferredStyle: .alert)
+            nonFillAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(nonFillAlert, animated: true)
         }else{
             for i in ansArray{
                 let num:Int? = Int(i!) ?? 0
@@ -112,6 +116,7 @@ class CATViewController: UIViewController{
         sum.layer.cornerRadius = 15
         sum.layer.masksToBounds = true
         summitButton.isUserInteractionEnabled = false
+        labelDict = [0:ansEight,1:ansSeven,2:ansSix,3:ansFive,4:ansFour,5:ansThree,6:ansTwo,7:ansOne]
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? quesViewController
