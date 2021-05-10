@@ -1,9 +1,9 @@
 import UIKit
 
 protocol PatientListViewProtocol: BaseViewControllerProtocol {
-    func onBindPatientList()
+    func onBindGroupAdmin(groupAdmin: GroupAdmin)
 }
 
 protocol PatientListPresenterProtocol: NSObjectProtocol {
-    func getPatientList()
+    func getGroupAdmin()
 }

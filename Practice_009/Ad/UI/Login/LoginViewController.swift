@@ -93,7 +93,7 @@ extension LoginViewController: LoginViewProtocol {
         onBindLocalAuthoriztion(localAuthoirizationData: (userID: userID, roles: roles))
     }
     
-    func onBindLocalAuthoriztion(localAuthoirizationData data: (userID: String?, roles: LoginResult.Data.AdminOrUser)) {
+    func onBindLocalAuthoriztion(localAuthoirizationData data: (userID: String?, roles: AdminOrUser)) {
         if data.roles == .admin {
             //MARK: 導頁到管理者頁面
             let storyboard = UIStoryboard(name: "PatientList", bundle: Bundle.main)

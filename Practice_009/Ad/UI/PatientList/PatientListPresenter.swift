@@ -10,12 +10,14 @@ class PatientListPresenter: NSObject, PatientListPresenterProtocol {
         self.delegate = delegate
     }
     
-    func getPatientList() {
-        repository.getPatientList().subscribe(onSuccess:{ (model) in
-            self.delegate?.onBindPatientList()
-        }, onError: {error in
-            //TODO 異常處理
-            print(error)
+    func getGroupAdmin() {
+        self.delegate?.onStartLoadingHandle(handleType: .clearBackgroundAndCantTouchView)
+        repository.getGroupAdmin().subscribe(onSuccess:{ (model) in
+            self.delegate?.onBindGroupAdmin(groupAdmin: model)
+            self.delegate?.onCompletedLoadingHandle()
+        }, onError: { error in
+            self.delegate?.onApiError(error: error as! APIError)
+            self.delegate?.onCompletedLoadingHandle()
         }).disposed(by: disposeBag)
     }
 }

@@ -1,5 +1,11 @@
 import ObjectMapper
 
+
+enum AdminOrUser: String {
+    case admin = "Admin"
+    case user = "User"
+}
+
 class LoginResult: BaseModel {
     var data: Data?
     var status: String?
@@ -17,11 +23,6 @@ class LoginResult: BaseModel {
         var userId: String?
         var roles: AdminOrUser?
             
-        enum AdminOrUser: String {
-            case admin = "Admin"
-            case user = "User"
-        }
-        
         override func mapping(map: Map) {
             super.mapping(map: map)
             

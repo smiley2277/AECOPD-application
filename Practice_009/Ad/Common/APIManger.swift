@@ -122,6 +122,8 @@ class APIManager: NSObject {
             requestUrl = type.url(append: "",userId: userId)
         case .tokenApi(type: let type):
             requestUrl = type.url(append: "",userId: userId)
+        case .groupApi(let type):
+            requestUrl = type.url(append: "", userId: userId)
         case .testApi(let type):
             requestUrl = type.url(append: "",userId: userId)
         }
@@ -167,8 +169,6 @@ class APIManager: NSObject {
 }
 
 extension APIManager {
-    
-    //TODO 接到一半
     func getLoginResult(email: String, password: String) -> Single<[String:Any]> {
         let appendUrl = ""
         let params = ["email": email,
@@ -185,9 +185,9 @@ extension APIManager {
     }
     
     //TODO 接上Patient List API
-    func getPatientList() -> Single<[String:Any]> {
+    func getGroupAdmin() -> Single<[String:Any]> {
         let appendUrl = ""
-        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) ,parameters: nil, appendHeaders: nil)
+        return manager(method: .get, appendUrl: appendUrl, url: APIUrl.groupApi(type: .admin) ,parameters: nil, appendHeaders: nil)
     }
     
     func getPatientCoach(userId: String, timestamp: String, borgUUID: String) -> Single<[String:Any]> {

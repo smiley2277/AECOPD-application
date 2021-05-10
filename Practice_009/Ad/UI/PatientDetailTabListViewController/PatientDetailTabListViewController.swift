@@ -5,8 +5,10 @@ extension PatientDetailTabListViewController {
         self.defaultPage = leftOrRight
     }
     
-    func setUserId(userId: String) {
+    func setUserId(userId: String, patientName: String, identity: String) {
         self.userId = userId
+        self.patientName = patientName
+        self.identity = identity
     }
 }
 
@@ -38,6 +40,8 @@ class PatientDetailTabListViewController: BaseViewController {
     private var patientDetailAddCoachViewController: PatientDetailTabListAddCoachViewController?
     
     private var userId: String?
+    private var patientName: String?
+    private var identity: String?
     private var presenter: PatientDetailTabListPresenterProtocol?
 
     private var patientSurvey: PatientSurvey?
@@ -58,9 +62,8 @@ class PatientDetailTabListViewController: BaseViewController {
 
         self.setNavBarItem(left: .defaultType, mid: .textTitle, right: .custom)
         self.setIsNavShadowEnable(false)
-        //TODO 待API
-        //self.setNavTitle(title: self.userId!)
-        self.setNavTitle(title: "UserName")
+
+        self.setNavTitle(title: "\(patientName ?? "") \(identity!)")
         self.setTabBarType(tabBarType: .hidden)
 
         let calendarButton = UIButton.init(type: .system)

@@ -104,6 +104,7 @@
 		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
 		46FE356D263AA4790010779B /* getCoachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE356C263AA4790010779B /* getCoachRepository.swift */; };
 		755602206C8599C81157D952 /* Pods_Practice_009.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */; };
+		E78F2BD8264912D400294A36 /* GroupAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F2BD7264912D400294A36 /* GroupAdmin.swift */; };
 		E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F519ED263BD7D8006E713C /* LoadingView.xib */; };
 		E7F519F3263BD7DC006E713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F2263BD7DC006E713C /* LoadingView.swift */; };
 		E7F519F8263BD89C006E713C /* APILoadingHandleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */; };
@@ -234,6 +235,7 @@
 		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
 		46FE356C263AA4790010779B /* getCoachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachRepository.swift; sourceTree = "<group>"; };
 		5C11ACBDDD69553C6FF829CE /* Pods-Practice_009.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_009.release.xcconfig"; path = "Target Support Files/Pods-Practice_009/Pods-Practice_009.release.xcconfig"; sourceTree = "<group>"; };
+		E78F2BD7264912D400294A36 /* GroupAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdmin.swift; sourceTree = "<group>"; };
 		E7F519ED263BD7D8006E713C /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		E7F519F2263BD7DC006E713C /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APILoadingHandleType.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				462D25C4262D6BBC00A589E0 /* PatientCoach.swift */,
 				462D25C5262D6BBC00A589E0 /* PatientSurvey.swift */,
 				462D25C6262D6BBC00A589E0 /* PostPatientCoachResponse.swift */,
+				E78F2BD7264912D400294A36 /* GroupAdmin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				468B1EEA26033B0C00C52990 /* walkingTestViewController.swift in Sources */,
 				46CCAEE725EE8C6E009D001C /* eq5dViewController.swift in Sources */,
 				462D25DF262D6BBC00A589E0 /* PatientDetailCoachCell.swift in Sources */,
+				E78F2BD8264912D400294A36 /* GroupAdmin.swift in Sources */,
 				462D25E9262D6BBC00A589E0 /* LoginViewController.swift in Sources */,
 				46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */,
 				46530D1825EF860A0098F161 /* quesViewController.swift in Sources */,

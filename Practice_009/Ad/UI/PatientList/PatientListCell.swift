@@ -16,8 +16,8 @@ class PatientListCell: UITableViewCell {
 
     }
     
-    func setPatientName(patientName: String, row: Int){
-        self.patientNameButton.setTitle(patientName, for: .normal)
+    func setPatientName(patientName: String, identity: String, row: Int){
+        self.patientNameButton.setTitle("\(patientName) \(identity)", for: .normal)
         self.patientName = patientName
         self.row = row
     }

@@ -3,10 +3,11 @@ import RxSwift
 
 class PatientListRepository {
     static let shared = PatientListRepository()
-    func getPatientList() -> Single<[String]> {
-        let api = APIManager.shared.getPatientList()
-        //TODO 待API，接上Model
-        return api.map{ _ in ["TODO"] }
+    func getGroupAdmin() -> Single<GroupAdmin> {
+        let api = APIManager.shared.getGroupAdmin()
+        return LoginRepository.shared.localAuthorizationData
+            .flatMap({_ in api})
+            .map{ GroupAdmin(JSON: $0)! }
     }
 }
 

@@ -13,7 +13,7 @@ class LoginRepository {
             }
     }
     
-    var localAuthorizationData: Single<(userID: String?, roles: LoginResult.Data.AdminOrUser)> {
+    var localAuthorizationData: Single<(userID: String?, roles: AdminOrUser)> {
         let authorization = UserDefaultUtil.shared.adminAuthorization
         if authorization == nil {
             //MARK: 手機紀錄中沒有
@@ -42,7 +42,7 @@ class LoginRepository {
         } else {
             //MARK: 沒有過期
             let userID = UserDefaultUtil.shared.adminUserID
-            let roles = LoginResult.Data.AdminOrUser(rawValue: UserDefaultUtil.shared.adminRoles!)!
+            let roles = AdminOrUser(rawValue: UserDefaultUtil.shared.adminRoles!)!
             return Single.just((userID: userID, roles: roles))
         }
     }

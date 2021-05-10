@@ -11,6 +11,7 @@ enum APIUrl {
     case userApi(type: UserApi)
     case authApi(type: AuthApi)
     case tokenApi(type: TokenApi)
+    case groupApi(type: GroupApi)
     case testApi(type: TestApi)
     
     enum UserApi: String {
@@ -67,6 +68,22 @@ enum APIUrl {
         }
     }
     
+    enum GroupApi: String {
+        case admin = "admin"
+        
+        static func urlWith(type: GroupApi, append: String) -> String {
+            let base = WEB_HOST
+            return "\(base)/group/\(type.rawValue)\(append)"
+        }
+    
+        func url () -> String {
+            return APIUrl.GroupApi.urlWith(type: self, append: "")
+        }
+        
+        func url(append: String, userId: String? = nil) -> String {
+            return APIUrl.GroupApi.urlWith(type: self, append: append)
+        }
+    }
     
     enum TestApi: String {
         case normal = ""
