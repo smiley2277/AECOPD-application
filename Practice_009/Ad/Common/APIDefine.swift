@@ -5,6 +5,7 @@ import UIKit
 let APITimeout: Double = 30.0
 
 let WEB_HOST = "https://copd-smart-coach.ml/v1"
+let NTU_HOST = "https://ntu-med-god.ml/api/getUserIdByEmail"
 let TEST =  "https://requestinspector.com/inspect/01f3ws019zcyfgb31cvvfg8cbh"
 
 enum APIUrl {
@@ -13,6 +14,7 @@ enum APIUrl {
     case tokenApi(type: TokenApi)
     case groupApi(type: GroupApi)
     case testApi(type: TestApi)
+    case ntuApi(type: NtuApi)
     
     enum UserApi: String {
         case coach = "coach"
@@ -99,6 +101,23 @@ enum APIUrl {
         
         func url(append: String, userId: String? = nil) -> String {
             return APIUrl.TestApi.urlWith(type: self, append: append)
+        }
+    }
+    
+    enum NtuApi: String {
+        case normal = ""
+        
+        static func urlWith(type: NtuApi, append: String) -> String {
+            let base = NTU_HOST
+            return "\(base)\(type.rawValue)\(append)"
+        }
+    
+        func url () -> String {
+            return APIUrl.NtuApi.urlWith(type: self, append: "")
+        }
+        
+        func url(append: String, userId: String? = nil) -> String {
+            return APIUrl.NtuApi.urlWith(type: self, append: append)
         }
     }
 }

@@ -11,10 +11,10 @@ import RxSwift
 
 class getCoachRepository {
     static let shared = getCoachRepository()
-    func getCoach(userId: String, borg_uuid: String, timestamp: String) -> Single<PostQues> { // model
+    func getCoach(userId: String, borg_uuid: String, timestamp: String) -> Single<PatientCoach> { 
         let api = APIManager.shared.getCoach(userId: userId, borg_uuid: borg_uuid, timestamp: timestamp)
         return LoginRepository.shared.localAuthorizationData
             .flatMap({_ in api})
-            .map{ PostQues(JSON: $0)! } //model
+            .map{ PatientCoach(JSON: $0)! } //model
     }
 }

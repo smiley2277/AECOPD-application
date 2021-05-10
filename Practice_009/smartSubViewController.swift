@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class smartSubViewController:UIViewController{
+class smartSubViewController:BaseViewController{
     var stepSize:Double = 0.0
     var beforeBorg:Int = 0
     var afterBorg:Int = 0

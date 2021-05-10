@@ -16,4 +16,11 @@ class signUpGetUserIDPresenter: NSObject, signUpGetUserIDPresenterProtocol{
     required init(delegate: signUpGetUserIDViewProtocol) {
         self.delegate = delegate
     }
+    func getUserID(email: String, password: String){
+        repository.getUserID(email: email, password: password).subscribe(onSuccess:{ (model) in
+                self.delegate?.onBindGetUserIDResult(SignUpResult: model)
+        }, onError: {error in
+            self.delegate?.onApiError(error: error as! APIError)
+        }).disposed(by: disposeBag)
+    }
 }

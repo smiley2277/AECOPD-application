@@ -27,9 +27,7 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var useridFill: UITextField!
     var user_id: String = ""
     weak var delegate: LoginViewControllerProtocol?
-    
     private var presenter: signUpToBackendPresenterProtocol?
-    
     var sexuality: String = ""
     let formatter = DateFormatter()
     var receiveData: [String:Any] = [:]
@@ -71,6 +69,42 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         checkpwFill.text = ""
         useridFill.text = ""
     }
+    
+    @IBAction func checkAge(_ sender: UITextField) {
+        let newString = (ageFill.text! as NSString).replacingCharacters(in: NSMakeRange(0, ageFill.text!.count), with: ageFill.text!)
+        // 只允許輸入數字
+        let expression =  "^[0-9]*((\\.|,)[0-9]{0,2})?$"
+        let regex = try!  NSRegularExpression(pattern: expression, options: .allowCommentsAndWhitespace)
+        let numberOfMatches =  regex.numberOfMatches(in: newString, options:.reportProgress,    range:NSMakeRange(0, newString.count))
+        if  numberOfMatches == 0{
+            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入數字", preferredStyle: .alert)
+            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(finishAlert, animated: true)
+            ageFill.text = ""
+        }
+    }
+    @IBAction func checkEmail(_ sender: Any) {
+        let newString = (emailFill.text! as NSString).replacingCharacters(in: NSMakeRange(0, emailFill.text!.count), with: emailFill.text!)
+        if  !(newString.contains("@")){
+            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入電子郵件正式格式", preferredStyle: .alert)
+            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(finishAlert, animated: true)
+            emailFill.text = ""
+        }
+    }
+    @IBAction func checkID(_ sender: Any) {
+        let newString = (IDFill.text! as NSString).replacingCharacters(in: NSMakeRange(0, IDFill.text!.count), with: IDFill.text!)
+        
+        let expression =  "[A-Z]{1}[0-9]{9}"
+        let regex = try!  NSRegularExpression(pattern: expression, options: .allowCommentsAndWhitespace)
+        let numberOfMatches =  regex.numberOfMatches(in: newString, options:.reportProgress,    range:NSMakeRange(0, newString.count))
+        if  numberOfMatches == 0{
+            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入台灣身分證字號格式", preferredStyle: .alert)
+            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
+            self.present(finishAlert, animated: true)
+            IDFill.text = ""
+        }
+    }
     @IBAction func send(_ sender: Any) {
         if bDayFill.text == "" || bDayFill.text == nil { return }
         if lastNameFill.text == "" || lastNameFill.text == nil { return }
@@ -87,13 +121,15 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
             self.present(finishAlert, animated: true)
         }else{
-            if (useridFill.text != "" ) || (useridFill.text != nil){
+            if (useridFill.text != nil){
                 user_id = useridFill.text!
+            }else{
+                user_id = ""
             }
             let age = Int((ageFill.text ?? "0") as String)!
             let height = Int((heightFill.text ?? "0") as String)!
-            let weight = Int((weightFill.text ?? "0") as String)!
-            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: weight, phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!, user_id: user_id)
+            let weight = Float((weightFill.text ?? "0") as String)!
+            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: Int(weight), phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!)
         }
         clearTextField()
     }
@@ -125,6 +161,15 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         passwordFill.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         checkpwFill.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         enableSignUpButton(false)
+        passwordFill.isSecureTextEntry = true
+        checkpwFill.isSecureTextEntry = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+    }
+    func registerForKeyboardNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -137,6 +182,26 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         let finishAlert = UIAlertController(title: "提醒", message: "請確認都有填到唷", preferredStyle: .alert)
         finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
         self.present(finishAlert, animated: true)
+    }
+    @IBOutlet weak var scrollview: UIScrollView!
+    @objc func keyboardWillShow(_ notification:Notification){
+        let userInfo:NSDictionary = (notification as NSNotification).userInfo! as NSDictionary
+        let keyboardFrame:NSValue = userInfo.value(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let keyboardRectangle = keyboardFrame.cgRectValue
+        let keyboardHeight = keyboardRectangle.height
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardHeight, right: 0.0)
+        scrollview.contentInset = contentInsets
+        scrollview.scrollIndicatorInsets = contentInsets
+    }
+    @objc func keyboardWillHide(notification: NSNotification){
+        let contentInsets = UIEdgeInsets.zero
+        scrollview.contentInset = contentInsets
+        scrollview.scrollIndicatorInsets = contentInsets
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
 

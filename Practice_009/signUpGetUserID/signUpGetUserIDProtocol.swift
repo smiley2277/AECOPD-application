@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-protocol signUpGetUserIDViewProtocol: NSObjectProtocol {
-//    func onBindLoginResult(loginResult: LoginResult)
+protocol signUpGetUserIDViewProtocol: BaseViewControllerProtocol {
+    func onBindGetUserIDResult(SignUpResult: LoginResult)
 }
 
 protocol signUpGetUserIDPresenterProtocol: NSObjectProtocol {
-//    func getLoginResult(email: String, password: String)
+    func getUserID(email: String, password: String)
 }
 

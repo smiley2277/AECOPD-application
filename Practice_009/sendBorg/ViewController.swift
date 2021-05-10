@@ -22,6 +22,7 @@ class ViewController: BaseViewController{
     var userDefaults: UserDefaults!
     let dateFormatter = DateFormatter()
     let id:String = "k87j6e7c"
+    let userId = UserDefaultUtil.shared.adminUserID
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM; connect.sid=s%3AqMQr9uUfeHIHUyqDbiE4OetAxJiNzQYx.3A8bRMYiheV8JU%2BxhWVIJH3KyysgQM%2FntsC4qvIieXc"
     private var presenter: userMainPresenterProtocol?
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class ViewController: BaseViewController{
 //        }
 //        userDefaults.synchronize()
         presenter = userMainPresenter(delegate: self)
+//        print(UserDefaults.standard.dictionaryRepresentation())
         
     }
     @IBAction func sync(_ sender: Any) {
@@ -58,7 +60,7 @@ class ViewController: BaseViewController{
             //TO UTC
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//            dateFormatter.timeZone = TimeZone(identifier: "UTC")
+//            dateFormatter.timeZone = TimeZone(identifier: "uUTC")
             let dateDate = dateFormatter.date(from: timestamp[i])
             //UTC datetime to timestamp
             let startInterval: TimeInterval = dateDate?.timeIntervalSince1970 ?? Date().timeIntervalSince1970
@@ -186,9 +188,11 @@ class ViewController: BaseViewController{
                 numAry.append(Int(text[1])!)
             }
         }
+        print(numAry)
         if (numAry.count > 2){
             for i in Range(0...numAry.count-1){
-                if (i != 0) || (i != numAry.count-1){
+                if (0 < i) && (i < numAry.count-1){
+                    print(numAry[i], i)
                     numAry.remove(at: i)
                 }
             }
@@ -217,7 +221,7 @@ class ViewController: BaseViewController{
         let notiNamefortimebyvaria = Notification.Name("sendTimestampByVariable")
         NotificationCenter.default.addObserver(self, selector: #selector(catchTimeVaria(noti:)), name: notiNamefortimebyvaria, object: nil)
         userDefaults.synchronize()
-        autoFetchHRStep()
+//        autoFetchHRStep()
     }
     func autoFetchHRStep(){
         var duration: [Int] = []
@@ -231,6 +235,7 @@ class ViewController: BaseViewController{
         befBorg = fetchingDefaultForBorg(keyName: "beforeBorg")
         aftBorg = fetchingDefaultForBorg(keyName: "afterBorg")
         if (befBorg != [:]) || (aftBorg != [:]) {
+            print(befBorg, befBorg)
             let befDatetime = Array(befBorg.keys)
             let aftDatetime = Array(aftBorg.keys)
             let postborg = Array(aftBorg.values)[0]
@@ -247,7 +252,7 @@ class ViewController: BaseViewController{
                 stepForFixed = realtimeStep(id: id, timestamp: duration)
                 if (heartRateForFixed.count != 2) && (stepForFixed != 0){
                     let pacBorg = [postborg, preborg, heartRateForFixed[1], heartRateForFixed[0], stepForFixed, realDate[0]] as [Any]
-                    presenter?.postBorg(userId: "test_id", postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
+                    presenter?.postBorg(userId: userId!, postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
                     print("@VC FFFpacBorg,", pacBorg)
                 }else{
                     let nonSyncAlert = UIAlertController(title: "提醒", message: "請先同步您的手錶，以便取得最新資訊", preferredStyle: .alert)
@@ -262,7 +267,7 @@ class ViewController: BaseViewController{
                 stepForVaria = realtimeStep(id: id, timestamp: duration)
                 if (heartRateForVaria.count != 2) && (stepForVaria != 0){
                     let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
-                    presenter?.postBorg(userId: "test_id",postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
+                    presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
                 }else{
                     let nonSyncAlert = UIAlertController(title: "提醒", message: "請先同步您的手錶，以便取得最新資訊", preferredStyle: .alert)
                     nonSyncAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
@@ -307,11 +312,11 @@ class ViewController: BaseViewController{
                     let heartRate = realtimeHR(id: id, timestamp: timestampAry)
                     let step = realtimeStep(id: id, timestamp: timestampAry)
                     print("==> HR & step:",duration, timestampAry, heartRate, step)
-                    if (heartRate.count != 0) { //&& (step != 0)
+                    if (heartRate.count > 1) { //&& (step != 0)
                         let pacBorg = [datetimeAry[0] ,duration, befBorg, aftBorg, heartRate, step] as [Any]
                         print(pacBorg)
                         let datetimeLongAry = fetchdatetime(timeStamp: timestampAry)
-                        presenter?.postBorg(userId: "test_id", postbeat: heartRate[1], postborg: aftBorg, prebeat: heartRate[0], preborg: befBorg, step: step, timestamp: datetimeLongAry[0])
+                        presenter?.postBorg(userId: userId!, postbeat: heartRate[1], postborg: aftBorg, prebeat: heartRate[0], preborg: befBorg, step: step, timestamp: datetimeLongAry[0])
                         userDefaults.removeObject(forKey: notUploadBorgKey[idx])
                     }
                     datetimeAry = []

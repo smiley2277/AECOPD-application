@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol getCoachViewProtocol: BaseViewControllerProtocol {
-    func onBindGetCoachResult(Result: LoginResult) //model
+    func onBindGetCoachResult(Result: PatientCoach) 
 }
 
 protocol getCoachPresenterProtocol: NSObjectProtocol {
