@@ -40,11 +40,17 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         let info_SFD = settingDefault(keyName: "speedFromD")
         let info_DFD = settingDefault(keyName: "durationFromD")
+        let mode = settingDefault(keyName: "mode")
         if (info_SFD != "0") && (info_DFD != "0"){
-            speedDefault.text = info_SFD
             speedMode.text = info_SFD
-            timeDefault.text = info_DFD
             durationMode.text = info_DFD
+            if (mode == "Doc"){
+                speedDefault.text = info_SFD
+                timeDefault.text = info_DFD
+            }else if (mode == "self"){
+                speedDefault.text = settingDefault(keyName: "speed")
+                timeDefault.text = settingDefault(keyName: "duration")
+            }
         }else{
             speedDefault.text = settingDefault(keyName: "speed")
             timeDefault.text = settingDefault(keyName: "duration")

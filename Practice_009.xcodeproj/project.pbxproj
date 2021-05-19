@@ -14,6 +14,8 @@
 		460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */; };
 		460EF8D22633FF56004E8DD3 /* userMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */; };
 		460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D62633FF67004E8DD3 /* userMainRepository.swift */; };
+		461B4441264A62B80075DABB /* oh-finally-355.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461B4440264A62B80075DABB /* oh-finally-355.mp3 */; };
+		461B4443264A65FF0075DABB /* cant-do-that-57.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */; };
 		462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */; };
 		462C1C372611B88E0045DB40 /* variableSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */; };
 		462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 462C1C3B2611C4FA0045DB40 /* refresh.png */; };
@@ -139,6 +141,8 @@
 		460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainProtocol.swift; sourceTree = "<group>"; };
 		460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainPresenter.swift; sourceTree = "<group>"; };
 		460EF8D62633FF67004E8DD3 /* userMainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainRepository.swift; sourceTree = "<group>"; };
+		461B4440264A62B80075DABB /* oh-finally-355.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "oh-finally-355.mp3"; path = "../../Desktop/oh-finally-355.mp3"; sourceTree = "<group>"; };
+		461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cant-do-that-57.mp3"; sourceTree = "<group>"; };
 		462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = airQualityViewController.swift; sourceTree = "<group>"; };
 		462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableSpeedViewController.swift; sourceTree = "<group>"; };
 		462C1C3B2611C4FA0045DB40 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 				466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */,
 				466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */,
 				46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */,
+				461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */,
+				461B4440264A62B80075DABB /* oh-finally-355.mp3 */,
 				468B1EFD2604911100C52990 /* knob-458.mp3 */,
 				468B1EF326048C9800C52990 /* play-button.png */,
 				468B1EF826048EC900C52990 /* stop-button.png */,
@@ -679,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */,
+				461B4441264A62B80075DABB /* oh-finally-355.mp3 in Resources */,
 				462D25D8262D6BBC00A589E0 /* PatientList.storyboard in Resources */,
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
 				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
@@ -691,6 +698,7 @@
 				46364C36263005400076C55C /* signUp.storyboard in Resources */,
 				E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */,
 				468B1EF426048C9800C52990 /* play-button.png in Resources */,
+				461B4443264A65FF0075DABB /* cant-do-that-57.mp3 in Resources */,
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
 				462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */,

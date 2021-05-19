@@ -49,15 +49,18 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
         speedDefault.text = settingDefaultForFloatAry(keyName: "speedV")?.map({ "\($0)" }).joined(separator: "-") ?? ""
         let info_SPFD = settingDefaultForFloatAry(keyName: "speedVFromD")
         let info_DDFD = settingDefaultForAry(keyName: "durationVFromD")
+        let mode  = settingDefault(keyName: "mode")
         if (info_SPFD != []) && (info_DDFD != []){
             var spedAry:[Int] = []
             for i in Range(0...info_SPFD!.count-1){
                 spedAry.append(lround(Double(info_SPFD?[i] ?? 0)))
             }
-            speedDefault.text = spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
             modeSpeed.text = "速度：" + spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
-            durationDefault.text = info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
             modeDuration.text  = "時間：" + info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
+            if (mode == "Doc"){
+                speedDefault.text = spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
+                durationDefault.text = info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
+            }
         }
     }
     @IBOutlet var modeSubView: UIView!
@@ -128,7 +131,7 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
     @IBAction func summit(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "variableSpeedViewController") as! variableSpeedViewController
-        if (stepSize.text != "") || (vc.stepSize == 0){
+        if (stepSize.text != "") && (vc.stepSize == 0){
             let stepsize = stepSize.text!
             var stepSize = (stepsize as NSString).doubleValue
             stepSize = (1/stepSize) * 1000

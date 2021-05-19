@@ -32,6 +32,8 @@ class ViewController: BaseViewController{
 //            userDefaults.removeObject(forKey: key.key)
 //        }
 //        userDefaults.synchronize()
+//        userDefaults.removeObject(forKey: "pacFixBorg2021-05-11T11:49:30+0800")
+//        userDefaults.synchronize()
         presenter = userMainPresenter(delegate: self)
 //        print(UserDefaults.standard.dictionaryRepresentation())
         

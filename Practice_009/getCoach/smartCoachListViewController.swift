@@ -60,8 +60,10 @@ extension smartCoachListViewController: getCoachViewProtocol {
             var sped: [Float] = []
             var dura: [Int] = []
             for i in (0...Result.data!.data.count-1){
-                sped.append(Float(Result.data!.data[i].speed!))
-                dura.append(Result.data!.data[i].time!)
+                if (Result.data!.data[i].speed != nil){
+                    sped.append(Float(Result.data!.data[i].speed!))
+                    dura.append(Result.data!.data[i].time!)
+                }
             }
             print(sped, dura)
             userDefaults.set(sped, forKey: "speedVFromD")

@@ -144,6 +144,9 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     //button function
     @IBAction func finish(_ sender: Any) {
         stopCountDown()
+        timer = nil
+        flashTimer = nil
+        stopTime = Date()
         let notificationName = Notification.Name("sendTimestamp")
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":[startTime, stopTime]])
         //send to borgScalePostTestViewController.swift
@@ -189,7 +192,9 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         }
         else{
             let countDuration = trainingDuration
-            //確認timer 狀態 isValid（若timer啟動,則為true）
+            //確認timer 狀態 isValid（若timer啟動,則為true
+            timer = nil
+            flashTimer = nil
             stopCountDown()
             countDown(duration: countDuration, speed: trainingSpeed)
             flashingTimer(duration: countDuration, speed: trainingSpeed)
@@ -201,10 +206,12 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
             restOfTime.text = String(countDownNum/60+1)
             countDownNum -= 1
+            if (countDownNum % 60 == 0){
+                playAudioForMin()
+            }
             if countDownNum == 0 {
                 restOfTime.text = String(countDownNum)
-                timer.invalidate()
-                pauseFlashing()
+                stopCountDown()
                 let finishAlert = UIAlertController(title: "完成", message: "測驗已完成", preferredStyle: .alert)
                 finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
                 self.present(finishAlert, animated: true)
@@ -214,12 +221,10 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     func stopCountDown(){
         if ((timer?.isValid) != nil){
             timer.invalidate()
-            timer = nil
         }
         if ((flashTimer?.isValid) != nil){
             pauseFlashing()
             flashTimer.invalidate()
-            flashTimer = nil
         }
     }
     func flashingTimer(duration: Int, speed: Float){
@@ -246,6 +251,11 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     }
     func playAudio(){
         let url = Bundle.main.url(forResource: "knob-458", withExtension:"mp3")
+        audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.play()
+    }
+    func playAudioForMin(){
+        let url = Bundle.main.url(forResource: "cant-do-that-57", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
     }

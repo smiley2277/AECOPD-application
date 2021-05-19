@@ -148,9 +148,11 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
     //button function
     @IBAction func finish(_ sender: Any) {
         stopCountDown()
+        timer = nil
+        flashTimer = nil
+        stopTime = Date()
         let notificationName = Notification.Name("sendTimestampByVariable")
         Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":[startTime, stopTime]])
-        
         //send to borgScalePostTestViewController.swift
         stopString = dateFormatter.string(from: stopTime! as Date)
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -185,7 +187,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         }else{
             stopCountDown()
             stopTime = Date()
-            print("@VSVC, stopTime,", stopTime)
+//            print("@VSVC, stopTime,", stopTime)
             pauseFlashing()
             let finishAlert = UIAlertController(title: "暫停", message: "測驗已終止，請重新開始", preferredStyle: .alert)
             finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
@@ -225,8 +227,8 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         flashSignal.alpha = 1.0
         animation.fromValue = 1.0
         animation.toValue = 0
-        animation.duration = CFTimeInterval(60/trainingSpeed) //一次動畫做幾秒
-        animation.repeatDuration = CFTimeInterval(60/trainingSpeed) //改成總秒數
+        animation.duration = CFTimeInterval(trainingSpeed) //一次動畫做幾秒
+        animation.repeatDuration = CFTimeInterval(trainingSpeed) //改成總秒數
         animation.autoreverses = true
         animation.repeatCount = Float.infinity
         flashSignal.layer.add(animation, forKey: "")
@@ -239,7 +241,6 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         var countDownNum: Int = sec
         var u = duration.count
         var speedAry = speed
-        print("@VSVC, timer", speedAry)
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
             restOfTime.text = String(countDownNum/60 + 1)
             let stageSec = duration.firstIndex(where: { $0 == countDownNum })
@@ -247,18 +248,16 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
                 u = stageSec!
                 let temp = speedAry.first!
                 speedAry.remove(at: 0)
-                print("stageSec,",speedAry)
                 flashTimer?.invalidate()
                 pauseFlashing()
-                flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(60/temp), repeats: true, block: { [self] (timer) in
+                flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(temp), repeats: true, block: { [self] (timer) in
                     playAudio()
                     flashing(setColor: color, trainingSpeed: temp)
-                    print("v,",temp)
+                    
                 })
             }
             let text = String(u+1)
             stageLabel.text = "階段 " + text
-            print("COUNTDOWN,",countDownNum)
             countDownNum -= 1
             if countDownNum == 0 {
                 restOfTime.text = String(countDownNum)
