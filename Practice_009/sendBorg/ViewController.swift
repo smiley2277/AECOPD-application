@@ -21,7 +21,8 @@ class ViewController: BaseViewController{
     var scvTime: [Int]?
     var userDefaults: UserDefaults!
     let dateFormatter = DateFormatter()
-    let id:String = "k87j6e7c"
+//    let id = UserDefaultUtil.shared.adminUserID
+//    let id:String = "k87j6e7c"
     let userId = UserDefaultUtil.shared.adminUserID
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM; connect.sid=s%3AqMQr9uUfeHIHUyqDbiE4OetAxJiNzQYx.3A8bRMYiheV8JU%2BxhWVIJH3KyysgQM%2FntsC4qvIieXc"
     private var presenter: userMainPresenterProtocol?
@@ -250,8 +251,8 @@ class ViewController: BaseViewController{
             let fixInt = fetchingDefatultForArray(keyName: "smartCoachDuration")
             let varInt = fetchingDefatultForArray(keyName: "smartCoachVariableDuration")//timestamp
             if (fixInt.count != 0){
-                heartRateForFixed = realtimeHR(id: id, timestamp: duration)
-                stepForFixed = realtimeStep(id: id, timestamp: duration)
+                heartRateForFixed = realtimeHR(id: userId ?? "", timestamp: duration)
+                stepForFixed = realtimeStep(id: userId ?? "", timestamp: duration)
                 if (heartRateForFixed.count != 2) && (stepForFixed != 0){
                     let pacBorg = [postborg, preborg, heartRateForFixed[1], heartRateForFixed[0], stepForFixed, realDate[0]] as [Any]
                     presenter?.postBorg(userId: userId!, postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
@@ -265,8 +266,8 @@ class ViewController: BaseViewController{
                 }
             }
             if (varInt.count != 0){
-                heartRateForVaria = realtimeHR(id: id, timestamp: duration)
-                stepForVaria = realtimeStep(id: id, timestamp: duration)
+                heartRateForVaria = realtimeHR(id: userId ?? "", timestamp: duration)
+                stepForVaria = realtimeStep(id: userId ?? "", timestamp: duration)
                 if (heartRateForVaria.count != 2) && (stepForVaria != 0){
                     let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
                     presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
@@ -311,8 +312,8 @@ class ViewController: BaseViewController{
                         duration = duration.reversed()
                         timestampAry = timestampAry.reversed()
                     }
-                    let heartRate = realtimeHR(id: id, timestamp: timestampAry)
-                    let step = realtimeStep(id: id, timestamp: timestampAry)
+                    let heartRate = realtimeHR(id: userId ?? "", timestamp: timestampAry)
+                    let step = realtimeStep(id: userId ?? "", timestamp: timestampAry)
                     print("==> HR & step:",duration, timestampAry, heartRate, step)
                     if (heartRate.count > 1) { //&& (step != 0)
                         let pacBorg = [datetimeAry[0] ,duration, befBorg, aftBorg, heartRate, step] as [Any]

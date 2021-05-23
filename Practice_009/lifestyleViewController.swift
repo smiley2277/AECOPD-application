@@ -23,8 +23,8 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     var lifedata:String = ""
     var hrdata:String = ""
     var airdata:String = ""
-    // let userId = UserDefaultUtil.shared.adminUserID
-    var userId:String = "k87j6e7c"
+    let userId = UserDefaultUtil.shared.adminUserID ?? ""
+//    var userId:String = "k87j6e7c"
     var threeAPI:String = ""
     var hrAPI:String = ""
     var distanceNum: Double = 0.0
@@ -342,7 +342,6 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
             }
         }
     }
-    
     @IBOutlet weak var hrLabel: UILabel!
     @IBOutlet weak var calLabel: UILabel!
     @IBOutlet weak var disLabel: UILabel!

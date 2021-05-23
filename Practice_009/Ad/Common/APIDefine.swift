@@ -20,10 +20,17 @@ enum APIUrl {
         case coach = "coach"
         case survey = "survey"
         case borg = "borg"
+        case normal = ""
         
         static func urlWith(type: UserApi, append: String, userId: String? = nil) -> String {
             let base = WEB_HOST
-            return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)" //
+            let checkClass = UserApi.normal
+            switch checkClass {
+            case .normal:
+                return "\(base)/user/"
+            default:
+                return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)"
+            }
         }
     
         func url () -> String {

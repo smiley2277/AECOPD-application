@@ -267,6 +267,12 @@ extension APIManager {
         let appendUrl = ""
         return manager(method: .post, appendUrl: appendUrl, url: APIUrl.ntuApi(type: .normal) ,parameters: nil, appendHeaders: nil)
     }
+    func putUserID(user_id: String)-> Single<[String:Any]>{
+        let appendUrl = ""
+        let params = ["user_id": user_id] as [String : Any]
+        return manager(method: .put, appendUrl: appendUrl, url: APIUrl.userApi(type: .normal) ,parameters: nil, appendHeaders: nil)
+    }
+    
 }
 
 extension APIManager {

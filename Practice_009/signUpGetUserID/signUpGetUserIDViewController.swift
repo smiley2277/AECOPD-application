@@ -29,7 +29,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
             request.addValue("connect.sid=s%3AwhglgQ34pjzKs99VdxF6IhBs98jg9yqt.e5ld3vZo6jPZ3AS2vXiKhvhEYsTtmy2u8G8zrMtKBoE", forHTTPHeaderField: "Cookie")
             request.httpMethod = "POST"
             request.httpBody = postData
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
               guard let data = data else {
                 print(String(describing: error))
                 semaphore.signal()
@@ -44,10 +44,12 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
                     if (j != "user_id"){
                         self.userID = j
                         self.delegate?.onGetUserIDSucces(userID: self.userID)
-                        
+                        presenter?.putUserID(user_id: j)
                         let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
                         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        DispatchQueue.main.async { () -> Void in
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }
                         
                     }
                 }
@@ -74,7 +76,8 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
 
 extension signUpGetUserIDViewController: signUpGetUserIDViewProtocol {
     func onBindGetUserIDResult(SignUpResult: LoginResult) {
-        
+    }
+    func onBindPutUserIDResult(statusResult: PostQues) {    
     }
 }
 

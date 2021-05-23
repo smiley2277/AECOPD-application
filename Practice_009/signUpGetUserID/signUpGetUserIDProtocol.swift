@@ -10,9 +10,11 @@ import UIKit
 
 protocol signUpGetUserIDViewProtocol: BaseViewControllerProtocol {
     func onBindGetUserIDResult(SignUpResult: LoginResult)
+    func onBindPutUserIDResult(statusResult: PostQues) 
 }
 
 protocol signUpGetUserIDPresenterProtocol: NSObjectProtocol {
     func getUserID(email: String, password: String)
+    func putUserID(user_id: String)
 }
 

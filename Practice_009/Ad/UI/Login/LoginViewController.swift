@@ -106,6 +106,7 @@ extension LoginViewController: LoginViewProtocol {
             if data.userID == "" || data.userID == nil {
                 let storyboard = UIStoryboard(name: "signUpGetUserID", bundle: Bundle.main)
                 let vc = storyboard.instantiateViewController(withIdentifier: "signUpGetUserIDViewController")
+//                vc.delegate  = self
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)

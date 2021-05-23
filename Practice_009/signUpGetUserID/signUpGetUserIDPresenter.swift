@@ -23,4 +23,11 @@ class signUpGetUserIDPresenter: NSObject, signUpGetUserIDPresenterProtocol{
             self.delegate?.onApiError(error: error as! APIError)
         }).disposed(by: disposeBag)
     }
+    func putUserID(user_id: String){
+        repository.putUserID(user_id: user_id).subscribe(onSuccess:{ (model) in
+                self.delegate?.onBindPutUserIDResult(statusResult: model)
+        }, onError: {error in
+            self.delegate?.onApiError(error: error as! APIError)
+        }).disposed(by: disposeBag)
+    }
 }

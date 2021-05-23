@@ -14,8 +14,8 @@ import FoundationNetworking
 
 class OnlinePredictViewController: BaseViewController{
     var probData:String = ""
-//    let userId = UserDefaultUtil.shared.adminUserID
-    let userId: String = "k87j6e7c"
+    let userId = UserDefaultUtil.shared.adminUserID ?? ""
+//    let userId: String = "k87j6e7c"
     @IBOutlet weak var comment: UILabel!
     let cookies:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
     override func viewDidLoad() {
