@@ -128,6 +128,8 @@ class APIManager: NSObject {
             requestUrl = type.url(append: "",userId: userId)
         case .ntuApi(let type):
             requestUrl = type.url(append: "")
+        case .userInfoApi(type: let type):
+            requestUrl = type.url(append: "")
         }
         
         requestUrl =  (requestUrl + encodeUrl ).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -270,7 +272,7 @@ extension APIManager {
     func putUserID(user_id: String)-> Single<[String:Any]>{
         let appendUrl = ""
         let params = ["user_id": user_id] as [String : Any]
-        return manager(method: .put, appendUrl: appendUrl, url: APIUrl.userApi(type: .normal) ,parameters: nil, appendHeaders: nil)
+        return manager(method: .put, appendUrl: appendUrl, url: APIUrl.userInfoApi(type: .normal) ,parameters: params, appendHeaders: nil)
     }
     
 }

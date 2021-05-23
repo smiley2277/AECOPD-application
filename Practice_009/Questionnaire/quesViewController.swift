@@ -11,6 +11,7 @@ import UIKit
 class quesViewController: BaseViewController{
     @IBOutlet weak var completeLabel: UILabel!
     @IBOutlet weak var compContentLabel: UILabel!
+    var userDefaults: UserDefaults!
     var catAry:[String] = []
     var eq5Ary:[String] = []
     var mrcAry:[Int] = []
@@ -18,11 +19,14 @@ class quesViewController: BaseViewController{
     let today = Date()
     let dateFormatter = DateFormatter()
     let notificationName = Notification.Name("sendQuesArray")
+    var completion: Int = 0
     private var presenter: quesPresenterProtocol?
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
         _ = segue.source as? CATViewController
         _ = segue.source as? eq5dViweController
         _ = segue.source as? mMRCViewController
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let str: String = dateFormatter.string(from: today)
         if (catAry.count == 9) && (eq5Ary.count == 5) && (mrcAry.count == 1){
             completeLabel.text = "今日已完成：(3/3)"
             compContentLabel.text = ""
@@ -30,14 +34,20 @@ class quesViewController: BaseViewController{
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成CAT問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
+            completion = 2
+            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count == 9) && (eq5Ary.count != 5) && (mrcAry.count == 1){
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成生活質量問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
+            completion = 2
+            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count == 9) && (eq5Ary.count == 5) && (mrcAry.count != 1){
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成mMRC問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
+            completion = 2
+            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count != 9) && (eq5Ary.count != 5) && (mrcAry.count != 1){
             completeLabel.text = "今日已完成：(0/3)"
         }else{
@@ -52,7 +62,10 @@ class quesViewController: BaseViewController{
                 compContentLabel.text = "已完成mMRC問卷"
                 compContentLabel.font = compContentLabel.font.withSize(25)
             }
+            completion = 1
+            userDefaults.set(completion, forKey: "todaysQues")
         }
+        userDefaults.synchronize()
         if (completeLabel.text == "今日已完成：(3/3)")&&(totalAry.count == 0){
             for cont in mrcAry{
                 totalAry.append(cont) // 0
@@ -65,8 +78,9 @@ class quesViewController: BaseViewController{
                 let cont = Int(cont)!
                 totalAry.append(cont) //6-
             }
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" 
-            let str: String = dateFormatter.string(from: today)
+            completion = 3
+            userDefaults.set(completion, forKey: "\(str)Ques")
+            userDefaults.synchronize()
             let sent: [String: [Int]] = [str : totalAry]
             Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":sent])
             let userId = UserDefaultUtil.shared.adminUserID
@@ -74,7 +88,17 @@ class quesViewController: BaseViewController{
             
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let str: String = dateFormatter.string(from: today)
+        if String(UserDefaults.standard.integer(forKey:"\(str)Ques")) != "0"{
+            let todayIndex = String(UserDefaults.standard.integer(forKey:"\(str)Ques"))
+            completeLabel.text = "今日已完成：(\(todayIndex)/3)"
+        }
+        
+    }
     override func viewDidLoad() {
+        userDefaults = UserDefaults.standard
         presenter = quesPresenter(delegate: self)
     }
 }

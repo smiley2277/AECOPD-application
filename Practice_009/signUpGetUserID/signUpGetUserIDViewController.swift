@@ -20,7 +20,6 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
     private var presenter: signUpGetUserIDPresenterProtocol?
     @IBAction func send(_ sender: Any) {
         if (pwFIll.text != "") && (emailFill.text != ""){
-//            presenter?.getUserID(email: emailFill.text!, password: pwFIll.text!)
             var semaphore = DispatchSemaphore (value: 0)
             let parameters = "email="+emailFill.text!+"&password="+pwFIll.text!
             let postData =  parameters.data(using: .utf8)
@@ -50,10 +49,8 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
                         DispatchQueue.main.async { () -> Void in
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
-                        
                     }
                 }
-                
               semaphore.signal()
             }
             task.resume()
@@ -77,7 +74,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
 extension signUpGetUserIDViewController: signUpGetUserIDViewProtocol {
     func onBindGetUserIDResult(SignUpResult: LoginResult) {
     }
-    func onBindPutUserIDResult(statusResult: PostQues) {    
+    func onBindPutUserIDResult(statusResult: PatientInfo) {
     }
 }
 

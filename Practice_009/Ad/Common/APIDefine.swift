@@ -15,6 +15,7 @@ enum APIUrl {
     case groupApi(type: GroupApi)
     case testApi(type: TestApi)
     case ntuApi(type: NtuApi)
+    case userInfoApi(type: UserInfoApi)
     
     enum UserApi: String {
         case coach = "coach"
@@ -24,13 +25,7 @@ enum APIUrl {
         
         static func urlWith(type: UserApi, append: String, userId: String? = nil) -> String {
             let base = WEB_HOST
-            let checkClass = UserApi.normal
-            switch checkClass {
-            case .normal:
-                return "\(base)/user/"
-            default:
-                return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)"
-            }
+            return "\(base)/user/\(userId ?? "")/\(type.rawValue)\(append)"
         }
     
         func url () -> String {
@@ -125,6 +120,22 @@ enum APIUrl {
         
         func url(append: String, userId: String? = nil) -> String {
             return APIUrl.NtuApi.urlWith(type: self, append: append)
+        }
+    }
+    enum UserInfoApi: String {
+        case normal = ""
+        
+        static func urlWith(type: UserInfoApi, append: String, userId: String? = nil) -> String {
+            let base = WEB_HOST
+            return "\(base)/user/"
+        }
+    
+        func url () -> String {
+            return APIUrl.UserInfoApi.urlWith(type: self, append: "", userId: "")
+        }
+        
+        func url(append: String, userId: String? = nil) -> String {
+            return APIUrl.UserInfoApi.urlWith(type: self, append: append, userId: userId)
         }
     }
 }

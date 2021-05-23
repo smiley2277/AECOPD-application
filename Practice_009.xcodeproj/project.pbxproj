@@ -82,6 +82,7 @@
 		468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EFD2604911100C52990 /* knob-458.mp3 */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
+		46B0AC93265A2E22003938EE /* PateintInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0AC92265A2E22003938EE /* PateintInfo.swift */; };
 		46C2011F263A6F720027165B /* PostQues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2011E263A6F710027165B /* PostQues.swift */; };
 		46C20124263A89400027165B /* PostBorg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20123263A89400027165B /* PostBorg.swift */; };
 		46CB99B025E793C000490562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99AF25E793C000490562 /* AppDelegate.swift */; };
@@ -209,6 +210,7 @@
 		468B1EFD2604911100C52990 /* knob-458.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "knob-458.mp3"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
+		46B0AC92265A2E22003938EE /* PateintInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintInfo.swift; sourceTree = "<group>"; };
 		46C2011E263A6F710027165B /* PostQues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQues.swift; sourceTree = "<group>"; };
 		46C20123263A89400027165B /* PostBorg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBorg.swift; sourceTree = "<group>"; };
 		46CB99AC25E793C000490562 /* Practice_009.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_009.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,6 +408,7 @@
 			children = (
 				462D25C1262D6BBC00A589E0 /* LoginResult.swift */,
 				46C2011E263A6F710027165B /* PostQues.swift */,
+				46B0AC92265A2E22003938EE /* PateintInfo.swift */,
 				46C20123263A89400027165B /* PostBorg.swift */,
 				462D25C2262D6BBC00A589E0 /* PatientBorg.swift */,
 				462D25C3262D6BBC00A589E0 /* PatientBorgAndCoach.swift */,
@@ -772,6 +775,7 @@
 				462D25CD262D6BBC00A589E0 /* ColorHexUtil.swift in Sources */,
 				462D25E8262D6BBC00A589E0 /* LoginRepository.swift in Sources */,
 				462D25D7262D6BBC00A589E0 /* PatientListRepository.swift in Sources */,
+				46B0AC93265A2E22003938EE /* PateintInfo.swift in Sources */,
 				462D25EC262D6BBC00A589E0 /* PatientBorg.swift in Sources */,
 				46FE3563263AA4590010779B /* getCoachPresenter.swift in Sources */,
 				462D25EE262D6BBC00A589E0 /* PatientCoach.swift in Sources */,

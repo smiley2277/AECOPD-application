@@ -14,9 +14,9 @@ class signUpGetUserIDRepository {
         return api
             .map{ LoginResult(JSON: $0)! }
     }
-    func putUserID(user_id: String) -> Single<PostQues> {
+    func putUserID(user_id: String) -> Single<PatientInfo> {
         let api = APIManager.shared.putUserID(user_id: user_id)
         return api
-            .map{ PostQues(JSON: $0)! }
+            .map{ PatientInfo(JSON: $0)! }
     }
 }
