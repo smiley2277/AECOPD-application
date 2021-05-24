@@ -21,10 +21,9 @@ class ViewController: BaseViewController{
     var scvTime: [Int]?
     var userDefaults: UserDefaults!
     let dateFormatter = DateFormatter()
-//    let id = UserDefaultUtil.shared.adminUserID
 //    let id:String = "k87j6e7c"
     let userId = UserDefaultUtil.shared.adminUserID
-    let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM; connect.sid=s%3AqMQr9uUfeHIHUyqDbiE4OetAxJiNzQYx.3A8bRMYiheV8JU%2BxhWVIJH3KyysgQM%2FntsC4qvIieXc"
+    let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
     private var presenter: userMainPresenterProtocol?
     override func viewDidLoad() {
         userDefaults = UserDefaults.standard
@@ -32,8 +31,6 @@ class ViewController: BaseViewController{
 //        for key in dics {
 //            userDefaults.removeObject(forKey: key.key)
 //        }
-//        userDefaults.synchronize()
-//        userDefaults.removeObject(forKey: "pacFixBorg2021-05-11T11:49:30+0800")
 //        userDefaults.synchronize()
         presenter = userMainPresenter(delegate: self)
 //        print(UserDefaults.standard.dictionaryRepresentation())

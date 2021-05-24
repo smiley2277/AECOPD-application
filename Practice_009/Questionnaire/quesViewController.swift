@@ -19,7 +19,7 @@ class quesViewController: BaseViewController{
     let today = Date()
     let dateFormatter = DateFormatter()
     let notificationName = Notification.Name("sendQuesArray")
-    var completion: Int = 0
+    let userId = UserDefaultUtil.shared.adminUserID
     private var presenter: quesPresenterProtocol?
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
         _ = segue.source as? CATViewController
@@ -34,20 +34,14 @@ class quesViewController: BaseViewController{
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成CAT問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
-            completion = 2
-            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count == 9) && (eq5Ary.count != 5) && (mrcAry.count == 1){
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成生活質量問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
-            completion = 2
-            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count == 9) && (eq5Ary.count == 5) && (mrcAry.count != 1){
             completeLabel.text = "今日已完成：(2/3)"
             compContentLabel.text = "尚未完成mMRC問卷"
             compContentLabel.font = compContentLabel.font.withSize(25)
-            completion = 2
-            userDefaults.set(completion, forKey: "todaysQues")
         }else if(catAry.count != 9) && (eq5Ary.count != 5) && (mrcAry.count != 1){
             completeLabel.text = "今日已完成：(0/3)"
         }else{
@@ -62,10 +56,7 @@ class quesViewController: BaseViewController{
                 compContentLabel.text = "已完成mMRC問卷"
                 compContentLabel.font = compContentLabel.font.withSize(25)
             }
-            completion = 1
-            userDefaults.set(completion, forKey: "todaysQues")
         }
-        userDefaults.synchronize()
         if (completeLabel.text == "今日已完成：(3/3)")&&(totalAry.count == 0){
             for cont in mrcAry{
                 totalAry.append(cont) // 0
@@ -78,28 +69,76 @@ class quesViewController: BaseViewController{
                 let cont = Int(cont)!
                 totalAry.append(cont) //6-
             }
-            completion = 3
-            userDefaults.set(completion, forKey: "\(str)Ques")
-            userDefaults.synchronize()
             let sent: [String: [Int]] = [str : totalAry]
             Foundation.NotificationCenter.default.post(name: notificationName, object: nil, userInfo: ["PASS":sent])
-            let userId = UserDefaultUtil.shared.adminUserID
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let today_DATE: String = dateFormatter.string(from: today)
+            userDefaults.set(totalAry.count, forKey: today_DATE+"totalAry")
+            userDefaults.synchronize()
+            
+            print(UserDefaults.standard.dictionaryRepresentation())
+
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let str: String = dateFormatter.string(from: today)
             presenter?.postQues(userId: userId!, cat1: totalAry[6], cat2: totalAry[7], cat3: totalAry[8], cat4: totalAry[9], cat5: totalAry[10], cat6: totalAry[11], cat7: totalAry[12], cat8: totalAry[13], catsum: totalAry[14], eq1: totalAry[1], eq2: totalAry[2], eq3: totalAry[3], eq4: totalAry[4], eq5: totalAry[5], mmrc: totalAry[0], timestamp: str)
             
         }
     }
+    @objc func alertForUnfinish(){
+        if (totalAry.count == 0){
+        // 建立一個提示框
+        let alertController = UIAlertController(
+            title: "退出",
+            message: "今天問卷尚未完成",
+            preferredStyle: .alert)
+
+        // 建立[取消]按鈕
+        let cancelAction = UIAlertAction(
+          title: "取消",
+            style: .cancel,
+          handler: nil)
+        alertController.addAction(cancelAction)
+
+        // 建立[刪除]按鈕
+        let okAction = UIAlertAction(
+          title: "返回",
+            style: .destructive) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(okAction)
+
+        // 顯示提示框
+        self.present(alertController, animated: true, completion: nil)
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        let str: String = dateFormatter.string(from: today)
-        if String(UserDefaults.standard.integer(forKey:"\(str)Ques")) != "0"{
-            let todayIndex = String(UserDefaults.standard.integer(forKey:"\(str)Ques"))
-            completeLabel.text = "今日已完成：(\(todayIndex)/3)"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today: String = dateFormatter.string(from: today)
+        let todayIndex = UserDefaults.standard.integer(forKey: today+"totalAry")
+        if (todayIndex == 15){
+            completeLabel.text = "今日已完成：(3/3)"
+            let alertController = UIAlertController(title: nil, message: "今天問卷已經填寫完成囉! ", preferredStyle: .alert)
+            let confirmAction = UIAlertAction(title: "好", style: .default){(action) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true)
         }
         
     }
     override func viewDidLoad() {
         userDefaults = UserDefaults.standard
+        self.navigationController?.navigationBar.isHidden = false
         presenter = quesPresenter(delegate: self)
+        let leftButton = UIBarButtonItem(
+            title:" < ",
+            style:.plain,
+            target:self,
+            action:#selector(alertForUnfinish))
+        // 加到導覽列中
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.setNavBarItem(left: .custom, mid: .textTitle, right: .nothing)
+        self.setCustomRightBarButtonItems(barButtonItems: [leftButton])
     }
 }
 extension quesViewController: quesViewProtocol {

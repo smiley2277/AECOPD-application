@@ -478,8 +478,8 @@
             filePath = "Practice_009/Questionnaire/quesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "unwindSegueBack(segue:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -704,8 +704,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "settingDefaultForAry(keyName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -720,8 +720,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "180"
             endingLineNumber = "180"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "settingDefaultForAry(keyName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -768,8 +768,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
             endingLineNumber = "178"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "settingDefaultForAry(keyName:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1066,9 +1066,9 @@
             filePath = "Practice_009/sendBorg/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
-            landmarkName = "refetch()"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
+            landmarkName = "autoFetchHRStep()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1082,8 +1082,8 @@
             filePath = "Practice_009/sendBorg/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
             landmarkName = "refetch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1098,8 +1098,8 @@
             filePath = "Practice_009/sendBorg/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
             landmarkName = "refetch()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1146,8 +1146,8 @@
             filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "send(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,8 +1162,8 @@
             filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "send(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1178,8 +1178,8 @@
             filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "send(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1188,6 +1188,22 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "78CD979F-1A1E-4B91-8A55-A83252D596AC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "send(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49294A14-8C0D-463C-9810-8A64F6720E6B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1203,24 +1219,8 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "49294A14-8C0D-463C-9810-8A64F6720E6B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "send(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9CFBE4F0-5B38-4E58-A4A5-0F8CC58ADC85"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Practice_009/Ad/Common/APIManger.swift"
@@ -1386,8 +1386,8 @@
             filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "send(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1466,8 +1466,8 @@
             filePath = "Practice_009/signUpGetUserID/signUpGetUserIDViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "onBindPutUserIDResult(statusResult:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1658,25 +1658,9 @@
             filePath = "Practice_009/Questionnaire/quesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2EC68482-E42B-41E7-9B7E-CB6E9348BF69"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Practice_009/Questionnaire/quesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "unwindSegueBack(segue:)"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "onBindQuesResult(PostQues:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1684,7 +1668,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4E62BEE0-4D13-4EC6-92AF-A35AFCE77E34"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Practice_009/Ad/Common/APIManger.swift"
@@ -1732,7 +1716,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "687DE95A-ECBA-4FDF-84B4-BF213777E030"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Practice_009/Ad/Common/APIManger.swift"
@@ -1741,6 +1725,54 @@
             startingLineNumber = "176"
             endingLineNumber = "176"
             landmarkName = "getLoginResult(email:password:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "785F70AE-9727-44A5-A3E1-BEE797ED69E0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Practice_009/Questionnaire/quesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "unwindSegueBack(segue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC96A729-3E02-4843-B57E-BCFF8380FA8C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Practice_009/Questionnaire/quesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC88944E-5BD1-42F8-B704-1585039FBD28"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Practice_009/Questionnaire/quesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

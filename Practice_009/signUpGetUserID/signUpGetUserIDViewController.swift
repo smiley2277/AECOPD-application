@@ -31,6 +31,10 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
             let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
               guard let data = data else {
                 print(String(describing: error))
+                let alertController = UIAlertController(title: nil, message: "錯誤", preferredStyle: .alert)
+                let confirmAction = UIAlertAction(title: "確定", style: .default)
+                alertController.addAction(confirmAction)
+                present(alertController, animated: true)
                 semaphore.signal()
                 return
               }
