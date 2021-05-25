@@ -199,7 +199,7 @@ extension APIManager {
         return manager(method: .get, appendUrl: appendUrl, url: APIUrl.userApi(type: .coach) ,parameters: nil, appendHeaders: nil, userId: userId)
     }
     
-    func postPatientCoach(userId: String, timestamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]) -> Single<[String:Any]> {
+    func postPatientCoach(userId: String, timestamp: String, borgUUID: String, patientCoachList: [(speed: Double?, time: Double?)]) -> Single<[String:Any]> {
         //TODO 刪掉空的
         let coachList = patientCoachList.map({ coach -> [String: Any] in
             var list: [String: Any] = [:]

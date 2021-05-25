@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension PatientDetailTabListInputCell {
-    func setCell(title: String, suggestSpeed: Int?, suggestTime: Int?, isAddCoachButtonHidden: Bool, index: Int){
+    func setCell(title: String, suggestSpeed: Double?, suggestTime: Double?, isAddCoachButtonHidden: Bool, index: Int){
         self.title.text = title
         
         if let speed = suggestSpeed {
@@ -36,7 +36,7 @@ extension PatientDetailTabListInputCell {
 
 protocol PatientDetailTabListInputCellProtocol: NSObjectProtocol {
     func onTouchAddCoachCountButton()
-    func onTypeSpeedTime(speed: Int?, time: Int?, index: Int)
+    func onTypeSpeedTime(speed: Double?, time: Double?, index: Int)
     func onTextFieldDidBeginEditing(index: Int)
     func onTextFieldDidEndEditing()
 }
@@ -90,19 +90,19 @@ class PatientDetailTabListInputCell: UITableViewCell, UITextFieldDelegate {
 extension PatientDetailTabListInputCell {
     @objc func textDidChange() {
         //TODO: 顯示只能數字？
-        var speed: Int?
-        var time: Int?
+        var speed: Double?
+        var time: Double?
         
         if suggestSpeed?.text == "" {
             speed = nil
         } else {
-            speed = Int(suggestSpeed.text!)
+            speed = Double(suggestSpeed.text!)
         }
         
         if suggestTime?.text == "" {
             time = nil
         } else {
-            time = Int(suggestTime.text!)
+            time = Double(suggestTime.text!)
         }
         
         delegate?.onTypeSpeedTime(speed: speed, time: time, index: index!)

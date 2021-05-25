@@ -3,7 +3,7 @@ import RxSwift
 class PatientDetailTabListRepository {
     static let shared = PatientDetailTabListRepository()
     
-    func postPatientCoach(userId: String, timestamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]) -> Single<PostPatientCoachResponse> {
+    func postPatientCoach(userId: String, timestamp: String, borgUUID: String, patientCoachList: [(speed: Double?, time: Double?)]) -> Single<PostPatientCoachResponse> {
         let api = APIManager.shared.postPatientCoach(userId: userId, timestamp: timestamp, borgUUID: borgUUID, patientCoachList: patientCoachList)
         return LoginRepository.shared.localAuthorizationData
             .flatMap({_ in api})

@@ -171,7 +171,7 @@ class PatientDetailTabListViewController: BaseViewController {
         presenter?.getPatientCoach(userId: userId!, timestamp: DateFormat.shared.dateFormat(date: datePicker.date), borgUUID: borgUUID)
     }
     
-    private func postPatientCoach(addCoachList: [(speed: Int?, time: Int?)]) {
+    private func postPatientCoach(addCoachList: [(speed: Double?, time: Double?)]) {
         let now = Date()
         let timeStamp = DateFormat.shared.dateFormatLong(date: now)
         //MARK: 目前都回覆最後一個borgUUID (有bug 因為當天最後一個不一定是資料庫裡面最後一個)
@@ -435,7 +435,7 @@ extension PatientDetailTabListViewController: PatientDetailTabListAddCoachViewCo
       })
     }
     
-    func onTouchSendButton(addCoachList: [(speed: Int?, time: Int?)]) {
+    func onTouchSendButton(addCoachList: [(speed: Double?, time: Double?)]) {
         postPatientCoach(addCoachList: addCoachList)
     }
 }

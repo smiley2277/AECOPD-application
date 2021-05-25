@@ -10,7 +10,7 @@ import UIKit
 
 protocol PatientDetailTabListAddCoachViewControllerProtocol: NSObjectProtocol {
     func onChangedHeight(newHeight: CGFloat)
-    func onTouchSendButton(addCoachList: [(speed: Int?, time: Int?)])
+    func onTouchSendButton(addCoachList: [(speed: Double?, time: Double?)])
 }
 
 extension PatientDetailTabListAddCoachViewController {
@@ -26,7 +26,7 @@ class PatientDetailTabListAddCoachViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     weak var delegate: PatientDetailTabListAddCoachViewControllerProtocol?
-    var addCoachList: [(speed: Int?, time: Int?)] = [(nil, nil)]
+    var addCoachList: [(speed: Double?, time: Double?)] = [(nil, nil)]
     var date: Date?
     var isAddingCoachCount = false
     enum Section: Int, CaseIterable {
@@ -171,7 +171,7 @@ extension PatientDetailTabListAddCoachViewController: PatientDetailTabListInputC
         self.tableView.isScrollEnabled = true
     }
     
-    func onTypeSpeedTime(speed: Int?, time: Int?, index: Int) {
+    func onTypeSpeedTime(speed: Double?, time: Double?, index: Int) {
         addCoachList[index] = (speed, time)
     }
     

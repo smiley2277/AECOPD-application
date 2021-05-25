@@ -9,7 +9,7 @@ class PatientDetailTabListPresenter: NSObject, PatientDetailTabListPresenterProt
         self.delegate = delegate
     }
 
-    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Int?, time: Int?)]){
+    func postPatientCoach(userId: String, timeStamp: String, borgUUID: String, patientCoachList: [(speed: Double?, time: Double?)]){
         self.delegate?.onStartLoadingHandle(handleType: .clearBackgroundAndCantTouchView)
         repository.postPatientCoach(userId: userId, timestamp: timeStamp, borgUUID: borgUUID, patientCoachList: patientCoachList).subscribe(onSuccess:{ (model) in
             self.delegate?.onBindPostPatientCoachResponse(postPatientCoachResponse: model)
