@@ -1004,7 +1004,7 @@
                                                                         <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="建議訓練時間" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dW6-1F-E2M">
                                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
                                                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="17"/>
-                                                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="send"/>
+                                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="send"/>
                                                                         </textField>
                                                                     </subviews>
                                                                 </stackView>

@@ -12,17 +12,19 @@ class PatientDetailCoachCell: UITableViewCell {
         
         borderView.setBorder(width: 0, radius: 4, color: UIColor.lightGray)
         borderView.setShadow(offset: CGSize(width: 0, height: 1), opacity: 0.2, shadowRadius: 4)
+        speed.adjustsFontSizeToFitWidth = true
+        time.adjustsFontSizeToFitWidth = true
     }
     
     func setPatientBorgAndCoach(data: PatientBorgAndCoach) {
         if let speed = data.speed {
-            self.speed.text = "\(speed)"
+            self.speed.text = "\(speed.removeZerosFromEnd())"
         } else {
             self.speed.text = " "
         }
         
         if let time = data.time {
-            self.time.text = "\(time)"
+            self.time.text = "\(time.removeZerosFromEnd())"
         } else {
             self.time.text = " "
         }

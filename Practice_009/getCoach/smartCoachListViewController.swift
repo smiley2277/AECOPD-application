@@ -58,7 +58,7 @@ extension smartCoachListViewController: getCoachViewProtocol {
         print(Result.data!.data.count)
         if (Result.data!.data.count > 1){
             var sped: [Float] = []
-            var dura: [Int] = []
+            var dura: [Double] = []
             for i in (0...Result.data!.data.count-1){
                 if (Result.data!.data[i].speed != nil){
                     sped.append(Float(Result.data!.data[i].speed!))
@@ -71,7 +71,7 @@ extension smartCoachListViewController: getCoachViewProtocol {
             userDefaults.synchronize()
         }else if (Result.data!.data.count == 1){
             var speed: Float = 0.0
-            var durat: Int = 0
+            var durat: Double = 0
             speed = Float(Result.data!.data[0].speed!)
             durat = Result.data!.data[0].time!
             print(speed, durat)

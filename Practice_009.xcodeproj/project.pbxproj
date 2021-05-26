@@ -14,7 +14,6 @@
 		460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */; };
 		460EF8D22633FF56004E8DD3 /* userMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */; };
 		460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D62633FF67004E8DD3 /* userMainRepository.swift */; };
-		461B4441264A62B80075DABB /* oh-finally-355.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461B4440264A62B80075DABB /* oh-finally-355.mp3 */; };
 		461B4443264A65FF0075DABB /* cant-do-that-57.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */; };
 		462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */; };
 		462C1C372611B88E0045DB40 /* variableSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */; };
@@ -107,6 +106,7 @@
 		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
 		46FE356D263AA4790010779B /* getCoachRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE356C263AA4790010779B /* getCoachRepository.swift */; };
 		755602206C8599C81157D952 /* Pods_Practice_009.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14EF5B0EE7397125A60C2BD5 /* Pods_Practice_009.framework */; };
+		E76AF7CC265E29A20034A553 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76AF7CB265E29A20034A553 /* DoubleExtension.swift */; };
 		E78F2BD8264912D400294A36 /* GroupAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78F2BD7264912D400294A36 /* GroupAdmin.swift */; };
 		E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7F519ED263BD7D8006E713C /* LoadingView.xib */; };
 		E7F519F3263BD7DC006E713C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F519F2263BD7DC006E713C /* LoadingView.swift */; };
@@ -241,6 +241,7 @@
 		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
 		46FE356C263AA4790010779B /* getCoachRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachRepository.swift; sourceTree = "<group>"; };
 		5C11ACBDDD69553C6FF829CE /* Pods-Practice_009.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Practice_009.release.xcconfig"; path = "Target Support Files/Pods-Practice_009/Pods-Practice_009.release.xcconfig"; sourceTree = "<group>"; };
+		E76AF7CB265E29A20034A553 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		E78F2BD7264912D400294A36 /* GroupAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdmin.swift; sourceTree = "<group>"; };
 		E7F519ED263BD7D8006E713C /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		E7F519F2263BD7DC006E713C /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -326,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				462D259E262D6BBA00A589E0 /* UIViewExtension.swift */,
+				E76AF7CB265E29A20034A553 /* DoubleExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -688,7 +690,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */,
-				461B4441264A62B80075DABB /* oh-finally-355.mp3 in Resources */,
 				462D25D8262D6BBC00A589E0 /* PatientList.storyboard in Resources */,
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
 				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
@@ -784,6 +785,7 @@
 				462D25D9262D6BBC00A589E0 /* PatientDetailTabListSenbButtonCell.swift in Sources */,
 				460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */,
 				462D25D1262D6BBC00A589E0 /* PatientListViewController.swift in Sources */,
+				E76AF7CC265E29A20034A553 /* DoubleExtension.swift in Sources */,
 				46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */,
 				468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */,
 				46CB99B425E793C000490562 /* ViewController.swift in Sources */,

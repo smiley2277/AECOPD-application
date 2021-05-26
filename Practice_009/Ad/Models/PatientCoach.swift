@@ -13,8 +13,8 @@ class PatientCoach: BaseModel {
         }
         
         class Data: BaseModel {
-            var speed: Int?
-            var time: Int?
+            var speed: Double?
+            var time: Double?
             var timestamp: String?
             var borgUUID: String?
             //MARK: for UI

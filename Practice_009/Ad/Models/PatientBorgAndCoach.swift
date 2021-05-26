@@ -1,8 +1,8 @@
 import ObjectMapper
 
 class PatientBorgAndCoach: NSObject {
-    var speed: Int?
-    var time: Int?
+    var speed: Double?
+    var time: Double?
     var preborg: Int?
     var postborg: Int?
     var prebeat: Int?
