@@ -250,12 +250,12 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         flashSignal.layer.timeOffset = pausedTime
     }
     func playAudio(){
-        let url = Bundle.main.url(forResource: "knob-458", withExtension:"mp3")
+        let url = Bundle.main.url(forResource: "knob-amp19", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
     }
     func playAudioForMin(){
-        let url = Bundle.main.url(forResource: "cant-do-that-57", withExtension:"mp3")
+        let url = Bundle.main.url(forResource: "cant-do-that-amp29", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
     }

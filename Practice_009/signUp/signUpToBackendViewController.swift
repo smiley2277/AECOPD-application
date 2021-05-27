@@ -31,6 +31,12 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
     var sexuality: String = ""
     let formatter = DateFormatter()
     var receiveData: [String:Any] = [:]
+    let VCstoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    var vc: ViewController {
+        get {
+         return VCstoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        }
+    }
     @IBAction func sexualitySwitch(_ sender: UISwitch) {
         if (sender.isOn == true){
             sexuality = "Female"
@@ -77,18 +83,14 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         let regex = try!  NSRegularExpression(pattern: expression, options: .allowCommentsAndWhitespace)
         let numberOfMatches =  regex.numberOfMatches(in: newString, options:.reportProgress,    range:NSMakeRange(0, newString.count))
         if  numberOfMatches == 0{
-            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入數字", preferredStyle: .alert)
-            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(finishAlert, animated: true)
+            vc.alert(title: "錯誤", msg: "請輸入數字", btn: "確定")
             ageFill.text = ""
         }
     }
     @IBAction func checkEmail(_ sender: Any) {
         let newString = (emailFill.text! as NSString).replacingCharacters(in: NSMakeRange(0, emailFill.text!.count), with: emailFill.text!)
         if  !(newString.contains("@")){
-            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入電子郵件正式格式", preferredStyle: .alert)
-            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(finishAlert, animated: true)
+            vc.alert(title: "錯誤", msg: "請輸入電子郵件正式格式", btn: "確定")
             emailFill.text = ""
         }
     }
@@ -99,9 +101,7 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         let regex = try!  NSRegularExpression(pattern: expression, options: .allowCommentsAndWhitespace)
         let numberOfMatches =  regex.numberOfMatches(in: newString, options:.reportProgress,    range:NSMakeRange(0, newString.count))
         if  numberOfMatches == 0{
-            let finishAlert = UIAlertController(title: "錯誤", message: "請輸入台灣身分證字號格式", preferredStyle: .alert)
-            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(finishAlert, animated: true)
+            vc.alert(title: "錯誤", msg: "請輸入台灣身分證字號格式", btn: "確定")
             IDFill.text = ""
         }
     }
@@ -117,9 +117,7 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         if IDFill.text == "" || IDFill.text == nil { return }
         if passwordFill.text == "" || passwordFill.text == nil { return }
         if (passwordFill.text != checkpwFill.text){
-            let finishAlert = UIAlertController(title: "提醒", message: "密碼填寫有誤，請填寫相同密碼", preferredStyle: .alert)
-            finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(finishAlert, animated: true)
+            vc.alert(title: "提醒", msg: "密碼填寫有誤，請填寫相同密碼", btn: "確定")
         }else{
             if (useridFill.text != nil){
                 user_id = useridFill.text!
@@ -179,9 +177,7 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         self.view.endEditing(true)
     }
     private func enableSignUpErrorHint(_ isEnable: Bool) {
-        let finishAlert = UIAlertController(title: "提醒", message: "請確認都有填到唷", preferredStyle: .alert)
-        finishAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-        self.present(finishAlert, animated: true)
+        vc.alert(title: "提醒", msg: "請確認都有填到唷", btn: "確定")
     }
     @IBOutlet weak var scrollview: UIScrollView!
     @objc func keyboardWillShow(_ notification:Notification){

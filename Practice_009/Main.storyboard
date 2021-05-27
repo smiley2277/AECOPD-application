@@ -299,7 +299,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mMRC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUe-EW-RcC">
-                                <rect key="frame" x="138" y="123" width="114" height="39"/>
+                                <rect key="frame" x="138" y="123" width="138" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="138" id="Muj-Sd-AKc"/>
                                     <constraint firstAttribute="height" constant="39" id="kn3-2t-2e2"/>
@@ -329,7 +329,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="爬樓過程較緩慢，需停下喘氣" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O53-HI-UCb">
-                                <rect key="frame" x="136" y="478" width="204" height="71"/>
+                                <rect key="frame" x="136" y="478" width="228" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="ZjM-NT-hxS"/>
                                     <constraint firstAttribute="width" constant="228" id="fMU-1T-8bv"/>
@@ -339,7 +339,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="走一百公尺要停下喘口氣" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxL-Sd-bHG">
-                                <rect key="frame" x="136" y="577" width="204" height="71"/>
+                                <rect key="frame" x="136" y="577" width="228" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="YDR-oi-Hwz"/>
                                     <constraint firstAttribute="height" constant="71" id="zmc-p3-o5C"/>
@@ -349,7 +349,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="太喘無法出門、穿脫衣服都會喘" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xj-3l-D5N">
-                                <rect key="frame" x="136" y="676" width="204" height="71"/>
+                                <rect key="frame" x="136" y="676" width="228" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="228" id="MlU-CA-Bhm"/>
                                     <constraint firstAttribute="height" constant="71" id="T1h-zW-7RM"/>
@@ -429,7 +429,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1w1-4J-yoe">
-                                <rect key="frame" x="157" y="778" width="76" height="54"/>
+                                <rect key="frame" x="157" y="778" width="100" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Z6A-vh-Qvf"/>
                                     <constraint firstAttribute="height" constant="54" id="ufO-V1-K4q"/>
@@ -442,7 +442,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" text=" 請依照喘的程度，勾選對應的格子。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkG-o4-KYc">
-                                <rect key="frame" x="86" y="170" width="218" height="88"/>
+                                <rect key="frame" x="86" y="170" width="242" height="88"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="242" id="ZCY-QS-tbs"/>

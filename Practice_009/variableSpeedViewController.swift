@@ -116,11 +116,12 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyboard.instantiateViewController(withIdentifier: "variableSettingViewController") as! variableSettingViewController
         let info_SS = vc.settingDefault(keyName: "stepSize")
-        let info_SP = vc.settingDefaultForFloatAry(keyName: "speed")
-        let info_DD = vc.settingDefaultForAry(keyName: "duration")
+        let info_SP = vc.settingDefaultForFloatAry(keyName: "speedV")
+        let info_DD = vc.settingDefaultForAry(keyName: "durationV")
         
         let info_SPFD = vc.settingDefaultForFloatAry(keyName: "speedVFromD")
         let info_DDFD = vc.settingDefaultForAry(keyName: "durationVFromD")
+        print("@VSVC, info, ", info_SP, info_SPFD)
         if (stepSizeLife == 0){
             stepSize = (info_SS as! NSString).doubleValue
             stepSize = trunc(stepSize * 10) / 10
@@ -130,12 +131,14 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         }
         //怪怪的
         if (vc.settingDefault(keyName: "mode") == "self"){
+            print(vc.settingDefault(keyName: "mode"))
             if (info_SP != []) && (info_DD != []){
                 varSpeed = info_SP!
                 varDuration = info_DD!
                 print("@VSVC, info, ", varSpeed, varDuration , info_SP , info_DD)
             }
         }else if (vc.settingDefault(keyName: "mode") == "Doc"){
+            print(vc.settingDefault(keyName: "mode"))
             if (info_SPFD != []) && (info_DDFD != []){
                 varSpeed = info_SPFD!
                 varDuration = info_DDFD!
@@ -176,6 +179,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
                 durationAry.append(countDownNum)
             }
             var speedAry = aryUnitTransfer(speed: varSpeed, size: stepSize)
+            print(varSpeed)
             flashingTimer(duration: durationAry, speed: speedAry, sec: countDownNum)
         }
     }
@@ -250,6 +254,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
                 speedAry.remove(at: 0)
                 flashTimer?.invalidate()
                 pauseFlashing()
+                playAudioForStage()
                 flashTimer = Timer.scheduledTimer(withTimeInterval:CFTimeInterval(temp), repeats: true, block: { [self] (timer) in
                     playAudio()
                     flashing(setColor: color, trainingSpeed: temp)
@@ -271,7 +276,13 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         })
     }
     func playAudio(){
-        let url = Bundle.main.url(forResource: "knob-458", withExtension:"mp3")
+        let url = Bundle.main.url(forResource: "knob-amp19", withExtension:"mp3")
+        audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.play()
+    }
+    
+    func playAudioForStage(){
+        let url = Bundle.main.url(forResource: "cant-do-that-amp29", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
         audioPlayer.play()
     }

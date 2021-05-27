@@ -15,6 +15,12 @@ class smartCoachListViewController: BaseViewController {
     let dateFormatter = DateFormatter()
     var userDefaults: UserDefaults!
     private var presenter: getCoachPresenterProtocol?
+    let VCstoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    var vc: ViewController {
+        get {
+         return VCstoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        }
+    }
     @IBAction func unwindSegueBack(segue: UIStoryboardSegue){
     }
     @IBAction func walkingTest(_ sender: Any) {
@@ -56,6 +62,8 @@ class smartCoachListViewController: BaseViewController {
 extension smartCoachListViewController: getCoachViewProtocol {
     func onBindGetCoachResult(Result: PatientCoach){
         print(Result.data!.data.count)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         if (Result.data!.data.count > 1){
             var sped: [Float] = []
             var dura: [Double] = []
@@ -69,6 +77,7 @@ extension smartCoachListViewController: getCoachViewProtocol {
             userDefaults.set(sped, forKey: "speedVFromD")
             userDefaults.set(dura, forKey: "durationVFromD")
             userDefaults.synchronize()
+            vc.alert(title: "成功", msg: "已成功接收變速版本的醫師建議", btn: "確定")
         }else if (Result.data!.data.count == 1){
             var speed: Float = 0.0
             var durat: Double = 0
@@ -78,6 +87,7 @@ extension smartCoachListViewController: getCoachViewProtocol {
             userDefaults.set(speed, forKey: "speedFromD")
             userDefaults.set(durat, forKey: "durationFromD")
             userDefaults.synchronize()
+            vc.alert(title: "成功", msg: "已成功接收固定速率版本的醫師建議", btn: "確定")
         }
     }
 }

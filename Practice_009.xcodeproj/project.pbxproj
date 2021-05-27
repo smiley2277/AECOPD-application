@@ -14,7 +14,9 @@
 		460EF8CD2633FF4A004E8DD3 /* userMainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */; };
 		460EF8D22633FF56004E8DD3 /* userMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */; };
 		460EF8D72633FF67004E8DD3 /* userMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460EF8D62633FF67004E8DD3 /* userMainRepository.swift */; };
-		461B4443264A65FF0075DABB /* cant-do-that-57.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */; };
+		461BC1D6265F85B600C070A6 /* knob-amp19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461BC1D4265F85B600C070A6 /* knob-amp19.mp3 */; };
+		461BC1D9265F864700C070A6 /* cant-do-that-amp29.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 461BC1D8265F864700C070A6 /* cant-do-that-amp29.mp3 */; };
+		461BC1DB265F97EF00C070A6 /* offlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461BC1DA265F97EF00C070A6 /* offlinePredictViewController.swift */; };
 		462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */; };
 		462C1C372611B88E0045DB40 /* variableSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */; };
 		462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 462C1C3B2611C4FA0045DB40 /* refresh.png */; };
@@ -78,7 +80,6 @@
 		468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */; };
 		468B1EF426048C9800C52990 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF326048C9800C52990 /* play-button.png */; };
 		468B1EF926048EC900C52990 /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF826048EC900C52990 /* stop-button.png */; };
-		468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EFD2604911100C52990 /* knob-458.mp3 */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
 		46B0AC93265A2E22003938EE /* PateintInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0AC92265A2E22003938EE /* PateintInfo.swift */; };
@@ -100,7 +101,6 @@
 		46CE402E2637C01600E93755 /* quesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE402D2637C01600E93755 /* quesRepository.swift */; };
 		46CE40332637C02700E93755 /* quesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE40322637C02700E93755 /* quesProtocol.swift */; };
 		46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46CF1CE425EE19E2006C459C /* Main.storyboard */; };
-		46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */; };
 		46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */; };
 		46FE3563263AA4590010779B /* getCoachPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3562263AA4590010779B /* getCoachPresenter.swift */; };
 		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
@@ -142,8 +142,9 @@
 		460EF8CC2633FF4A004E8DD3 /* userMainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainProtocol.swift; sourceTree = "<group>"; };
 		460EF8D12633FF56004E8DD3 /* userMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainPresenter.swift; sourceTree = "<group>"; };
 		460EF8D62633FF67004E8DD3 /* userMainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userMainRepository.swift; sourceTree = "<group>"; };
-		461B4440264A62B80075DABB /* oh-finally-355.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "oh-finally-355.mp3"; path = "../../Desktop/oh-finally-355.mp3"; sourceTree = "<group>"; };
-		461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cant-do-that-57.mp3"; sourceTree = "<group>"; };
+		461BC1D4265F85B600C070A6 /* knob-amp19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "knob-amp19.mp3"; sourceTree = "<group>"; };
+		461BC1D8265F864700C070A6 /* cant-do-that-amp29.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cant-do-that-amp29.mp3"; sourceTree = "<group>"; };
+		461BC1DA265F97EF00C070A6 /* offlinePredictViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = offlinePredictViewController.swift; sourceTree = "<group>"; };
 		462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = airQualityViewController.swift; sourceTree = "<group>"; };
 		462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variableSpeedViewController.swift; sourceTree = "<group>"; };
 		462C1C3B2611C4FA0045DB40 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
@@ -207,7 +208,6 @@
 		468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePredictViewController.swift; sourceTree = "<group>"; };
 		468B1EF326048C9800C52990 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		468B1EF826048EC900C52990 /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
-		468B1EFD2604911100C52990 /* knob-458.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "knob-458.mp3"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
 		46B0AC92265A2E22003938EE /* PateintInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintInfo.swift; sourceTree = "<group>"; };
@@ -235,7 +235,6 @@
 		46CE402D2637C01600E93755 /* quesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesRepository.swift; sourceTree = "<group>"; };
 		46CE40322637C02700E93755 /* quesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesProtocol.swift; sourceTree = "<group>"; };
 		46CF1CE425EE19E2006C459C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offlinePredictViewController.swift; sourceTree = "<group>"; };
 		46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifestyleViewController.swift; sourceTree = "<group>"; };
 		46FE3562263AA4590010779B /* getCoachPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachPresenter.swift; sourceTree = "<group>"; };
 		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
@@ -512,15 +511,14 @@
 				46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */,
 				4649C7F9262583760047299C /* variableSettingViewController.swift */,
 				466C70CF2609E8D5003710F3 /* smartSubViewController.swift */,
+				461BC1DA265F97EF00C070A6 /* offlinePredictViewController.swift */,
 				468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */,
 				468B1EE926033B0C00C52990 /* walkingTestViewController.swift */,
 				462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */,
 				466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */,
 				466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */,
-				46F7280F25F6015C00B490F7 /* offlinePredictViewController.swift */,
-				461B4442264A65FF0075DABB /* cant-do-that-57.mp3 */,
-				461B4440264A62B80075DABB /* oh-finally-355.mp3 */,
-				468B1EFD2604911100C52990 /* knob-458.mp3 */,
+				461BC1D4265F85B600C070A6 /* knob-amp19.mp3 */,
+				461BC1D8265F864700C070A6 /* cant-do-that-amp29.mp3 */,
 				468B1EF326048C9800C52990 /* play-button.png */,
 				468B1EF826048EC900C52990 /* stop-button.png */,
 				462C1C3B2611C4FA0045DB40 /* refresh.png */,
@@ -691,10 +689,10 @@
 			files = (
 				46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */,
 				462D25D8262D6BBC00A589E0 /* PatientList.storyboard in Resources */,
+				461BC1D9265F864700C070A6 /* cant-do-that-amp29.mp3 in Resources */,
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
 				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
 				466658D1261C801600EBBD6E /* weather_site.csv in Resources */,
-				468B1EFE2604911100C52990 /* knob-458.mp3 in Resources */,
 				462D25E5262D6BBC00A589E0 /* PatientDetailTabList.storyboard in Resources */,
 				462D25E7262D6BBC00A589E0 /* AdminMain.storyboard in Resources */,
 				46716CBD25FF63CE00FDB785 /* America.gpx in Resources */,
@@ -702,9 +700,9 @@
 				46364C36263005400076C55C /* signUp.storyboard in Resources */,
 				E7F519EE263BD7D8006E713C /* LoadingView.xib in Resources */,
 				468B1EF426048C9800C52990 /* play-button.png in Resources */,
-				461B4443264A65FF0075DABB /* cant-do-that-57.mp3 in Resources */,
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
+				461BC1D6265F85B600C070A6 /* knob-amp19.mp3 in Resources */,
 				462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */,
 				46026145261706C600EE6236 /* site_opendata.csv in Resources */,
 			);
@@ -818,7 +816,6 @@
 				462D25DF262D6BBC00A589E0 /* PatientDetailCoachCell.swift in Sources */,
 				E78F2BD8264912D400294A36 /* GroupAdmin.swift in Sources */,
 				462D25E9262D6BBC00A589E0 /* LoginViewController.swift in Sources */,
-				46F7281025F6015C00B490F7 /* offlinePredictViewController.swift in Sources */,
 				46530D1825EF860A0098F161 /* quesViewController.swift in Sources */,
 				462C1BFE260F2F2E0045DB40 /* airQualityViewController.swift in Sources */,
 				46364C54263158D30076C55C /* signUpToBackendRepository.swift in Sources */,
@@ -848,6 +845,7 @@
 				46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */,
 				463B43F42632A63600906E0F /* signUpGetUserIDViewController.swift in Sources */,
 				46CB99E425E794E200490562 /* COPDRfcOffline.mlmodel in Sources */,
+				461BC1DB265F97EF00C070A6 /* offlinePredictViewController.swift in Sources */,
 				460EF8B72632ABEB004E8DD3 /* signUpGetUserIDRepository.swift in Sources */,
 				46C2011F263A6F720027165B /* PostQues.swift in Sources */,
 				462D25F0262D6BBC00A589E0 /* PostPatientCoachResponse.swift in Sources */,

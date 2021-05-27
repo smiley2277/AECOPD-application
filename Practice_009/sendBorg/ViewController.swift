@@ -52,6 +52,11 @@ class ViewController: BaseViewController{
         let interval = dateB.timeIntervalSince(dateA)
         return interval //unit: sec
     }
+    func alert(title: String, msg: String, btn: String){
+        let Alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        Alert.addAction(UIAlertAction(title: btn, style: .cancel))
+        self.present(Alert, animated: true)
+    }
     //string to timestamp
     func fetchTimefromString(timestamp: [String])-> [Int]{
         // 轉成UTC-> 轉成Unix timestamp
@@ -250,30 +255,40 @@ class ViewController: BaseViewController{
             if (fixInt.count != 0){
                 heartRateForFixed = realtimeHR(id: userId ?? "", timestamp: duration)
                 stepForFixed = realtimeStep(id: userId ?? "", timestamp: duration)
-                if (heartRateForFixed.count != 2) && (stepForFixed != 0){
+                if (heartRateForFixed.count >= 2) && (stepForFixed != 0){
                     let pacBorg = [postborg, preborg, heartRateForFixed[1], heartRateForFixed[0], stepForFixed, realDate[0]] as [Any]
                     presenter?.postBorg(userId: userId!, postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
                     print("@VC FFFpacBorg,", pacBorg)
+                    alert(title: "提醒", msg: "已成功上傳一筆固定速率的資料", btn: "確定")
                 }else{
-                    let nonSyncAlert = UIAlertController(title: "提醒", message: "請先同步您的手錶，以便取得最新資訊", preferredStyle: .alert)
-                    nonSyncAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-                    self.present(nonSyncAlert, animated: true)
                     let saveFixBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
                     userDefaults.set(saveFixBorg, forKey: "pacFixBorg"+realDate[0])
+                    if (heartRateForFixed.count < 2) && (stepForFixed == 0){
+                        alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }else if (heartRateForFixed.count < 2){
+                        alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }else if (stepForFixed == 0){
+                        alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }
                 }
             }
             if (varInt.count != 0){
                 heartRateForVaria = realtimeHR(id: userId ?? "", timestamp: duration)
                 stepForVaria = realtimeStep(id: userId ?? "", timestamp: duration)
-                if (heartRateForVaria.count != 2) && (stepForVaria != 0){
+                if (heartRateForVaria.count >= 2) && (stepForVaria != 0){
                     let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
                     presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
+                    alert(title: "提醒", msg: "已成功上傳一筆變速版本的資料", btn: "確定")
                 }else{
-                    let nonSyncAlert = UIAlertController(title: "提醒", message: "請先同步您的手錶，以便取得最新資訊", preferredStyle: .alert)
-                    nonSyncAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-                    self.present(nonSyncAlert, animated: true)
                     let saveVarBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
                     userDefaults.set(saveVarBorg, forKey: "pacVarBorg"+realDate[0])
+                    if (heartRateForVaria.count < 2) && (stepForVaria == 0){
+                        alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }else if (heartRateForVaria.count < 2){
+                        alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }else if (stepForFixed == 0){
+                        alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                    }
                 }
             }
         }
@@ -350,9 +365,7 @@ class ViewController: BaseViewController{
         let dateFromBorg = noti.userInfo!["PASS"] as! [Date]
         let interval = dateDifference(dateA:dateFromBorg[0], dateB:dateFromBorg[1])
         if  (interval < 120){
-            let timeAlert = UIAlertController(title: "提醒", message: "請至少走超過10分鐘：）", preferredStyle: .alert)
-            timeAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(timeAlert, animated: true)
+            alert(title: "提醒", msg: "請至少走超過10分鐘：）", btn: "確定")
         }else{
             scTime = fetchTime(timestamp: (dateFromBorg))
             userDefaults.set(scTime, forKey: "smartCoachDuration")
@@ -364,9 +377,7 @@ class ViewController: BaseViewController{
         let dateFromBorg = noti.userInfo!["PASS"] as! [Date]
         let interval = dateDifference(dateA:dateFromBorg[0], dateB:dateFromBorg[1])
         if (interval < 120){
-            let timeAlert = UIAlertController(title: "提醒", message: "請至少走超過10分鐘：）", preferredStyle: .alert)
-            timeAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(timeAlert, animated: true)
+            alert(title: "提醒",msg: "請至少走超過10分鐘：）", btn: "確定")
         }else{
             scvTime = fetchTime(timestamp: dateFromBorg)
             userDefaults.set(scvTime, forKey: "smartCoachVariableDuration")
@@ -392,9 +403,7 @@ class ViewController: BaseViewController{
     }
     func offlineCheck(){
         if(questionAry.count==0){
-            let scAlert = UIAlertController(title: "提醒", message: "請先填寫問卷，才可以開啟離線預測功能唷", preferredStyle: .alert)
-            scAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
-            self.present(scAlert, animated: true)
+            alert(title: "提醒", msg: "請先填寫問卷，才可以開啟離線預測功能唷", btn: "確定")
             offlineButton.isUserInteractionEnabled = false
         }else{
             offlineButton.isUserInteractionEnabled = true

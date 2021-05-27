@@ -18,6 +18,12 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
     var  userID: String = ""
     weak var delegate: LoginViewControllerProtocol?
     private var presenter: signUpGetUserIDPresenterProtocol?
+    let VCstoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    var mianVc: ViewController {
+        get {
+         return VCstoryboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        }
+    }
     @IBAction func send(_ sender: Any) {
         if (pwFIll.text != "") && (emailFill.text != ""){
             var semaphore = DispatchSemaphore (value: 0)
@@ -31,10 +37,6 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
             let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
               guard let data = data else {
                 print(String(describing: error))
-                let alertController = UIAlertController(title: nil, message: "錯誤", preferredStyle: .alert)
-                let confirmAction = UIAlertAction(title: "確定", style: .default)
-                alertController.addAction(confirmAction)
-                present(alertController, animated: true)
                 semaphore.signal()
                 return
               }
@@ -44,10 +46,13 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
                     var j = userComp[i].replacingOccurrences(of: "\"", with: "")
                     j = j.replacingOccurrences(of: "{", with: "")
                     j = j.replacingOccurrences(of: "}", with: "")
-                    if (j != "user_id"){
+                    if (j == "Success"){
+                        mianVc.alert(title: "錯誤", msg: "帳號、密碼輸入錯誤", btn: "確定")
+                    }else if (j != "user_id"){
                         self.userID = j
                         self.delegate?.onGetUserIDSucces(userID: self.userID)
                         presenter?.putUserID(user_id: j)
+                        mianVc.alert(title: "成功", msg: "成功取得用戶ID", btn: "確定")
                         let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
                         let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
                         DispatchQueue.main.async { () -> Void in
