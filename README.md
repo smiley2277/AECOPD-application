@@ -15,3 +15,8 @@ A smartphone application allows COPD patients to do pulmonary rehabilitation at 
 - Manage all patient group
 
 ## Installation
+#### Step 1: clone it
+```
+git clone https://github.com/smiley2277/AECOPD-application.git
+```
+#### Step 2: use Xcode to open AECOPD-application/Practice_009.xcworkspace
