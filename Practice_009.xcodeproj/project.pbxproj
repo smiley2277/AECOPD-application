@@ -80,6 +80,7 @@
 		468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */; };
 		468B1EF426048C9800C52990 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF326048C9800C52990 /* play-button.png */; };
 		468B1EF926048EC900C52990 /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF826048EC900C52990 /* stop-button.png */; };
+		46961F0F266E097700CF4850 /* da-amp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 46961F0E266E097700CF4850 /* da-amp.mp3 */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
 		46B0AC93265A2E22003938EE /* PateintInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0AC92265A2E22003938EE /* PateintInfo.swift */; };
@@ -101,6 +102,8 @@
 		46CE402E2637C01600E93755 /* quesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE402D2637C01600E93755 /* quesRepository.swift */; };
 		46CE40332637C02700E93755 /* quesProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CE40322637C02700E93755 /* quesProtocol.swift */; };
 		46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46CF1CE425EE19E2006C459C /* Main.storyboard */; };
+		46F6047F2664EA8F00667188 /* yisell_sound_amp-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 46F6047E2664EA8F00667188 /* yisell_sound_amp-2.mp3 */; };
+		46F604812665D41400667188 /* stage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 46F604802665D41400667188 /* stage.mp3 */; };
 		46F7281525F9FC6000B490F7 /* lifestyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */; };
 		46FE3563263AA4590010779B /* getCoachPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3562263AA4590010779B /* getCoachPresenter.swift */; };
 		46FE3568263AA4650010779B /* getCoachProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FE3567263AA4650010779B /* getCoachProtocol.swift */; };
@@ -208,6 +211,7 @@
 		468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePredictViewController.swift; sourceTree = "<group>"; };
 		468B1EF326048C9800C52990 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		468B1EF826048EC900C52990 /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
+		46961F0E266E097700CF4850 /* da-amp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "da-amp.mp3"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
 		46B0AC92265A2E22003938EE /* PateintInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintInfo.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 		46CE402D2637C01600E93755 /* quesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesRepository.swift; sourceTree = "<group>"; };
 		46CE40322637C02700E93755 /* quesProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quesProtocol.swift; sourceTree = "<group>"; };
 		46CF1CE425EE19E2006C459C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		46F6047E2664EA8F00667188 /* yisell_sound_amp-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "yisell_sound_amp-2.mp3"; sourceTree = "<group>"; };
+		46F604802665D41400667188 /* stage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stage.mp3; sourceTree = "<group>"; };
 		46F7281425F9FC6000B490F7 /* lifestyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifestyleViewController.swift; sourceTree = "<group>"; };
 		46FE3562263AA4590010779B /* getCoachPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachPresenter.swift; sourceTree = "<group>"; };
 		46FE3567263AA4650010779B /* getCoachProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getCoachProtocol.swift; sourceTree = "<group>"; };
@@ -517,8 +523,11 @@
 				462C1C362611B88E0045DB40 /* variableSpeedViewController.swift */,
 				466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */,
 				466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */,
+				46F604802665D41400667188 /* stage.mp3 */,
 				461BC1D4265F85B600C070A6 /* knob-amp19.mp3 */,
+				46961F0E266E097700CF4850 /* da-amp.mp3 */,
 				461BC1D8265F864700C070A6 /* cant-do-that-amp29.mp3 */,
+				46F6047E2664EA8F00667188 /* yisell_sound_amp-2.mp3 */,
 				468B1EF326048C9800C52990 /* play-button.png */,
 				468B1EF826048EC900C52990 /* stop-button.png */,
 				462C1C3B2611C4FA0045DB40 /* refresh.png */,
@@ -694,6 +703,8 @@
 				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
 				466658D1261C801600EBBD6E /* weather_site.csv in Resources */,
 				462D25E5262D6BBC00A589E0 /* PatientDetailTabList.storyboard in Resources */,
+				46F604812665D41400667188 /* stage.mp3 in Resources */,
+				46961F0F266E097700CF4850 /* da-amp.mp3 in Resources */,
 				462D25E7262D6BBC00A589E0 /* AdminMain.storyboard in Resources */,
 				46716CBD25FF63CE00FDB785 /* America.gpx in Resources */,
 				468B1EF926048EC900C52990 /* stop-button.png in Resources */,
@@ -703,6 +714,7 @@
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
 				461BC1D6265F85B600C070A6 /* knob-amp19.mp3 in Resources */,
+				46F6047F2664EA8F00667188 /* yisell_sound_amp-2.mp3 in Resources */,
 				462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */,
 				46026145261706C600EE6236 /* site_opendata.csv in Resources */,
 			);

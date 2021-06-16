@@ -255,8 +255,10 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
         audioPlayer.play()
     }
     func playAudioForMin(){
-        let url = Bundle.main.url(forResource: "cant-do-that-amp29", withExtension:"mp3")
+        let url = Bundle.main.url(forResource: "stage", withExtension:"mp3")
         audioPlayer = try! AVAudioPlayer(contentsOf: url!)
+        audioPlayer.enableRate = true
+        audioPlayer.rate = 1
         audioPlayer.play()
     }
 }
