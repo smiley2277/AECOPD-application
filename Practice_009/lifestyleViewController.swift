@@ -251,13 +251,13 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
                     }else if (j[j.count-1] == "HUMD"){
                         let HUMDARY = sigSiteAry[i+1].components(separatedBy: ":")
                         HUMD = (HUMDARY[1] as NSString).doubleValue
-                        HUMD = HUMD*100
+                        humidLabel.text = String(format: "%.1f", HUMD*100)
                     }
                 }
             }
         }
         tempLabel.text = String(TEMP)
-        humidLabel.text = String(HUMD)
+//        humidLabel.text = String(HUMD)
         
     }
     //fetch air quality data

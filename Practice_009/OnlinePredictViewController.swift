@@ -61,7 +61,12 @@ class OnlinePredictViewController: BaseViewController{
         }
         for idx in Range(0...spltAry.count-1){
             if(spltAry[idx] == "value"){
-                comment.text = String(Double(spltAry[idx+1]) ?? 0)
+                let thr = Double(spltAry[idx+1]) ?? 0
+                if (thr <= 0){
+                    comment.text = "親愛的用戶，\n 我們預測今天您的身體狀況為 良好😁，\n 請透過智慧教練繼續保持唷！"
+                }else{
+                    comment.text = "親愛的用戶，\n 我們預測今天您的身體狀況為 要多加注意的☺️，\n 請多喝溫開水、注意體溫變化，\n 並透過智慧教練繼續保持唷！"
+                }
             }
         }
     }

@@ -11,8 +11,8 @@ import UIKit
 class borgScaleViewController: BaseViewController {
     var borgAns: Int = 0
     var stepSize: Double = 0.0
-    let oriColor = UIColor(red: 181/255, green: 237/255, blue: 235, alpha: 1)
-    let changeColor = UIColor(red: 104/255, green: 200/255, blue: 206, alpha: 1)
+    let oriColor = UIColor(red: 180/255, green: 237/255, blue: 235/255, alpha: 1.0)
+    let changeColor = UIColor(red: 153/255, green: 201/255, blue: 195/255, alpha: 1.0)
     let today = Date()
     let dateFormatter = DateFormatter()
     var str: String = ""
