@@ -75,7 +75,6 @@
 		466BE58F2615A63B0042BE38 /* borgScalePostTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */; };
 		466C70CB2609D4D3003710F3 /* borgScaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */; };
 		466C70D02609E8D5003710F3 /* smartSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C70CF2609E8D5003710F3 /* smartSubViewController.swift */; };
-		46712177269D498B00A7367B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 46712176269D498B00A7367B /* background.png */; };
 		46716CBD25FF63CE00FDB785 /* America.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 46716CBC25FF63CE00FDB785 /* America.gpx */; };
 		468B1EEA26033B0C00C52990 /* walkingTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EE926033B0C00C52990 /* walkingTestViewController.swift */; };
 		468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */; };
@@ -205,7 +204,6 @@
 		466BE58E2615A63B0042BE38 /* borgScalePostTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = borgScalePostTestViewController.swift; sourceTree = "<group>"; };
 		466C70CA2609D4D3003710F3 /* borgScaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = borgScaleViewController.swift; sourceTree = "<group>"; };
 		466C70CF2609E8D5003710F3 /* smartSubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartSubViewController.swift; sourceTree = "<group>"; };
-		46712176269D498B00A7367B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		46716CBC25FF63CE00FDB785 /* America.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = America.gpx; sourceTree = "<group>"; };
 		468B1EE926033B0C00C52990 /* walkingTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = walkingTestViewController.swift; sourceTree = "<group>"; };
 		468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePredictViewController.swift; sourceTree = "<group>"; };
@@ -526,7 +524,6 @@
 				461BC1D8265F864700C070A6 /* cant-do-that-amp29.mp3 */,
 				468B1EF326048C9800C52990 /* play-button.png */,
 				468B1EF826048EC900C52990 /* stop-button.png */,
-				46712176269D498B00A7367B /* background.png */,
 				462C1C3B2611C4FA0045DB40 /* refresh.png */,
 				462C1BFD260F2F2E0045DB40 /* airQualityViewController.swift */,
 			);
@@ -694,7 +691,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				46CF1CE525EE19E3006C459C /* Main.storyboard in Resources */,
-				46712177269D498B00A7367B /* background.png in Resources */,
 				462D25D8262D6BBC00A589E0 /* PatientList.storyboard in Resources */,
 				461BC1D9265F864700C070A6 /* cant-do-that-amp29.mp3 in Resources */,
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
