@@ -80,11 +80,13 @@
 		468B1EEF2604859900C52990 /* OnlinePredictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */; };
 		468B1EF426048C9800C52990 /* play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF326048C9800C52990 /* play-button.png */; };
 		468B1EF926048EC900C52990 /* stop-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 468B1EF826048EC900C52990 /* stop-button.png */; };
+		46A7F7DD269EF8E7006BBD21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A7F7DC269EF8E7006BBD21 /* GoogleService-Info.plist */; };
 		46AC6648262025A6002FC9DF /* smartCoachListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */; };
 		46AC66502622CA3D002FC9DF /* speedDurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */; };
 		46B0AC93265A2E22003938EE /* PateintInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0AC92265A2E22003938EE /* PateintInfo.swift */; };
 		46C2011F263A6F720027165B /* PostQues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2011E263A6F710027165B /* PostQues.swift */; };
 		46C20124263A89400027165B /* PostBorg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C20123263A89400027165B /* PostBorg.swift */; };
+		46C2D41626A8075A003A9917 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46C2D41526A8075A003A9917 /* Launch Screen.storyboard */; };
 		46CB99B025E793C000490562 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99AF25E793C000490562 /* AppDelegate.swift */; };
 		46CB99B225E793C000490562 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B125E793C000490562 /* SceneDelegate.swift */; };
 		46CB99B425E793C000490562 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB99B325E793C000490562 /* ViewController.swift */; };
@@ -209,11 +211,13 @@
 		468B1EEE2604859900C52990 /* OnlinePredictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePredictViewController.swift; sourceTree = "<group>"; };
 		468B1EF326048C9800C52990 /* play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button.png"; sourceTree = "<group>"; };
 		468B1EF826048EC900C52990 /* stop-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop-button.png"; sourceTree = "<group>"; };
+		46A7F7DC269EF8E7006BBD21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		46AC6647262025A6002FC9DF /* smartCoachListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = smartCoachListViewController.swift; sourceTree = "<group>"; };
 		46AC664F2622CA3D002FC9DF /* speedDurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = speedDurationViewController.swift; sourceTree = "<group>"; };
 		46B0AC92265A2E22003938EE /* PateintInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PateintInfo.swift; sourceTree = "<group>"; };
 		46C2011E263A6F710027165B /* PostQues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQues.swift; sourceTree = "<group>"; };
 		46C20123263A89400027165B /* PostBorg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostBorg.swift; sourceTree = "<group>"; };
+		46C2D41526A8075A003A9917 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		46CB99AC25E793C000490562 /* Practice_009.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_009.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46CB99AF25E793C000490562 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46CB99B125E793C000490562 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 		46CB99AE25E793C000490562 /* Practice_009 */ = {
 			isa = PBXGroup;
 			children = (
+				46A7F7DC269EF8E7006BBD21 /* GoogleService-Info.plist */,
 				462D258F262D6B7800A589E0 /* Ad */,
 				460261492617188200EE6236 /* Practice_009.entitlements */,
 				466BE587261462BB0042BE38 /* model */,
@@ -576,6 +581,7 @@
 			children = (
 				E7F519F7263BD89C006E713C /* APILoadingHandleType.swift */,
 				E7F519F2263BD7DC006E713C /* LoadingView.swift */,
+				46C2D41526A8075A003A9917 /* Launch Screen.storyboard */,
 				E7F519ED263BD7D8006E713C /* LoadingView.xib */,
 			);
 			path = LoadingView;
@@ -696,6 +702,7 @@
 				46CB99BC25E793C100490562 /* LaunchScreen.storyboard in Resources */,
 				463B43FC2632A68A00906E0F /* signUpGetUserID.storyboard in Resources */,
 				466658D1261C801600EBBD6E /* weather_site.csv in Resources */,
+				46C2D41626A8075A003A9917 /* Launch Screen.storyboard in Resources */,
 				462D25E5262D6BBC00A589E0 /* PatientDetailTabList.storyboard in Resources */,
 				46F604812665D41400667188 /* stage.mp3 in Resources */,
 				462D25E7262D6BBC00A589E0 /* AdminMain.storyboard in Resources */,
@@ -707,6 +714,7 @@
 				46CB99B925E793C100490562 /* Assets.xcassets in Resources */,
 				462D25D2262D6BBC00A589E0 /* PatientListCell.xib in Resources */,
 				461BC1D6265F85B600C070A6 /* knob-amp19.mp3 in Resources */,
+				46A7F7DD269EF8E7006BBD21 /* GoogleService-Info.plist in Resources */,
 				462C1C3C2611C4FA0045DB40 /* refresh.png in Resources */,
 				46026145261706C600EE6236 /* site_opendata.csv in Resources */,
 			);
@@ -1046,10 +1054,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.COPD.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1068,10 +1077,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.COPD.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

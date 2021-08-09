@@ -20,7 +20,6 @@ class OnlinePredictViewController: BaseViewController{
     let cookies:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
     override func viewDidLoad() {
         getProb()
-        extract(text: probData)
     }
     func getProb() {
         let semaphore = DispatchSemaphore (value: 0)
@@ -34,9 +33,7 @@ class OnlinePredictViewController: BaseViewController{
                 return
             }
             self.probData = String(data: data, encoding: .utf8)!
-//            DispatchQueue.main.async {
-//                self.comment.text = self.probData
-//            }
+            self.extract(text: self.probData)
             semaphore.signal()
         }
         

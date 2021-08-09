@@ -121,9 +121,9 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         
         let info_SPFD = vc.settingDefaultForFloatAry(keyName: "speedVFromD")
         let info_DDFD = vc.settingDefaultForAry(keyName: "durationVFromD")
-        print("@VSVC, info, ", info_SP, info_SPFD)
+//        print("@VSVC, info, ", info_SP, info_SPFD)
         if (stepSizeLife == 0){
-            stepSize = (info_SS as! NSString).doubleValue
+            stepSize = (info_SS! as NSString).doubleValue
             stepSize = trunc(stepSize * 10) / 10
             print("@VSVC, info, ", stepSize)
         }else{
@@ -131,7 +131,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         }
         //怪怪的
         if (vc.settingDefault(keyName: "mode") == "self"){
-            print(vc.settingDefault(keyName: "mode"))
+//            print(vc.settingDefault(keyName: "mode"))
             if (info_SP != []) && (info_DD != []){
                 varSpeed = info_SP!
                 varDuration = info_DD!
@@ -246,7 +246,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         var u = duration.count
         var speedAry = speed
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
-            restOfTime.text = String(countDownNum/60 + 1)
+            restOfTime.text = String(countDownNum/60+1)+" : "+String(countDownNum%60)
             let stageSec = duration.firstIndex(where: { $0 == countDownNum })
             if stageSec != nil{
                 u = stageSec!

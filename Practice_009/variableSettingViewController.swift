@@ -42,8 +42,8 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
         self.setCustomRightBarButtonItems(barButtonItems: [rightButton])
     }
     override func viewWillAppear(_ animated: Bool) {
-        var stepSizeLabel = settingDefault(keyName: "stepSize")
-        stepSizeDefault.text = String(lround((stepSizeLabel as! NSString).doubleValue))
+        let stepSizeLabel = settingDefault(keyName: "stepSize")
+        stepSizeDefault.text = String(lround((stepSizeLabel! as NSString).doubleValue))
         timeDefault.text = settingDefault(keyName: "stepCount")
         durationDefault.text = settingDefaultForAry(keyName: "durationV")?.map({ "\($0)" }).joined(separator: "-") ?? ""
         speedDefault.text = settingDefaultForFloatAry(keyName: "speedV")?.map({ "\($0)" }).joined(separator: "-") ?? ""
@@ -55,11 +55,11 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
             for i in Range(0...info_SPFD!.count-1){
                 spedAry.append(lround(Double(info_SPFD?[i] ?? 0)))
             }
-            modeSpeed.text = "速度：" + spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
-            modeDuration.text  = "時間：" + info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
+            modeSpeed.text = "速度：" + spedAry.map({ "\($0)" }).joined(separator: "-") 
+            modeDuration.text  = "時間：" + info_DDFD!.map({ "\($0)" }).joined(separator: "-") 
             if (mode == "Doc"){
-                speedDefault.text = spedAry.map({ "\($0)" }).joined(separator: "-") ?? ""
-                durationDefault.text = info_DDFD!.map({ "\($0)" }).joined(separator: "-") ?? ""
+                speedDefault.text = spedAry.map({ "\($0)" }).joined(separator: "-") 
+                durationDefault.text = info_DDFD!.map({ "\($0)" }).joined(separator: "-") 
             }
         }
     }
@@ -82,7 +82,7 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
     }
     func checkDuration(){
         if(duration1.text != "") || (duration2.text != "") || (duration3.text != ""){
-            let sum = (Int((duration1.text as! NSString).intValue))+(Int((duration2.text as! NSString).intValue))+(Int((duration3.text as! NSString).intValue))
+            let sum = (Int((duration1.text! as NSString).intValue))+(Int((duration2.text as! NSString).intValue))+(Int((duration3.text as! NSString).intValue))
             if (sum < 5){
                 let sumDurationAlert = UIAlertController(title: "提醒", message: "訓練時間請大於 5 分鐘", preferredStyle: .alert)
                 sumDurationAlert.addAction(UIAlertAction(title: "確定", style: .cancel))
@@ -142,16 +142,16 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
             userDefaults.synchronize()
         }
         if (speed1.text != "") && (duration1.text != ""){
-            spe.append(Float((speed1.text as! NSString).intValue))
-            dur.append(Int((duration1.text as! NSString).intValue))
+            spe.append(Float((speed1.text! as NSString).intValue))
+            dur.append(Int((duration1.text! as NSString).intValue))
         }
         if (speed2.text != "") && (duration2.text != ""){
-            spe.append(Float((speed2.text as! NSString).intValue))
-            dur.append(Int((duration2.text as! NSString).intValue))
+            spe.append(Float((speed2.text! as NSString).intValue))
+            dur.append(Int((duration2.text! as NSString).intValue))
         }
         if (speed3.text != "") && (duration3.text != ""){
-            spe.append(Float((speed3.text as! NSString).intValue))
-            dur.append(Int((duration3.text as! NSString).intValue))
+            spe.append(Float((speed3.text! as NSString).intValue))
+            dur.append(Int((duration3.text! as NSString).intValue))
         }
         if (spe.count != 0) && (dur.count != 0){
             userDefaults.set(spe, forKey: "speedV")

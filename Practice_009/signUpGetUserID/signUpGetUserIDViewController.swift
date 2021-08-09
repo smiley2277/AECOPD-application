@@ -46,10 +46,11 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
                     var j = userComp[i].replacingOccurrences(of: "\"", with: "")
                     j = j.replacingOccurrences(of: "{", with: "")
                     j = j.replacingOccurrences(of: "}", with: "")
-                    if (j == "Success"){
+                    if (userComp[0] == "success"){
                         mianVc.alert(title: "錯誤", msg: "帳號、密碼輸入錯誤", btn: "確定")
-                    }else if (j != "user_id"){
-                        self.userID = j
+                        break
+                    }else if (userComp[0] != "user_id"){
+                        self.userID = userComp[1]
                         self.delegate?.onGetUserIDSucces(userID: self.userID)
                         presenter?.putUserID(user_id: j)
                         mianVc.alert(title: "成功", msg: "成功取得用戶ID", btn: "確定")
@@ -70,6 +71,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
         presenter = signUpGetUserIDPresenter(delegate: self)
         pwFIll.delegate = self
         emailFill.delegate = self
+        pwFIll.isSecureTextEntry = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

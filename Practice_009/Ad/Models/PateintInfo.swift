@@ -24,7 +24,7 @@ class PatientInfo: BaseModel {
             override func mapping(map: Map) {
                 super.mapping(map: map)
                 user_id <- map["user_id"]
-                print("user_id in PatientInfo,\(user_id)")
+                print("user_id in PatientInfo,\(String(describing: user_id))")
             }
         }
     }

@@ -109,7 +109,6 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         if bDayFill.text == "" || bDayFill.text == nil { return }
         if lastNameFill.text == "" || lastNameFill.text == nil { return }
         if firstNameFill.text == "" || firstNameFill.text == nil { return }
-        if ageFill.text == "" || ageFill.text == nil { return }
         if emailFill.text == "" || emailFill.text == nil { return }
         if heightFill.text == "" || heightFill.text == nil { return }
         if weightFill.text == "" || weightFill.text == nil { return }
@@ -124,10 +123,11 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
             }else{
                 user_id = ""
             }
-            let age = Int((ageFill.text ?? "0") as String)!
+            let gregorian = NSCalendar(identifier: NSCalendar.Identifier.gregorian)
+            let age = gregorian?.components([.month, .day, .year], from: datePicker.date, to: Date(), options:[])
             let height = Int((heightFill.text ?? "0") as String)!
             let weight = Float((weightFill.text ?? "0") as String)!
-            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: age, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: Int(weight), phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!)
+            presenter?.getSignUpResult(lastname: lastNameFill.text!, firstname: firstNameFill.text!, age: (age?.year) ?? 18, email: emailFill.text!, birthday: bDayFill.text!, gender: sexuality, height: height, weight: Int(weight), phone: phoneFill.text!, identity: IDFill.text!, password: passwordFill.text!)
         }
         clearTextField()
     }
@@ -210,7 +210,7 @@ extension signUpToBackendViewController: signUpToBackendViewProtocol {
 
 extension signUpToBackendViewController {
     @objc func textDidChange() {
-        let isFilled = !(ageFill.text == "" || heightFill.text == "" || weightFill.text == "" || lastNameFill.text == "" || firstNameFill.text == "" || emailFill.text == "" || bDayFill.text == "" || phoneFill.text == "" || IDFill.text == "" || passwordFill.text == "" || checkpwFill.text == "")
+        let isFilled = !(heightFill.text == "" || weightFill.text == "" || lastNameFill.text == "" || firstNameFill.text == "" || emailFill.text == "" || bDayFill.text == "" || phoneFill.text == "" || IDFill.text == "" || passwordFill.text == "" || checkpwFill.text == "")
         enableSignUpButton(isFilled)
     }
 }

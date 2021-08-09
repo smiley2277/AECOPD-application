@@ -114,13 +114,13 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
             trainingSpeed = (info_S! as NSString).floatValue
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-            trainingDuration = Int((info_D as! NSString).intValue)*60
+            trainingDuration = Int((info_D! as NSString).intValue)*60
         }else{
             stepSize = stepSizeLife
             trainingSpeed = (info_S! as NSString).floatValue
             trainingSpeed = trunc(trainingSpeed * 10) / 10
             trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-            trainingDuration = Int((info_D as! NSString).intValue)*60
+            trainingDuration = Int((info_D! as NSString).intValue)*60
         }
         
         if (vc.settingDefault(keyName: "mode") == "self"){
@@ -128,15 +128,14 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
                 trainingSpeed = (info_S! as NSString).floatValue
                 trainingSpeed = trunc(trainingSpeed * 10) / 10
                 trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-                trainingDuration = Int((info_D as! NSString).intValue)*60
+                trainingDuration = Int((info_D! as NSString).intValue)*60
             }
         }else if(vc.settingDefault(keyName: "mode") == "Doc"){
             if (info_SFD != "0") && (info_DFD != "0"){
                 trainingSpeed = (info_SFD! as NSString).floatValue
                 trainingSpeed = trunc(trainingSpeed * 10) / 10
                 trainingSpeed = unitTransfer(speed: trainingSpeed, size: stepSize)
-                trainingDuration = Int((info_DFD as! NSString).intValue)*60
-                print("@WTVC, info from backend, ", trainingDuration, trainingSpeed , info_SFD , info_DFD)
+                trainingDuration = Int((info_DFD! as NSString).intValue)*60
             }
             
         }
@@ -204,7 +203,7 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     func countDown(duration: Int, speed: Float){
         var countDownNum = duration
         timer = Timer.scheduledTimer(withTimeInterval:1, repeats: true, block: { [self] (timer) in
-            restOfTime.text = String(countDownNum/60+1)
+            restOfTime.text = String(countDownNum/60+1)+" : "+String(countDownNum%60)
             countDownNum -= 1
             if (countDownNum % 60 == 0){
                 playAudioForMin()

@@ -21,6 +21,7 @@ class ViewController: BaseViewController{
     var scvTime: [Int]?
     var userDefaults: UserDefaults!
     let dateFormatter = DateFormatter()
+    let today = Date()
 //    let id:String = "k87j6e7c"
     let userId = UserDefaultUtil.shared.adminUserID
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
@@ -28,17 +29,26 @@ class ViewController: BaseViewController{
     override func viewDidLoad() {
         userDefaults = UserDefaults.standard
         let dics = userDefaults.dictionaryRepresentation()
-//        for key in dics {
-//            userDefaults.removeObject(forKey: key.key)
-//        }
-//        userDefaults.synchronize()
         presenter = userMainPresenter(delegate: self)
-//        print(UserDefaults.standard.dictionaryRepresentation())
         
     }
     @IBAction func sync(_ sender: Any) {
         autoFetchHRStep()
         refetch()
+
+        let dics = userDefaults.dictionaryRepresentation()
+        for i in dics.keys{
+            if (i.range(of: "pac") != nil){
+                var u = i.split(separator: "T")
+                u = u[0].split(separator: "g")
+                let todayString = dateFormatter.string(from: Date())
+                if u[1] != todayString{
+                    print(i)
+                    userDefaults.removeObject(forKey: i)
+                }
+            }
+        }
+        userDefaults.synchronize()
     }
     @IBAction func offlinePredictClick(_ sender: Any) {
         offlineCheck()
@@ -276,7 +286,7 @@ class ViewController: BaseViewController{
                 heartRateForVaria = realtimeHR(id: userId ?? "", timestamp: duration)
                 stepForVaria = realtimeStep(id: userId ?? "", timestamp: duration)
                 if (heartRateForVaria.count >= 2) && (stepForVaria != 0){
-                    let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
+//                    let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
                     presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
                     alert(title: "提醒", msg: "已成功上傳一筆變速版本的資料", btn: "確定")
                 }else{
@@ -308,11 +318,11 @@ class ViewController: BaseViewController{
             for idx in (0...notUploadBorgKey.count-1){
                 if(UserDefaults.standard.object(forKey:notUploadBorgKey[idx]) != nil) {
                     print("============================= :", notUploadBorgKey[idx])
-                    print(UserDefaults.standard.object(forKey:notUploadBorgKey[idx]))
+//                    print(UserDefaults.standard.object(forKey:notUploadBorgKey[idx]))
                     let t = UserDefaults.standard.value(forKey: notUploadBorgKey[idx]) as! [Any]
                     var duration: [String] = []
-                    let befBorg = Int(t[2] as! NSNumber)
-                    let aftBorg = Int(t[3] as! NSNumber)
+                    let befBorg = Int(truncating: t[2] as! NSNumber)
+                    let aftBorg = Int(truncating: t[3] as! NSNumber)
                     duration.append(t[0] as! String)
                     duration.append(t[1] as! String)
                     for i in Range(0...duration.count-1){
@@ -369,7 +379,7 @@ class ViewController: BaseViewController{
         }else{
             scTime = fetchTime(timestamp: (dateFromBorg))
             userDefaults.set(scTime, forKey: "smartCoachDuration")
-            print("CatchTime ByNoti @VC, ", scTime)
+//            print("CatchTime ByNoti @VC, ", scTime)
             
         }
     }
@@ -381,7 +391,7 @@ class ViewController: BaseViewController{
         }else{
             scvTime = fetchTime(timestamp: dateFromBorg)
             userDefaults.set(scvTime, forKey: "smartCoachVariableDuration")
-            print("CatchTimeVariable ByNoti @VC, ", scvTime)
+//            print("CatchTimeVariable ByNoti @VC, ", scvTime)
         }
     }
     @objc func catchBefBorg(noti: Notification){
@@ -413,7 +423,7 @@ class ViewController: BaseViewController{
         performSegue(withIdentifier: "offlinePredictSeg", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as? offlinePredictViewController
+//        let controller = segue.destination as? offlinePredictViewController
         let vc = segue.destination as? smartSubViewController
         vc?.stepSize = stepSize
     }
