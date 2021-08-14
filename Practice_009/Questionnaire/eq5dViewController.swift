@@ -35,54 +35,54 @@ class eq5dViweController: UIViewController{
         let vas = vasAns.text!
         sumAry = [oneText , twoText, thrText,forText, fivText]
         if(vasAns.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[0] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[0] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[0] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[0] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[0]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{
             labelDict[0]!.backgroundColor = UIColor.white
         }
         if(q5Ans.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[0] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[0] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[0] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[0] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[1]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{
             labelDict[1]!.backgroundColor = UIColor.white
         }
         if(q4Ans.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[1] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[1] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[1] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[1] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[2]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{
             labelDict[2]!.backgroundColor = UIColor.white
         }
         if(q3Ans.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[2] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[2] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[2] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[2] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[3]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{
             labelDict[3]!.backgroundColor = UIColor.white
         }
         if(q2Ans.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[3] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[3] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[3] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[3] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[4]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{
             labelDict[4]!.backgroundColor = UIColor.white
         }
         if (q1Ans.text == "請滑動滑桿"){
-            let targetRect = CGRect(x: 0, y: siteDict[4] ?? 0, width: 1, height: 1)
-            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[4] ?? 0), animated: true)
-            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
+//            let targetRect = CGRect(x: 0, y: siteDict[4] ?? 0, width: 1, height: 1)
+//            eq5dScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[4] ?? 0), animated: true)
+//            eq5dScrollView.scrollRectToVisible(targetRect, animated: true)
             labelDict[5]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
             summitButton.isUserInteractionEnabled = false
         }else{

@@ -221,7 +221,7 @@
         <!--Ques View Controller-->
         <scene sceneID="Aoc-Is-U0c">
             <objects>
-                <viewController id="sMc-Oh-afW" customClass="quesViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="quesViewController" storyboardIdentifier="quesViewController" id="sMc-Oh-afW" customClass="quesViewController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cT1-OV-yJD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +283,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="WEV-gQ-ywh" kind="show" identifier="lifeDetail" id="pd5-nv-hs1"/>
+                                    <segue destination="WEV-gQ-ywh" kind="show" identifier="eq5dDetail" id="ZjH-Hf-DJ2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSI-9V-q5R">
@@ -1387,7 +1387,7 @@
         <!--Eq 5d Viwe Controller-->
         <scene sceneID="pbZ-gX-86N">
             <objects>
-                <viewController id="WEV-gQ-ywh" customClass="eq5dViweController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="eq5dViweController" storyboardIdentifier="eq5dViweController" id="WEV-gQ-ywh" customClass="eq5dViweController" customModule="Practice_009" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Jy-bN-D4I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

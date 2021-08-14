@@ -75,7 +75,7 @@ class CATViewController: UIViewController{
                     catScrollView.setContentOffset(CGPoint(x: 0, y: siteDict[i] ?? 0), animated: true)
                     catScrollView.scrollRectToVisible(targetRect, animated: true)
                     labelDict[i]!.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1)
-                    countButton.isUserInteractionEnabled = false
+//                    countButton.isUserInteractionEnabled = false
                 }
             }
             let nonFillAlert = UIAlertController(title: "提醒", message: "題目尚未填寫完畢", preferredStyle: .alert)
