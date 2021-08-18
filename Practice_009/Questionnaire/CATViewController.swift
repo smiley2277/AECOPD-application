@@ -117,6 +117,7 @@ class CATViewController: UIViewController{
         sum.layer.masksToBounds = true
         summitButton.isUserInteractionEnabled = false
         labelDict = [0:ansEight,1:ansSeven,2:ansSix,3:ansFive,4:ansFour,5:ansThree,6:ansTwo,7:ansOne]
+        overrideUserInterfaceStyle = .light
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? quesViewController

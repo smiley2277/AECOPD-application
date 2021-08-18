@@ -22,6 +22,7 @@ class speedDurationViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var durationMode: UILabel!
     var mode: String = ""
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         durationFill.delegate = self
         speedFill.delegate = self
         stepSize.delegate = self

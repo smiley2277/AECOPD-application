@@ -125,6 +125,7 @@ class eq5dViweController: UIViewController{
         checkButtonStatus()
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         suggest.text = "0-100分，越高則對生活越滿意"
         labelDict = [0:vasAns,1:q5Ans,2:q4Ans,3:q3Ans,4:q2Ans,5:q1Ans]
         summitButton.isUserInteractionEnabled = false

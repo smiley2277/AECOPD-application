@@ -127,6 +127,7 @@ class quesViewController: BaseViewController{
         
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         userDefaults = UserDefaults.standard
         self.navigationController?.navigationBar.isHidden = false
         presenter = quesPresenter(delegate: self)

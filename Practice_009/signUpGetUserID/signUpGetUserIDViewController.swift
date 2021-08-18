@@ -15,6 +15,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var pwFIll: UITextField!
     @IBOutlet weak var emailFill: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var AlertLabel: UILabel!
     var  userID: String = ""
     weak var delegate: LoginViewControllerProtocol?
     private var presenter: signUpGetUserIDPresenterProtocol?
@@ -42,23 +43,25 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
               }
                 var userData = String(data: data, encoding: .utf8)!
                 var userComp = userData.components(separatedBy: ":")
-                for i in (0...userComp.count-1){
-                    var j = userComp[i].replacingOccurrences(of: "\"", with: "")
-                    j = j.replacingOccurrences(of: "{", with: "")
-                    j = j.replacingOccurrences(of: "}", with: "")
-                    if (userComp[0] == "success"){
-                        mianVc.alert(title: "錯誤", msg: "帳號、密碼輸入錯誤", btn: "確定")
-                        break
-                    }else if (userComp[0] != "user_id"){
-                        self.userID = userComp[1]
-                        self.delegate?.onGetUserIDSucces(userID: self.userID)
-                        presenter?.putUserID(user_id: j)
-                        mianVc.alert(title: "成功", msg: "成功取得用戶ID", btn: "確定")
-                        let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-                        DispatchQueue.main.async { () -> Void in
-                            self.navigationController?.pushViewController(vc, animated: true)
-                        }
+                var status = userComp[0].replacingOccurrences(of: "\"", with: "")
+                status = status.replacingOccurrences(of: "{", with: "")
+                status = status.replacingOccurrences(of: "}", with: "")
+                print("status\(status)")
+                var prID = userComp[1].replacingOccurrences(of: "{", with: "")
+                prID = prID.replacingOccurrences(of: "}", with: "")
+                print("prID\(prID)")
+                if (status == "success") && (prID == "false"){
+                    print("ERROR")
+                }else if (status == "user_id"){
+                    self.userID = prID
+                    print(status, userID, prID)
+                    self.delegate?.onGetUserIDSucces(userID: self.userID)
+                    presenter?.putUserID(user_id: self.userID)
+                    mianVc.alert(title: "成功", msg: "成功取得用戶ID", btn: "確定")
+                    let storyboard = UIStoryboard(name: "AdminMain", bundle: Bundle.main)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                    DispatchQueue.main.async { () -> Void in
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
               semaphore.signal()
@@ -68,6 +71,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
         }
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         presenter = signUpGetUserIDPresenter(delegate: self)
         pwFIll.delegate = self
         emailFill.delegate = self

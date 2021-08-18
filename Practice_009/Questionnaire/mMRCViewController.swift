@@ -19,6 +19,7 @@ class mMRCViewController: UIViewController{
     let checkColor = UIColor(red: 105/255, green: 105/255, blue: 105/255, alpha: 1)
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
         level1.backgroundColor = color
         level2.backgroundColor = color
         level3.backgroundColor = color

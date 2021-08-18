@@ -27,6 +27,7 @@ class ViewController: BaseViewController{
     let cookie:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
     private var presenter: userMainPresenterProtocol?
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         userDefaults = UserDefaults.standard
         let dics = userDefaults.dictionaryRepresentation()
         presenter = userMainPresenter(delegate: self)
@@ -35,15 +36,13 @@ class ViewController: BaseViewController{
     @IBAction func sync(_ sender: Any) {
         autoFetchHRStep()
         refetch()
-
         let dics = userDefaults.dictionaryRepresentation()
+        let todayString = dateFormatter.string(from: Date())
         for i in dics.keys{
             if (i.range(of: "pac") != nil){
                 var u = i.split(separator: "T")
                 u = u[0].split(separator: "g")
-                let todayString = dateFormatter.string(from: Date())
                 if u[1] != todayString{
-                    print(i)
                     userDefaults.removeObject(forKey: i)
                 }
             }
@@ -239,6 +238,7 @@ class ViewController: BaseViewController{
 //        autoFetchHRStep()
     }
     func autoFetchHRStep(){
+        print("autoFetchHRStep")
         var duration: [Int] = []
         var heartRateForFixed: [Int] = []
         var heartRateForVaria: [Int] = []
@@ -249,7 +249,7 @@ class ViewController: BaseViewController{
         var realDate: [String] = []
         befBorg = fetchingDefaultForBorg(keyName: "beforeBorg")
         aftBorg = fetchingDefaultForBorg(keyName: "afterBorg")
-        if (befBorg != [:]) || (aftBorg != [:]) {
+        if (befBorg != [:]) && (aftBorg != [:]) {
             print(befBorg, befBorg)
             let befDatetime = Array(befBorg.keys)
             let aftDatetime = Array(aftBorg.keys)
@@ -304,6 +304,7 @@ class ViewController: BaseViewController{
         }
     }
     func refetch(){
+        print("refetch")
         var notUploadBorgKey: [String] = []
         var datetimeAry:[Date] = []
         var timestampAry:[Int] = []

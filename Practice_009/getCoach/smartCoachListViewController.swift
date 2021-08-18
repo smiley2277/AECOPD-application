@@ -44,6 +44,7 @@ class smartCoachListViewController: BaseViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         print(userId)
         userDefaults = UserDefaults.standard
         presenter = getCoachPresenter(delegate: self)

@@ -29,6 +29,7 @@ class variableSettingViewController: BaseViewController, UITextFieldDelegate{
     var dur: [Int] = []
     var mode: String = ""
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         stepSize.delegate = self
         userDefaults = UserDefaults.standard
         let rightButton = UIBarButtonItem(

@@ -211,6 +211,7 @@ class borgScalePostTestViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
     }
     
 }

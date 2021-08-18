@@ -23,7 +23,7 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     var lifedata:String = ""
     var hrdata:String = ""
     var airdata:String = ""
-    let userId = UserDefaultUtil.shared.adminUserID ?? ""
+    var userId = UserDefaultUtil.shared.adminUserID ?? ""
 //    var userId:String = "k87j6e7c"
     var threeAPI:String = ""
     var hrAPI:String = ""
@@ -147,7 +147,7 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     //get lifestyle data
     func getThree(){
         let semaphore = DispatchSemaphore (value: 0)
-        var request = URLRequest(url: URL(string:threeAPI)!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string:threeAPI)!, timeoutInterval: Double.infinity)
         request.addValue(cookies, forHTTPHeaderField: "Cookie")
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { [self]  data, response, error in
@@ -355,6 +355,7 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var humidLabel: UILabel!
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         //GPS location request
         locationManager.delegate = self
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters

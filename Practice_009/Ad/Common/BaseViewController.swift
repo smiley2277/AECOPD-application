@@ -245,6 +245,7 @@ class BaseViewController: UIViewController {
         
         setUpLoadingView()
         setUpNilButton()
+        overrideUserInterfaceStyle = .light
     }
 
     override func viewWillAppear(_ animated: Bool) {

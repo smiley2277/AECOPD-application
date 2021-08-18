@@ -52,6 +52,7 @@ class walkingTestViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         UIApplication.shared.isIdleTimerDisabled = true
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit

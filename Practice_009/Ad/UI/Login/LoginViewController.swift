@@ -112,9 +112,9 @@ extension LoginViewController: LoginViewProtocol {
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 self.navigationController?.pushViewController(vc, animated: true)
-                var viewCont = navigationController?.viewControllers
-                viewCont?.removeFirst()
-                navigationController?.viewControllers = viewCont ?? []
+//                var viewCont = navigationController?.viewControllers
+//                viewCont?.removeFirst()
+//                navigationController?.viewControllers = viewCont ?? []
             }
         }
     }

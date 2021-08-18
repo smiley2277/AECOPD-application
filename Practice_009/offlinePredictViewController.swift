@@ -28,6 +28,7 @@ class offlinePredictViewController: BaseViewController {
         
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         
     }
     

@@ -57,6 +57,7 @@ class variableSpeedViewController: BaseViewController, UITextFieldDelegate {
         vc?.stopTime = stopString
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         UIApplication.shared.isIdleTimerDisabled = true
         playButton.imageView?.contentMode = .scaleAspectFit
         stopButton.imageView?.contentMode = .scaleAspectFit

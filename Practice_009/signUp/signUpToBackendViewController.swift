@@ -132,6 +132,7 @@ class signUpToBackendViewController: BaseViewController,UITextFieldDelegate {
         clearTextField()
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         presenter = signUpToBackendPresenter(delegate: self)
         lastNameFill.delegate = self
         firstNameFill.delegate = self

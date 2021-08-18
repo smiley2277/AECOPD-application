@@ -19,6 +19,7 @@ class OnlinePredictViewController: BaseViewController{
     @IBOutlet weak var comment: UILabel!
     let cookies:String = "connect.sid=s%3AYEvBjFbMRdHNXmM1Y8HpbLJ7dj-685MD.J%2F56QcPFHOqtyy2F3yo%2FdLjCO35KUQdeSNl1%2BC5rYtM"
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         getProb()
     }
     func getProb() {

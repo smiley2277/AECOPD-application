@@ -203,6 +203,7 @@ class borgScaleViewController: BaseViewController {
         vc?.startTime = str
     }
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
         str = dateFormatter.string(from: today)
     }

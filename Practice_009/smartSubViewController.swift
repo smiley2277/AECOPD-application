@@ -15,6 +15,7 @@ class smartSubViewController:BaseViewController{
     var afterBorg:Int = 0
     @IBOutlet weak var introLabel: UILabel!
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
         introLabel.text = "您好！\n我是智慧教練，等下的訓練\n 會透過節奏帶領你走路的速度，\n請開啟音效，希望能帶給你一段愉快的訓練，\n準備好了就開始吧！"
     }
     @IBAction func startTest(_ sender: Any) {
