@@ -356,6 +356,7 @@ class lifestyleViewController: BaseViewController, CLLocationManagerDelegate{
     @IBOutlet weak var humidLabel: UILabel!
     override func viewDidLoad() {
         overrideUserInterfaceStyle = .light
+        print(userId)
         //GPS location request
         locationManager.delegate = self
         locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
