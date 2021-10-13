@@ -13,6 +13,7 @@ class ViewController: BaseViewController{
     @IBOutlet weak var onlineButton: UIButton!
     @IBOutlet weak var quesButton: UIButton!
     @IBOutlet weak var smartButton: UIButton!
+    var borgNum: Int = 0
     var questionAry: [String: [Int]]  = [:]
     var stepSize: Double = 0.0
     var beforeBorg: [String: Int] = [:]
@@ -31,7 +32,7 @@ class ViewController: BaseViewController{
         userDefaults = UserDefaults.standard
         let dics = userDefaults.dictionaryRepresentation()
         presenter = userMainPresenter(delegate: self)
-        
+        userDefaults.synchronize()
     }
     @IBAction func sync(_ sender: Any) {
         autoFetchHRStep()
@@ -235,10 +236,10 @@ class ViewController: BaseViewController{
         let notiNamefortimebyvaria = Notification.Name("sendTimestampByVariable")
         NotificationCenter.default.addObserver(self, selector: #selector(catchTimeVaria(noti:)), name: notiNamefortimebyvaria, object: nil)
         userDefaults.synchronize()
-//        autoFetchHRStep()
     }
     func autoFetchHRStep(){
         print("autoFetchHRStep")
+        let dics = userDefaults.dictionaryRepresentation()
         var duration: [Int] = []
         var heartRateForFixed: [Int] = []
         var heartRateForVaria: [Int] = []
@@ -246,58 +247,90 @@ class ViewController: BaseViewController{
         var stepForVaria: Int = 0
         var befBorg: [String: Int] = [:]
         var aftBorg: [String: Int] = [:]
-        var realDate: [String] = []
-        befBorg = fetchingDefaultForBorg(keyName: "beforeBorg")
-        aftBorg = fetchingDefaultForBorg(keyName: "afterBorg")
-        if (befBorg != [:]) && (aftBorg != [:]) {
-            print(befBorg, befBorg)
-            let befDatetime = Array(befBorg.keys)
-            let aftDatetime = Array(aftBorg.keys)
-            let postborg = Array(aftBorg.values)[0]
-            let preborg = Array(befBorg.values)[0]
-            realDate.append(befDatetime[0])
-            realDate.append(aftDatetime[0])
-            print("autoFetchHRStep befDatetime & aftDatetime:",befDatetime, aftDatetime)
-            duration = fetchTimefromString(timestamp: realDate) // to timestamp
-            realDate = fetchdatetime(timeStamp: duration) // to long format string
-            let fixInt = fetchingDefatultForArray(keyName: "smartCoachDuration")
-            let varInt = fetchingDefatultForArray(keyName: "smartCoachVariableDuration")//timestamp
-            if (fixInt.count != 0){
-                heartRateForFixed = realtimeHR(id: userId ?? "", timestamp: duration)
-                stepForFixed = realtimeStep(id: userId ?? "", timestamp: duration)
-                if (heartRateForFixed.count >= 2) && (stepForFixed != 0){
-                    let pacBorg = [postborg, preborg, heartRateForFixed[1], heartRateForFixed[0], stepForFixed, realDate[0]] as [Any]
-                    presenter?.postBorg(userId: userId!, postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
-                    print("@VC FFFpacBorg,", pacBorg)
-                    alert(title: "提醒", msg: "已成功上傳一筆固定速率的資料", btn: "確定")
-                }else{
-                    let saveFixBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
-                    userDefaults.set(saveFixBorg, forKey: "pacFixBorg"+realDate[0])
-                    if (heartRateForFixed.count < 2) && (stepForFixed == 0){
-                        alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
-                    }else if (heartRateForFixed.count < 2){
-                        alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
-                    }else if (stepForFixed == 0){
-                        alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+        let befBorg_dic = fetchingDefaultForBorg(keyName:"beforeBorg")
+        let aftBorg_dic = fetchingDefaultForBorg(keyName:"afterBorg")
+        for k in dics.keys{
+            if (k.range(of:"beforeBorg_") != nil){
+                if Int(k.split(separator: "_")[1]) ?? 0 > borgNum{
+                    borgNum = Int(k.split(separator: "_")[1]) ?? 0
+                }
+                print("k & borgNum: \(k, borgNum)")
+            }
+        }
+        for i in Range(0...borgNum){
+            var realDate: [String] = []
+            befBorg = befBorg_dic["beforeBorg_"+String(i)] ?? [:]
+            aftBorg = aftBorg_dic["afterBorg_"+String(i)] ?? [:]
+            print(i, borgNum, befBorg, aftBorg)
+            if (befBorg != [:]) && (aftBorg != [:]) {
+                let befDatetime = Array(befBorg.keys)
+                let aftDatetime = Array(aftBorg.keys)
+                let postborg = Array(aftBorg.values)[0]
+                let preborg = Array(befBorg.values)[0]
+                realDate.append(befDatetime[0])
+                realDate.append(aftDatetime[0])
+                print("autoFetchHRStep befDatetime & aftDatetime:",befDatetime, aftDatetime, realDate)
+                duration = fetchTimefromString(timestamp: realDate) // to timestamp
+                realDate = fetchdatetime(timeStamp: duration) // to long format string
+                let fixInt = fetchingDefatultForArray(keyName: "smartCoachDuration")
+                let varInt = fetchingDefatultForArray(keyName: "smartCoachVariableDuration")//timestamp
+                print("fixInt\(fixInt.count)")
+                if (fixInt.count != 0){
+                    heartRateForFixed = realtimeHR(id: userId ?? "", timestamp: duration)
+                    stepForFixed = realtimeStep(id: userId ?? "", timestamp: duration)
+                    print("heartRateForFixed: \(heartRateForFixed)")
+                    print("stepForFixed: \(stepForFixed)")
+                    if (heartRateForFixed.count >= 2) && (stepForFixed != 0){
+                        let pacBorg = [postborg, preborg, heartRateForFixed[1], heartRateForFixed[0], stepForFixed, realDate[0]] as [Any]
+                        presenter?.postBorg(userId: userId!, postbeat: heartRateForFixed[1], postborg: postborg, prebeat: heartRateForFixed[0], preborg: preborg, step: stepForFixed, timestamp: realDate[0])
+                        print("@VC FFFpacBorg,", pacBorg)
+                        alert(title: "提醒", msg: "已成功上傳一筆固定速率的資料，\n這次走的心律從 \(heartRateForFixed[0])變化到\(heartRateForFixed[1])，總共走了\(stepForFixed)步，加油唷！你做得很棒🥳", btn: "確定")
+                        for k in dics.keys{
+                            if (k.range(of:"beforeBorg_") != nil)||(k.range(of:"afterBorg_") != nil){
+                                userDefaults.removeObject(forKey:k)
+                                print("======REMOVE",k)
+                            }
+                        }
+                        userDefaults.synchronize()
+                        borgNum = 0
+                    }else{
+                        let saveFixBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
+                        print("saveFixBorg:\(saveFixBorg)")
+                        userDefaults.set(saveFixBorg, forKey: "pacFixBorg"+realDate[0])
+                        if (heartRateForFixed.count < 2) && (stepForFixed == 0){
+                            alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }else if (heartRateForFixed.count < 2){
+                            alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }else if (stepForFixed == 0){
+                            alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }
                     }
                 }
-            }
-            if (varInt.count != 0){
-                heartRateForVaria = realtimeHR(id: userId ?? "", timestamp: duration)
-                stepForVaria = realtimeStep(id: userId ?? "", timestamp: duration)
-                if (heartRateForVaria.count >= 2) && (stepForVaria != 0){
-//                    let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
-                    presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
-                    alert(title: "提醒", msg: "已成功上傳一筆變速版本的資料", btn: "確定")
-                }else{
-                    let saveVarBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
-                    userDefaults.set(saveVarBorg, forKey: "pacVarBorg"+realDate[0])
-                    if (heartRateForVaria.count < 2) && (stepForVaria == 0){
-                        alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
-                    }else if (heartRateForVaria.count < 2){
-                        alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
-                    }else if (stepForFixed == 0){
-                        alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                if (varInt.count != 0){
+                    heartRateForVaria = realtimeHR(id: userId ?? "", timestamp: duration)
+                    stepForVaria = realtimeStep(id: userId ?? "", timestamp: duration)
+                    if (heartRateForVaria.count >= 2) && (stepForVaria != 0){
+                        //                    let pacBorg = [realDate[0], postborg, preborg, heartRateForVaria, stepForVaria] as [Any]
+                        presenter?.postBorg(userId: userId!,postbeat: heartRateForVaria[1], postborg: postborg, prebeat: heartRateForVaria[0], preborg: preborg, step: stepForVaria, timestamp: realDate[0])
+                        alert(title: "提醒", msg: "已成功上傳一筆變速版本的資料，\n這次走的心律從 \(heartRateForVaria[0])變化到\(heartRateForVaria[1])，總共走了\(stepForVaria)步，加油唷！你做得很棒🥳", btn: "確定")
+                        for k in dics.keys{
+                            if (k.range(of:"beforeBorg_") != nil)||(k.range(of:"afterBorg_") != nil){
+                                userDefaults.removeObject(forKey:k)
+                                print("======REMOVE",k)
+                            }
+                        }
+                        userDefaults.synchronize()
+                        borgNum = 0
+                    }else{
+                        let saveVarBorg = [realDate[0], realDate[1], postborg, preborg] as [Any]
+                        userDefaults.set(saveVarBorg, forKey: "pacVarBorg"+realDate[0])
+                        if (heartRateForVaria.count < 2) && (stepForVaria == 0){
+                            alert(title: "提醒", msg: "心律、步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }else if (heartRateForVaria.count < 2){
+                            alert(title: "提醒", msg: "心律資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }else if (stepForFixed == 0){
+                            alert(title: "提醒", msg: "步數資料不齊全，請先同步您的手錶，以便取得最新資訊", btn: "確定")
+                        }
                     }
                 }
             }
@@ -311,15 +344,16 @@ class ViewController: BaseViewController{
         let keyAry = Array(UserDefaults.standard.dictionaryRepresentation().keys)
         for i in Range(0...keyAry.count-1){
             let k = keyAry[i].range(of:"pacFixBorg", options:.regularExpression)
-            if (k != nil){
+            let j = keyAry[i].range(of:"pacVarBorg", options:.regularExpression)
+            if (k != nil) || (j != nil){
                 notUploadBorgKey.append(keyAry[i])
             }
         }
+        print("notUploadBorgKey: \(notUploadBorgKey)")
         if (notUploadBorgKey.count > 0){
             for idx in (0...notUploadBorgKey.count-1){
                 if(UserDefaults.standard.object(forKey:notUploadBorgKey[idx]) != nil) {
                     print("============================= :", notUploadBorgKey[idx])
-//                    print(UserDefaults.standard.object(forKey:notUploadBorgKey[idx]))
                     let t = UserDefaults.standard.value(forKey: notUploadBorgKey[idx]) as! [Any]
                     var duration: [String] = []
                     let befBorg = Int(truncating: t[2] as! NSNumber)
@@ -358,12 +392,18 @@ class ViewController: BaseViewController{
         }
         return defaulty
     }
-    func fetchingDefaultForBorg(keyName: String)-> [String: Int]{
+    func fetchingDefaultForBorg(keyName: String)-> [String:[String: Int]]{
         var defaults: [String: Int] = [:]
-        if(keyName == "beforeBorg") || (keyName == "afterBorg"){
-            defaults = UserDefaults.standard.value(forKey: keyName) as? [String: Int] ?? [:]
+        var results: [String:[String: Int]] = [:]
+        let dics = userDefaults.dictionaryRepresentation()
+        for i in dics.keys{
+            if (i.range(of: keyName) != nil){
+                defaults = (UserDefaults.standard.value(forKey: i) as? [String: Int] ?? [:])
+                results[i]=defaults
+                print(i, defaults)
+            }
         }
-        return defaults
+        return results
     }
     func fetchingDefaultForQues(keyName: String)-> [String: [Int]]{
         var defaults: [String: [Int]] = [:]
@@ -397,12 +437,13 @@ class ViewController: BaseViewController{
     }
     @objc func catchBefBorg(noti: Notification){
         beforeBorg = noti.userInfo!["PASS"] as! [String: Int]
-        userDefaults.set(beforeBorg, forKey: "beforeBorg")
+        userDefaults.set(beforeBorg, forKey: "beforeBorg_"+String(borgNum))
         print("CatchBB ByNoti @VC, ", beforeBorg)
     }
     @objc func catchAftBorg(noti: Notification){
         AfterBorg = noti.userInfo!["PASS"] as! [String: Int]
-        userDefaults.set(AfterBorg, forKey: "afterBorg")
+        userDefaults.set(AfterBorg, forKey: "afterBorg_"+String(borgNum))
+        borgNum += 1
         print("CatchAB ByNoti @VC, ", AfterBorg)
     }
     @objc func catchStepSize(noti:Notification) {

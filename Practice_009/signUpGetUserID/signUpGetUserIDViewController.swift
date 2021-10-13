@@ -49,6 +49,7 @@ class signUpGetUserIDViewController: BaseViewController, UITextFieldDelegate {
                 print("status\(status)")
                 var prID = userComp[1].replacingOccurrences(of: "{", with: "")
                 prID = prID.replacingOccurrences(of: "}", with: "")
+                prID = prID.replacingOccurrences(of: "\"", with: "")
                 print("prID\(prID)")
                 if (status == "success") && (prID == "false"){
                     print("ERROR")
